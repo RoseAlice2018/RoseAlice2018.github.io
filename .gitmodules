@@ -1,0 +1,6 @@
+[submodule "littlstar/themes/hugo-bearblog"]
+	path = littlstar/themes/hugo-bearblog
+	url = https://github.com/janraasch/hugo-bearblog.git
+[submodule "littlstar/themes/hugo-coder"]
+	path = littlstar/themes/hugo-coder
+	url = https://github.com/luizdepra/hugo-coder.git
