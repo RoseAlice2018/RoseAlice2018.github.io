@@ -2,15 +2,17 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://example.org/</loc><lastmod>2023-12-30T23:39:20&#43;08:00</lastmod><priority>1</priority></url><url>
-            <loc>http://example.org/posts/first_post/</loc><lastmod>2023-12-30T23:39:20&#43;08:00</lastmod></url><url>
-            <loc>http://example.org/posts/</loc><lastmod>2023-12-30T23:39:20&#43;08:00</lastmod></url><url>
-            <loc>http://example.org/blog/</loc><lastmod>2023-12-30T23:18:21&#43;08:00</lastmod></url><url>
-            <loc>http://example.org/blog/hugo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA/</loc><lastmod>2023-12-30T23:18:21&#43;08:00</lastmod></url><url>
-            <loc>http://example.org/tags/markdown/</loc><lastmod>2020-01-03T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://example.org/blog/markdown-syntax/</loc><lastmod>2020-01-03T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://example.org/tags/syntax/</loc><lastmod>2020-01-03T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://example.org/tags/</loc><lastmod>2020-01-03T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://example.org/bear/</loc></url><url>
-            <loc>http://example.org/categories/</loc></url><url>
-            <loc>http://example.org/hugo/</loc></url></urlset>
+            <loc>https://www.xiaodingdang.fit/</loc><lastmod>2024-01-14T17:17:06&#43;08:00</lastmod><priority>1</priority></url><url>
+            <loc>https://www.xiaodingdang.fit/posts/</loc><lastmod>2024-01-14T17:17:06&#43;08:00</lastmod></url><url>
+            <loc>https://www.xiaodingdang.fit/posts/second_post/</loc><lastmod>2024-01-14T17:17:06&#43;08:00</lastmod></url><url>
+            <loc>https://www.xiaodingdang.fit/posts/first_post/</loc><lastmod>2023-12-30T23:39:20&#43;08:00</lastmod></url><url>
+            <loc>https://www.xiaodingdang.fit/blog/</loc><lastmod>2023-12-30T23:18:21&#43;08:00</lastmod></url><url>
+            <loc>https://www.xiaodingdang.fit/blog/hugo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA/</loc><lastmod>2023-12-30T23:18:21&#43;08:00</lastmod></url><url>
+            <loc>https://www.xiaodingdang.fit/tags/markdown/</loc><lastmod>2020-01-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://www.xiaodingdang.fit/blog/markdown-syntax/</loc><lastmod>2020-01-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://www.xiaodingdang.fit/tags/syntax/</loc><lastmod>2020-01-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://www.xiaodingdang.fit/tags/</loc><lastmod>2020-01-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://www.xiaodingdang.fit/secondpage/</loc><priority>0</priority></url><url>
+            <loc>https://www.xiaodingdang.fit/bear/</loc></url><url>
+            <loc>https://www.xiaodingdang.fit/categories/</loc></url><url>
+            <loc>https://www.xiaodingdang.fit/hugo/</loc></url></urlset>

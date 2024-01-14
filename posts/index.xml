@@ -1,14 +1,22 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>All Posts - 我的全新 Hugo 网站</title>
-        <link>http://example.org/posts/</link>
-        <description>All Posts | 我的全新 Hugo 网站</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 30 Dec 2023 23:39:20 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+        <title>所有文章 - 坐井观天</title>
+        <link>https://www.xiaodingdang.fit/posts/</link>
+        <description>所有文章 | 坐井观天</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 14 Jan 2024 17:17:06 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Second_post</title>
+    <link>https://www.xiaodingdang.fit/posts/second_post/</link>
+    <pubDate>Sun, 14 Jan 2024 17:17:06 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/second_post/</guid>
+    <description><![CDATA[111]]></description>
+</item>
+<item>
     <title>First_post</title>
-    <link>http://example.org/posts/first_post/</link>
+    <link>https://www.xiaodingdang.fit/posts/first_post/</link>
     <pubDate>Sat, 30 Dec 2023 23:39:20 &#43;0800</pubDate>
-    <author>xxxx</author>
-    <guid>http://example.org/posts/first_post/</guid>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/first_post/</guid>
     <description><![CDATA[Hi 你好]]></description>
 </item>
 </channel>
