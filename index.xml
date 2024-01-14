@@ -3,23 +3,31 @@
         <title>坐井观天</title>
         <link>https://www.xiaodingdang.fit/</link>
         <description>蝴蝶🦋的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 14 Jan 2024 17:17:06 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 14 Jan 2024 19:06:04 &#43;0800</lastBuildDate>
             <atom:link href="https://www.xiaodingdang.fit/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>Second_post</title>
+    <title>Vim配置</title>
+    <link>https://www.xiaodingdang.fit/posts/vim%E9%85%8D%E7%BD%AE/</link>
+    <pubDate>Sun, 14 Jan 2024 19:06:04 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/vim%E9%85%8D%E7%BD%AE/</guid>
+    <description><![CDATA[vim配置 安装Universal-ctags 1 2 3 4 5 6 $ git clone https://github.com/universal-ctags/ctags.git $ cd ctags $ ./autogen.sh $ ./configure # use --prefix=/where/you/want to override installation directory, defaults to /usr/local $ make $ make install # may require extra privileges depending on where to install 安装vim-]]></description>
+</item>
+<item>
+    <title>为什么2024年还要写博客？--内容创作者的自由</title>
     <link>https://www.xiaodingdang.fit/posts/second_post/</link>
     <pubDate>Sun, 14 Jan 2024 17:17:06 &#43;0800</pubDate>
     <author>蝴蝶🦋</author>
     <guid>https://www.xiaodingdang.fit/posts/second_post/</guid>
-    <description><![CDATA[111]]></description>
+    <description><![CDATA[Summary 历史回顾 我开始选择性的写作或公开发表博客，大概可以追溯到2017或者2016年左右。彼时我还并不是一个热衷于计划的人（或许现在也是），记录]]></description>
 </item>
 <item>
-    <title>First_post</title>
-    <link>https://www.xiaodingdang.fit/posts/first_post/</link>
+    <title>Hugo静态博客实践</title>
+    <link>https://www.xiaodingdang.fit/posts/hugo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E5%AE%9E%E8%B7%B5/</link>
     <pubDate>Sat, 30 Dec 2023 23:39:20 &#43;0800</pubDate>
     <author>蝴蝶🦋</author>
-    <guid>https://www.xiaodingdang.fit/posts/first_post/</guid>
-    <description><![CDATA[Hi 你好]]></description>
+    <guid>https://www.xiaodingdang.fit/posts/hugo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E5%AE%9E%E8%B7%B5/</guid>
+    <description><![CDATA[Hugo安装下载及创建Page，本地连接Github 参考如下博客即可，不多赘述 https://cuttontail.blog/blog/create-a-wesite-using-github-pages-and-hugo/ 我使用的是LoveIt主题，如何使用参考参考文档1即可。 Hugo Github]]></description>
 </item>
 </channel>
 </rss>
