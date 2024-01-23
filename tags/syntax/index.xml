@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>syntax - 标签 - 坐井观天</title>
+        <title>syntax - 标签 - 小叮当</title>
         <link>https://www.xiaodingdang.fit/tags/syntax/</link>
-        <description>syntax - 标签 - 坐井观天</description>
+        <description>syntax - 标签 - 小叮当</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 03 Jan 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/tags/syntax/" rel="self" type="application/rss+xml" /><item>
     <title>Markdown Syntax Guide</title>
     <link>https://www.xiaodingdang.fit/blog/markdown-syntax/</link>
