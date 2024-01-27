@@ -2,8 +2,9 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://www.xiaodingdang.fit/</loc><lastmod>2024-01-14T19:06:04&#43;08:00</lastmod><priority>0.9</priority></url><url>
-            <loc>https://www.xiaodingdang.fit/posts/</loc><lastmod>2024-01-14T19:06:04&#43;08:00</lastmod></url><url>
+            <loc>https://www.xiaodingdang.fit/</loc><lastmod>2024-01-27T19:08:57&#43;08:00</lastmod><priority>1</priority></url><url>
+            <loc>https://www.xiaodingdang.fit/posts/git%E6%93%8D%E4%BD%9C/</loc><lastmod>2024-01-27T19:08:57&#43;08:00</lastmod></url><url>
+            <loc>https://www.xiaodingdang.fit/posts/</loc><lastmod>2024-01-27T19:08:57&#43;08:00</lastmod></url><url>
             <loc>https://www.xiaodingdang.fit/posts/vim%E9%85%8D%E7%BD%AE/</loc><lastmod>2024-01-14T19:06:04&#43;08:00</lastmod></url><url>
             <loc>https://www.xiaodingdang.fit/posts/second_post/</loc><lastmod>2024-01-14T17:17:06&#43;08:00</lastmod></url><url>
             <loc>https://www.xiaodingdang.fit/posts/hugo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E5%AE%9E%E8%B7%B5/</loc><lastmod>2023-12-30T23:39:20&#43;08:00</lastmod></url><url>
