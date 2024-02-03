@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Hugo主题 - 标签 - 小叮当</title>
+        <link>https://www.xiaodingdang.fit/tags/hugo%E4%B8%BB%E9%A2%98/</link>
+        <description>Hugo主题 - 标签 - 小叮当</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 03 Feb 2024 15:23:48 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/tags/hugo%E4%B8%BB%E9%A2%98/" rel="self" type="application/rss+xml" /><item>
+    <title>HugoLoveIt常用操作</title>
+    <link>https://www.xiaodingdang.fit/posts/hugoloveit%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+    <pubDate>Sat, 03 Feb 2024 15:23:48 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/hugoloveit%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+    <description><![CDATA[新建一篇文章 hugo new posts/new.md 注意新md文件最好放在posts目录下 hugo 生成静态文件 hugo serve（option） 在本地预览 cd public &amp;&amp; git add .&amp;&amp; git commit -m &quot;&quot; &amp;&amp;git push 上传 文章]]></description>
+</item>
+<item>
+    <title>Hugo静态博客实践</title>
+    <link>https://www.xiaodingdang.fit/posts/hugo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E5%AE%9E%E8%B7%B5/</link>
+    <pubDate>Sat, 30 Dec 2023 23:39:20 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/hugo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E5%AE%9E%E8%B7%B5/</guid>
+    <description><![CDATA[LoveIt主题操作指南 https://hugoloveit.com/zh-cn/theme-documentation-content/ Hugo安装下载及创建Page，本地连接Github 参考如下博客即可，不多赘述 https://cuttontail.blog/blog/create-a-wesite-using-github-pages-and-hugo/ 我使用的是LoveIt主题，如何使]]></description>
+</item>
+</channel>
+</rss>
