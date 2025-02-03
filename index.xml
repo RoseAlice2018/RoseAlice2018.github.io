@@ -3,9 +3,17 @@
         <title>小叮当</title>
         <link>https://www.xiaodingdang.fit/</link>
         <description>蝴蝶🦋的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 28 Jul 2024 23:21:54 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 03 Feb 2025 22:11:06 &#43;0800</lastBuildDate>
             <atom:link href="https://www.xiaodingdang.fit/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>《花束般的恋爱》与1月总结</title>
+    <link>https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/</link>
+    <pubDate>Mon, 03 Feb 2025 22:11:06 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/</guid>
+    <description><![CDATA[不知不觉年已经过完了，又要回归工作了。 回家的路上，看了《花束般的恋爱》，一部不错的爱情片，是准备有一篇总结的，兼顾总结一下对于爱情的看法， 以]]></description>
+</item>
+<item>
     <title>一次面试算法题 大模拟</title>
     <link>https://www.xiaodingdang.fit/posts/%E4%B8%80%E6%AC%A1%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E9%A2%98-%E5%A4%A7%E6%A8%A1%E6%8B%9F/</link>
     <pubDate>Sun, 28 Jul 2024 23:21:54 &#43;0800</pubDate>
@@ -19,7 +27,7 @@
     <pubDate>Sat, 03 Feb 2024 15:23:48 &#43;0800</pubDate>
     <author>蝴蝶🦋</author>
     <guid>https://www.xiaodingdang.fit/posts/hugoloveit%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
-    <description><![CDATA[新建一篇文章 hugo new posts/new.md 注意新md文件最好放在posts目录下 hugo 生成静态文件 hugo serve（option） 在本地预览 cd public &amp;&amp; git add .&amp;&amp; git commit -m &quot;&quot; &amp;&amp;git push 上传 文章]]></description>
+    <description><![CDATA[新建一篇文章 hugo new posts/new.md 注意新md文件最好放在posts目录下 hugo 生成静态文件 hugo serve（option） 在本地预览 cd public &amp;&amp; git add .&amp;&amp; git commit -m &quot;&quot; &amp;&amp;git push origin main 上传]]></description>
 </item>
 <item>
     <title>Git Cherrypick</title>

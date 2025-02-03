@@ -9,7 +9,7 @@
     <pubDate>Sat, 03 Feb 2024 15:23:48 &#43;0800</pubDate>
     <author>蝴蝶🦋</author>
     <guid>https://www.xiaodingdang.fit/posts/hugoloveit%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
-    <description><![CDATA[新建一篇文章 hugo new posts/new.md 注意新md文件最好放在posts目录下 hugo 生成静态文件 hugo serve（option） 在本地预览 cd public &amp;&amp; git add .&amp;&amp; git commit -m &quot;&quot; &amp;&amp;git push 上传 文章]]></description>
+    <description><![CDATA[新建一篇文章 hugo new posts/new.md 注意新md文件最好放在posts目录下 hugo 生成静态文件 hugo serve（option） 在本地预览 cd public &amp;&amp; git add .&amp;&amp; git commit -m &quot;&quot; &amp;&amp;git push origin main 上传]]></description>
 </item>
 <item>
     <title>Hugo静态博客实践</title>
