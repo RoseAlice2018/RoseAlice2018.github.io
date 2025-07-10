@@ -4,34 +4,34 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>《花束般的恋爱》与1月总结 - 小叮当</title><meta name="Description" content="蝴蝶🦋的博客"><meta property="og:title" content="《花束般的恋爱》与1月总结" />
-<meta property="og:description" content="不知不觉年已经过完了，又要回归工作了。 回家的路上，看了《花束般的恋爱》，一部不错的爱情片，是准备有一篇总结的，兼顾总结一下对于爱情的看法， 以" />
+        <title>KCP1 - 小叮当</title><meta name="Description" content="蝴蝶🦋的博客"><meta property="og:title" content="KCP1" />
+<meta property="og:description" content="1.0 KCP基础理解 KCP 与TCP，UDP的差异，适合的场景 特性 TCP UDP KCP 传输层类型 面向连接，可靠传输 无连接，不可靠传输 基于UDP协议的可靠传输 可靠性 強" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/" /><meta property="og:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2025-02-03T22:11:06+08:00" />
-<meta property="article:modified_time" content="2025-02-03T22:11:06+08:00" /><meta property="og:site_name" content="小叮当" />
+<meta property="og:url" content="https://www.xiaodingdang.fit/posts/kcp1.0-%E5%9F%BA%E7%A1%80%E7%90%86%E8%A7%A3/" /><meta property="og:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-07-10T23:24:55+08:00" />
+<meta property="article:modified_time" content="2025-07-10T23:24:55+08:00" /><meta property="og:site_name" content="小叮当" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/>
 
-<meta name="twitter:title" content="《花束般的恋爱》与1月总结"/>
-<meta name="twitter:description" content="不知不觉年已经过完了，又要回归工作了。 回家的路上，看了《花束般的恋爱》，一部不错的爱情片，是准备有一篇总结的，兼顾总结一下对于爱情的看法， 以"/>
+<meta name="twitter:title" content="KCP1"/>
+<meta name="twitter:description" content="1.0 KCP基础理解 KCP 与TCP，UDP的差异，适合的场景 特性 TCP UDP KCP 传输层类型 面向连接，可靠传输 无连接，不可靠传输 基于UDP协议的可靠传输 可靠性 強"/>
 <meta name="application-name" content="小叮当">
 <meta name="apple-mobile-web-app-title" content="小叮当"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/" /><link rel="prev" href="https://www.xiaodingdang.fit/posts/%E4%B8%80%E6%AC%A1%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E9%A2%98-%E5%A4%A7%E6%A8%A1%E6%8B%9F/" /><link rel="next" href="https://www.xiaodingdang.fit/posts/kcp1.0-%E5%9F%BA%E7%A1%80%E7%90%86%E8%A7%A3/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.xiaodingdang.fit/posts/kcp1.0-%E5%9F%BA%E7%A1%80%E7%90%86%E8%A7%A3/" /><link rel="prev" href="https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "《花束般的恋爱》与1月总结",
+        "headline": "KCP1",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/www.xiaodingdang.fit\/posts\/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93\/"
-        },"genre": "posts","wordcount":  167 ,
-        "url": "https:\/\/www.xiaodingdang.fit\/posts\/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93\/","datePublished": "2025-02-03T22:11:06+08:00","dateModified": "2025-02-03T22:11:06+08:00","publisher": {
+            "@id": "https:\/\/www.xiaodingdang.fit\/posts\/kcp1.0-%E5%9F%BA%E7%A1%80%E7%90%86%E8%A7%A3\/"
+        },"genre": "posts","wordcount":  631 ,
+        "url": "https:\/\/www.xiaodingdang.fit\/posts\/kcp1.0-%E5%9F%BA%E7%A1%80%E7%90%86%E8%A7%A3\/","datePublished": "2025-07-10T23:24:55+08:00","dateModified": "2025-07-10T23:24:55+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -102,32 +102,142 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">《花束般的恋爱》与1月总结</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">KCP1</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>蝴蝶🦋</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-02-03">2025-02-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 167 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-07-10">2025-07-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 631 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"><p>不知不觉年已经过完了，又要回归工作了。</p>
-<p>回家的路上，看了《花束般的恋爱》，一部不错的爱情片，是准备有一篇总结的，兼顾总结一下对于爱情的看法，
-以及如何构建良好的亲密关系，构建什么样的亲密关系。</p>
-<p>1月主要时间用在过年和准备过年上了，过年的时间主要在家里睡觉打牌，安排好的事情干的依然不多。</p>
-<p>坚持做一件事不容易。</p>
-<p>whatever 后面的分篇再说 如果真的还写的话。</p>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#10-kcp基础理解">1.0 KCP基础理解</a>
+          <ul>
+            <li><a href="#kcp-与tcpudp的差异适合的场景">KCP 与TCP，UDP的差异，适合的场景</a></li>
+            <li><a href="#kcp-与tcp-可靠性区别">KCP 与TCP 可靠性区别</a></li>
+            <li><a href="#kcp与-tcp-拥塞控制区别">KCP与 TCP 拥塞控制区别</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="10-kcp基础理解">1.0 KCP基础理解</h3>
+<h4 id="kcp-与tcpudp的差异适合的场景">KCP 与TCP，UDP的差异，适合的场景</h4>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>TCP</th>
+<th>UDP</th>
+<th>KCP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>传输层类型</td>
+<td>面向连接，可靠传输</td>
+<td>无连接，不可靠传输</td>
+<td>基于UDP协议的可靠传输</td>
+</tr>
+<tr>
+<td>可靠性</td>
+<td>強（丟包重传， 保序）</td>
+<td>不可靠传输（不保证到达，不保序）</td>
+<td>强（类似于TCP，但是重传更激进）</td>
+</tr>
+<tr>
+<td>连接方式</td>
+<td>三次握手</td>
+<td>无连接</td>
+<td>无连接 基于会话ID conv</td>
+</tr>
+<tr>
+<td>传输速度</td>
+<td>慢（受拥塞控制，延迟ACK限制）</td>
+<td>快（无确认，无重传）</td>
+<td>快（牺牲带宽换速度，延迟更低）</td>
+</tr>
+<tr>
+<td>拥塞控制</td>
+<td>严格（AIMD，慢启动）</td>
+<td>无</td>
+<td>可选(默认无)</td>
+</tr>
+<tr>
+<td>Header大小</td>
+<td>大（20-60字节）</td>
+<td>小（8字节）</td>
+<td>中（24-28字节）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>KCP 适合对于实时性要求较高的场景，比如实时音频，语音，游戏等。</li>
+</ul>
+<h4 id="kcp-与tcp-可靠性区别">KCP 与TCP 可靠性区别</h4>
+<ol>
+<li>KCP
+<ol>
+<li>快速重传。收到重复ACK 3（可配置次数）次，立即重传。</li>
+<li>选择性确认（SACK）：仅重传丢失的包，避免冗余传输。</li>
+<li>低延迟。默认interva 10ms （TCP的RTO通常200ms）</li>
+</ol>
+</li>
+<li>TCP
+<ol>
+<li>超时重传（RTO），累计确认（ACK），滑动窗口。</li>
+</ol>
+</li>
+</ol>
+<h4 id="kcp与-tcp-拥塞控制区别">KCP与 TCP 拥塞控制区别</h4>
+<ol>
+<li>
+<p>TCP</p>
+<ol>
+<li>遵守AIMD策略（加性增，乘性减）策略，网络拥塞时大幅降低发送频率。</li>
+</ol>
+</li>
+<li>
+<p>KCP</p>
+<ol>
+<li>默认无拥塞控制。可以用户实现（cwnd和ssthresh参数）</li>
+<li>灵活性：适合需要高吞吐但可容忍一定丢包的场景（如实时游戏）。</li>
+</ol>
+</li>
+<li>
+<p>TCP 如何实现拥塞控制？（细节）</p>
+</li>
+</ol>
+<ul>
+<li>机制掌握</li>
+</ul>
+<ol>
+<li>手动推导KCP 在特定网络环境下的行为</li>
+<li>解释关键参数对性能的影响</li>
+</ol>
+<ul>
+<li>实践</li>
+</ul>
+<ol>
+<li>使用KCP库完成简单的数据传输Demo</li>
+<li>通过Wireshark分析KCP会话，识别数据包、ACK、窗口更新等流程</li>
+<li>根据模拟环境（如TC工具制造延迟/丢包）调优参数，提升传输效率</li>
+</ol>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2025-02-03</span>
+                <span>更新于 2025-07-10</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/" data-title="《花束般的恋爱》与1月总结"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/" data-title="《花束般的恋爱》与1月总结"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/" data-title="《花束般的恋爱》与1月总结"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.xiaodingdang.fit/posts/kcp1.0-%E5%9F%BA%E7%A1%80%E7%90%86%E8%A7%A3/" data-title="KCP1"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.xiaodingdang.fit/posts/kcp1.0-%E5%9F%BA%E7%A1%80%E7%90%86%E8%A7%A3/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="https://www.xiaodingdang.fit/posts/kcp1.0-%E5%9F%BA%E7%A1%80%E7%90%86%E8%A7%A3/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.xiaodingdang.fit/posts/kcp1.0-%E5%9F%BA%E7%A1%80%E7%90%86%E8%A7%A3/" data-title="KCP1"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.xiaodingdang.fit/posts/kcp1.0-%E5%9F%BA%E7%A1%80%E7%90%86%E8%A7%A3/" data-title="KCP1"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -139,8 +249,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/%E4%B8%80%E6%AC%A1%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E9%A2%98-%E5%A4%A7%E6%A8%A1%E6%8B%9F/" class="prev" rel="prev" title="一次面试算法题 大模拟"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>一次面试算法题 大模拟</a>
-            <a href="/posts/kcp1.0-%E5%9F%BA%E7%A1%80%E7%90%86%E8%A7%A3/" class="next" rel="next" title="KCP1">KCP1<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/" class="prev" rel="prev" title="《花束般的恋爱》与1月总结"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>《花束般的恋爱》与1月总结</a></div>
 </div>
 </article></div>
             </main><footer class="footer">
