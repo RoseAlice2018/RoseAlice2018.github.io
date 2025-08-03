@@ -3,7 +3,15 @@
         <title>所有文章 - 小叮当</title>
         <link>https://www.xiaodingdang.fit/posts/</link>
         <description>所有文章 | 小叮当</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 10 Jul 2025 23:35:19 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 03 Aug 2025 20:38:37 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>UGC全局变量设计思路</title>
+    <link>https://www.xiaodingdang.fit/posts/ugc%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF/</link>
+    <pubDate>Sun, 03 Aug 2025 20:38:37 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/ugc%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF/</guid>
+    <description><![CDATA[UGC 全局变量设计思路 需求 策划需要一个属于UGC地图的全局变量，来自于不同space的玩家游玩同一张地图可以获取和修改这个变量。 遇到的问题 玩家A]]></description>
+</item>
+<item>
     <title>KCP2</title>
     <link>https://www.xiaodingdang.fit/posts/kcp2.0-tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/</link>
     <pubDate>Thu, 10 Jul 2025 23:35:19 &#43;0800</pubDate>
@@ -74,14 +82,6 @@
     <author>蝴蝶🦋</author>
     <guid>https://www.xiaodingdang.fit/posts/second_post/</guid>
     <description><![CDATA[Summary 历史回顾 我开始选择性的写作或公开发表博客，大概可以追溯到2017或者2016年左右。彼时我还并不是一个热衷于计划的人（或许现在也是），记录]]></description>
-</item>
-<item>
-    <title>Hugo静态博客实践</title>
-    <link>https://www.xiaodingdang.fit/posts/hugo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E5%AE%9E%E8%B7%B5/</link>
-    <pubDate>Sat, 30 Dec 2023 23:39:20 &#43;0800</pubDate>
-    <author>蝴蝶🦋</author>
-    <guid>https://www.xiaodingdang.fit/posts/hugo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E5%AE%9E%E8%B7%B5/</guid>
-    <description><![CDATA[LoveIt主题操作指南 https://hugoloveit.com/zh-cn/theme-documentation-content/ Hugo安装下载及创建Page，本地连接Github 参考如下博客即可，不多赘述 https://cuttontail.blog/blog/create-a-wesite-using-github-pages-and-hugo/ 我使用的是LoveIt主题，如何使]]></description>
 </item>
 </channel>
 </rss>
