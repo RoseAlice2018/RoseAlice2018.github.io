@@ -3,7 +3,15 @@
         <title>所有文章 - 小叮当</title>
         <link>https://www.xiaodingdang.fit/posts/</link>
         <description>所有文章 | 小叮当</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 03 Aug 2025 20:38:37 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 16 Aug 2025 14:27:41 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>如何实现一个MCP服务</title>
+    <link>https://www.xiaodingdang.fit/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAmcp%E6%9C%8D%E5%8A%A1/</link>
+    <pubDate>Sat, 16 Aug 2025 14:27:41 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAmcp%E6%9C%8D%E5%8A%A1/</guid>
+    <description><![CDATA[创建MCP文件 如下 1 2 3 4 5 6 7 8 9 10 11 12 from mcp.server.fastmcp import FastMCP # 创建mcp server mcp = FastMCP(&#34;使用长上影线实盘策略筛选股票&#34;) @mcp.tool() def stock_select_strategy(strategy_name:]]></description>
+</item>
+<item>
     <title>UGC全局变量设计思路</title>
     <link>https://www.xiaodingdang.fit/posts/ugc%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF/</link>
     <pubDate>Sun, 03 Aug 2025 20:38:37 &#43;0800</pubDate>
@@ -74,14 +82,6 @@
     <author>蝴蝶🦋</author>
     <guid>https://www.xiaodingdang.fit/posts/vim%E9%85%8D%E7%BD%AE/</guid>
     <description><![CDATA[vim配置 安装Universal-ctags 1 2 3 4 5 6 $ git clone https://github.com/universal-ctags/ctags.git $ cd ctags $ ./autogen.sh $ ./configure # use --prefix=/where/you/want to override installation directory, defaults to /usr/local $ make $ make install # may require extra privileges depending on where to install 安装vim-]]></description>
-</item>
-<item>
-    <title>为什么2024年还要写博客？--内容创作者的自由</title>
-    <link>https://www.xiaodingdang.fit/posts/second_post/</link>
-    <pubDate>Sun, 14 Jan 2024 17:17:06 &#43;0800</pubDate>
-    <author>蝴蝶🦋</author>
-    <guid>https://www.xiaodingdang.fit/posts/second_post/</guid>
-    <description><![CDATA[Summary 历史回顾 我开始选择性的写作或公开发表博客，大概可以追溯到2017或者2016年左右。彼时我还并不是一个热衷于计划的人（或许现在也是），记录]]></description>
 </item>
 </channel>
 </rss>

@@ -4,34 +4,34 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>UGC全局变量设计思路 - 小叮当</title><meta name="Description" content="蝴蝶🦋的博客"><meta property="og:title" content="UGC全局变量设计思路" />
-<meta property="og:description" content="UGC 全局变量设计思路 需求 策划需要一个属于UGC地图的全局变量，来自于不同space的玩家游玩同一张地图可以获取和修改这个变量。 遇到的问题 玩家A" />
+        <title>如何实现一个MCP服务 - 小叮当</title><meta name="Description" content="蝴蝶🦋的博客"><meta property="og:title" content="如何实现一个MCP服务" />
+<meta property="og:description" content="创建MCP文件 如下 1 2 3 4 5 6 7 8 9 10 11 12 from mcp.server.fastmcp import FastMCP # 创建mcp server mcp = FastMCP(&#34;使用长上影线实盘策略筛选股票&#34;) @mcp.tool() def stock_select_strategy(strategy_name:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.xiaodingdang.fit/posts/ugc%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF/" /><meta property="og:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2025-08-03T20:38:37+08:00" />
-<meta property="article:modified_time" content="2025-08-03T20:38:37+08:00" /><meta property="og:site_name" content="小叮当" />
+<meta property="og:url" content="https://www.xiaodingdang.fit/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAmcp%E6%9C%8D%E5%8A%A1/" /><meta property="og:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-08-16T14:27:41+08:00" />
+<meta property="article:modified_time" content="2025-08-16T14:27:41+08:00" /><meta property="og:site_name" content="小叮当" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/>
 
-<meta name="twitter:title" content="UGC全局变量设计思路"/>
-<meta name="twitter:description" content="UGC 全局变量设计思路 需求 策划需要一个属于UGC地图的全局变量，来自于不同space的玩家游玩同一张地图可以获取和修改这个变量。 遇到的问题 玩家A"/>
+<meta name="twitter:title" content="如何实现一个MCP服务"/>
+<meta name="twitter:description" content="创建MCP文件 如下 1 2 3 4 5 6 7 8 9 10 11 12 from mcp.server.fastmcp import FastMCP # 创建mcp server mcp = FastMCP(&#34;使用长上影线实盘策略筛选股票&#34;) @mcp.tool() def stock_select_strategy(strategy_name:"/>
 <meta name="application-name" content="小叮当">
 <meta name="apple-mobile-web-app-title" content="小叮当"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.xiaodingdang.fit/posts/ugc%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF/" /><link rel="prev" href="https://www.xiaodingdang.fit/posts/kcp2.0-tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" /><link rel="next" href="https://www.xiaodingdang.fit/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAmcp%E6%9C%8D%E5%8A%A1/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.xiaodingdang.fit/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAmcp%E6%9C%8D%E5%8A%A1/" /><link rel="prev" href="https://www.xiaodingdang.fit/posts/ugc%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "UGC全局变量设计思路",
+        "headline": "如何实现一个MCP服务",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/www.xiaodingdang.fit\/posts\/ugc%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF\/"
-        },"genre": "posts","wordcount":  563 ,
-        "url": "https:\/\/www.xiaodingdang.fit\/posts\/ugc%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF\/","datePublished": "2025-08-03T20:38:37+08:00","dateModified": "2025-08-03T20:38:37+08:00","publisher": {
+            "@id": "https:\/\/www.xiaodingdang.fit\/posts\/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAmcp%E6%9C%8D%E5%8A%A1\/"
+        },"genre": "posts","wordcount":  168 ,
+        "url": "https:\/\/www.xiaodingdang.fit\/posts\/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAmcp%E6%9C%8D%E5%8A%A1\/","datePublished": "2025-08-16T14:27:41+08:00","dateModified": "2025-08-16T14:27:41+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -102,71 +102,83 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">UGC全局变量设计思路</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">如何实现一个MCP服务</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>蝴蝶🦋</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-08-03">2025-08-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 563 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-08-16">2025-08-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 168 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#ugc-全局变量设计思路">UGC 全局变量设计思路</a>
-      <ul>
-        <li><a href="#需求">需求</a></li>
-        <li><a href="#遇到的问题">遇到的问题</a></li>
-        <li><a href="#解决方案">解决方案</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav></div>
-            </div><div class="content" id="content"><h2 id="ugc-全局变量设计思路">UGC 全局变量设计思路</h2>
-<h3 id="需求">需求</h3>
-<ul>
-<li>策划需要一个属于UGC地图的全局变量，来自于不同space的玩家游玩同一张地图可以获取和修改这个变量。</li>
-</ul>
-<h3 id="遇到的问题">遇到的问题</h3>
-<ul>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><ol>
 <li>
-<p>玩家A B C 来自不同的Game/Space 同时修改或读取这个变量, 会导致数据可能覆盖或丢失。举例：假设A修改变量X后，玩家B Space内缓存有修改前的值，此时玩家B也提出修改 并且基于缓存前的值，此时玩家B发出请求给stub（存有变量的位置），会导致A修改的变量X丢失，变成玩家B修改的变量。</p>
-</li>
+<p>创建MCP文件 如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">from mcp.server.fastmcp import FastMCP
+
+# 创建mcp server
+mcp = FastMCP(&#34;使用长上影线实盘策略筛选股票&#34;)
+
+@mcp.tool()
+def stock_select_strategy(strategy_name: str) -&gt; dict:
+    &#34;&#34;&#34;
+    使用长上影线实盘策略筛选股票
+    &#34;&#34;&#34;
+    from FinanceAstockAgent.MCP.strategyupper.strategyupper import run_strategy
+    return run_strategy(strategy_name)
+</code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
-<p>属于分布式系统中常见的数据一致性问题。</p>
-<ul>
-<li>丢失更新 （多个并发写操作，后提交的操作覆盖了前一次的有效更新）</li>
-<li>过期读取（玩家没有获取到最新的变量值）</li>
-</ul>
-</li>
-</ul>
-<h3 id="解决方案">解决方案</h3>
-<ul>
-<li>基于全局变量本身的使用特性，其冲突率一般较低，属于读多写少的应用场景。采取乐观锁+MVCC的设计思路解决。</li>
-</ul>
-<ol>
-<li>UgcGamelogic （以下称之为Client），在Game开始时load全局变量的值，并再后续过程中周期性更新全局变量的值。（缓解过期读取问题）</li>
-<li>每个变量均设置Version， 更新流程如下
-<ul>
-<li>读取变量时，先获取变量的Version，并保存到本地变量中。</li>
-<li>更新变量时，假设版本不冲突，更新local缓存变量，发送请求至Stub</li>
-<li>Stub收到请求，先获取变量的Version，并判断是否冲突。</li>
-<li>冲突则返回错误，并返回最新的值</li>
-<li>client 收到错误和最新的值，更新本地缓存</li>
-<li>不冲突则更新变量，并返回成功</li>
-</ul>
-</li>
+<p>调试MCP服务器 （提前安装UV python -m pip install uv）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">mcp dev xxx.py
+</code></pre></td></tr></table>
+</div>
+</div></li>
 </ol>
+<ul>
+<li>以上启动后会出现一个控制台网页 先点击Connect 连接， tools界面可以看到所需的tools
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="mcp.png"
+        data-srcset="mcp.png, mcp.png 1.5x, mcp.png 2x"
+        data-sizes="auto"
+        alt="mcp.png"
+        title="alt text" /></li>
+</ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2025-08-03</span>
+                <span>更新于 2025-08-16</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.xiaodingdang.fit/posts/ugc%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF/" data-title="UGC全局变量设计思路"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.xiaodingdang.fit/posts/ugc%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="https://www.xiaodingdang.fit/posts/ugc%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.xiaodingdang.fit/posts/ugc%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF/" data-title="UGC全局变量设计思路"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.xiaodingdang.fit/posts/ugc%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF/" data-title="UGC全局变量设计思路"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.xiaodingdang.fit/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAmcp%E6%9C%8D%E5%8A%A1/" data-title="如何实现一个MCP服务"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.xiaodingdang.fit/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAmcp%E6%9C%8D%E5%8A%A1/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="https://www.xiaodingdang.fit/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAmcp%E6%9C%8D%E5%8A%A1/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.xiaodingdang.fit/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAmcp%E6%9C%8D%E5%8A%A1/" data-title="如何实现一个MCP服务"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.xiaodingdang.fit/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAmcp%E6%9C%8D%E5%8A%A1/" data-title="如何实现一个MCP服务"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -178,8 +190,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/kcp2.0-tcp%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" class="prev" rel="prev" title="KCP2"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>KCP2</a>
-            <a href="/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAmcp%E6%9C%8D%E5%8A%A1/" class="next" rel="next" title="如何实现一个MCP服务">如何实现一个MCP服务<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/posts/ugc%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF/" class="prev" rel="prev" title="UGC全局变量设计思路"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>UGC全局变量设计思路</a></div>
 </div>
 </article></div>
             </main><footer class="footer">
