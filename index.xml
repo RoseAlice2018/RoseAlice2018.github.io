@@ -3,9 +3,17 @@
         <title>小叮当</title>
         <link>https://www.xiaodingdang.fit/</link>
         <description>蝴蝶🦋的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 20 Aug 2025 14:45:48 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 20 Aug 2025 14:46:20 &#43;0800</lastBuildDate>
             <atom:link href="https://www.xiaodingdang.fit/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Langgraph笔记2 长短期记忆</title>
+    <link>https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B02-%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86/</link>
+    <pubDate>Wed, 20 Aug 2025 14:46:20 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B02-%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86/</guid>
+    <description><![CDATA[短期记忆 （short-term memory) 短期记忆（short-term memory)：一般来讲针对单个对话（会话），保存在内存中。 一般可以通过Sta]]></description>
+</item>
+<item>
     <title>Langgraph笔记1 实现一个简单demo</title>
     <link>https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95demo/</link>
     <pubDate>Wed, 20 Aug 2025 14:45:48 &#43;0800</pubDate>
@@ -76,14 +84,6 @@
     <author>蝴蝶🦋</author>
     <guid>https://www.xiaodingdang.fit/posts/git-cherrypick/</guid>
     <description><![CDATA[Git Cherry-pick Cherry-pick 允许你将某一个特定的commit，从一个分支应用到另一个分支，而不合并整个分支。 举例：我有一个stable分支，和一个master分支]]></description>
-</item>
-<item>
-    <title>Git操作</title>
-    <link>https://www.xiaodingdang.fit/posts/git%E6%93%8D%E4%BD%9C/</link>
-    <pubDate>Sat, 27 Jan 2024 19:08:57 &#43;0800</pubDate>
-    <author>蝴蝶🦋</author>
-    <guid>https://www.xiaodingdang.fit/posts/git%E6%93%8D%E4%BD%9C/</guid>
-    <description><![CDATA[git config &ndash;list &ndash;local 查看本地仓库的Git配置 git status [文件] 查看git跟踪的文件状态 git diff [文件] 对比Git跟踪的文件修改前后的具体变化。 git add .|文件 将文件从]]></description>
 </item>
 </channel>
 </rss>

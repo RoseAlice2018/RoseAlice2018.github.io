@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>大模型 - 标签 - 小叮当</title>
+        <link>https://www.xiaodingdang.fit/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
+        <description>大模型 - 标签 - 小叮当</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 20 Aug 2025 14:46:20 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>Langgraph笔记2 长短期记忆</title>
+    <link>https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B02-%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86/</link>
+    <pubDate>Wed, 20 Aug 2025 14:46:20 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B02-%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86/</guid>
+    <description><![CDATA[短期记忆 （short-term memory) 短期记忆（short-term memory)：一般来讲针对单个对话（会话），保存在内存中。 一般可以通过Sta]]></description>
+</item>
+<item>
+    <title>Langgraph笔记1 实现一个简单demo</title>
+    <link>https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95demo/</link>
+    <pubDate>Wed, 20 Aug 2025 14:45:48 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95demo/</guid>
+    <description><![CDATA[本文主要构建了一个简单的支持内存存储的对话机器人，同时引入了tools，支持使用tools搜索。 具体过程见代码注释 1 2 3 4 5 6 7 8 9 10 11 12 13]]></description>
+</item>
+</channel>
+</rss>

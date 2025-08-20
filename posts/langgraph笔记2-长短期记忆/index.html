@@ -4,34 +4,34 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Langgraph笔记1 实现一个简单demo - 小叮当</title><meta name="Description" content="蝴蝶🦋的博客"><meta property="og:title" content="Langgraph笔记1 实现一个简单demo" />
-<meta property="og:description" content="本文主要构建了一个简单的支持内存存储的对话机器人，同时引入了tools，支持使用tools搜索。 具体过程见代码注释 1 2 3 4 5 6 7 8 9 10 11 12 13" />
+        <title>Langgraph笔记2 长短期记忆 - 小叮当</title><meta name="Description" content="蝴蝶🦋的博客"><meta property="og:title" content="Langgraph笔记2 长短期记忆" />
+<meta property="og:description" content="短期记忆 （short-term memory) 短期记忆（short-term memory)：一般来讲针对单个对话（会话），保存在内存中。 一般可以通过Sta" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95demo/" /><meta property="og:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2025-08-20T14:45:48+08:00" />
-<meta property="article:modified_time" content="2025-08-20T14:45:48+08:00" /><meta property="og:site_name" content="小叮当" />
+<meta property="og:url" content="https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B02-%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86/" /><meta property="og:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-08-20T14:46:20+08:00" />
+<meta property="article:modified_time" content="2025-08-20T14:46:20+08:00" /><meta property="og:site_name" content="小叮当" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/>
 
-<meta name="twitter:title" content="Langgraph笔记1 实现一个简单demo"/>
-<meta name="twitter:description" content="本文主要构建了一个简单的支持内存存储的对话机器人，同时引入了tools，支持使用tools搜索。 具体过程见代码注释 1 2 3 4 5 6 7 8 9 10 11 12 13"/>
+<meta name="twitter:title" content="Langgraph笔记2 长短期记忆"/>
+<meta name="twitter:description" content="短期记忆 （short-term memory) 短期记忆（short-term memory)：一般来讲针对单个对话（会话），保存在内存中。 一般可以通过Sta"/>
 <meta name="application-name" content="小叮当">
 <meta name="apple-mobile-web-app-title" content="小叮当"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95demo/" /><link rel="prev" href="https://www.xiaodingdang.fit/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAmcp%E6%9C%8D%E5%8A%A1/" /><link rel="next" href="https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B02-%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B02-%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86/" /><link rel="prev" href="https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95demo/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Langgraph笔记1 实现一个简单demo",
+        "headline": "Langgraph笔记2 长短期记忆",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/www.xiaodingdang.fit\/posts\/langgraph%E7%AC%94%E8%AE%B01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95demo\/"
-        },"genre": "posts","keywords": "大模型, langgraph","wordcount":  503 ,
-        "url": "https:\/\/www.xiaodingdang.fit\/posts\/langgraph%E7%AC%94%E8%AE%B01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95demo\/","datePublished": "2025-08-20T14:45:48+08:00","dateModified": "2025-08-20T14:45:48+08:00","publisher": {
+            "@id": "https:\/\/www.xiaodingdang.fit\/posts\/langgraph%E7%AC%94%E8%AE%B02-%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86\/"
+        },"genre": "posts","keywords": "大模型, langgraph","wordcount":  1327 ,
+        "url": "https:\/\/www.xiaodingdang.fit\/posts\/langgraph%E7%AC%94%E8%AE%B02-%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86\/","datePublished": "2025-08-20T14:46:20+08:00","dateModified": "2025-08-20T14:46:20+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -102,10 +102,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Langgraph笔记1 实现一个简单demo</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Langgraph笔记2 长短期记忆</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>蝴蝶🦋</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-08-20">2025-08-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 503 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-08-20">2025-08-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1327 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -115,19 +115,35 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#qa">Q&amp;A</a></li>
+        <li><a href="#短期记忆-short-term-memory">短期记忆 （short-term memory)</a></li>
+        <li><a href="#长对话历史如何管理">长对话历史如何管理</a>
+          <ul>
+            <li><a href="#编辑消息列表">编辑消息列表</a></li>
+            <li><a href="#summary总结">summary总结</a></li>
+            <li><a href="#消息截断">消息截断</a></li>
+          </ul>
+        </li>
+        <li><a href="#长期记忆-long-term-memory">长期记忆 (long-term memory)</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><ul>
+            </div><div class="content" id="content"><h3 id="短期记忆-short-term-memory">短期记忆 （short-term memory)</h3>
+<ul>
 <li>
-<p>本文主要构建了一个简单的支持内存存储的对话机器人，同时引入了tools，支持使用tools搜索。</p>
+<p>短期记忆（short-term memory)：一般来讲针对单个对话（会话），保存在内存中。</p>
+<ul>
+<li>一般可以通过State的messages管理会话消息，可以通过checkpointer保存到内存或者数据库中。</li>
+<li>在每个node节点开始的时候读取，在graph被调用或者某个步骤完成时更新。</li>
+<li>最常见的短期记忆就是conversation history 对话历史。</li>
+<li>简单实现一个短期记忆
+<ul>
+<li>State里messages作为对话消息，add_messages是每次步骤完成更新messages做的操作，langgraph框架的reducer会替换同id的messages，并添加到末尾，保证消息的时序性，add_messages就是一个典型的reducer。（r<strong>educer是langgraph状态管理的关键组件，用于定义节点返回的增量更新如何合并到全局状态。</strong>）</li>
+</ul>
 </li>
-<li>
-<p>具体过程见代码注释</p>
+</ul>
 </li>
-<li>
+</ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -144,127 +160,15 @@
 </span><span class="lnt">12
 </span><span class="lnt">13
 </span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span><span class="lnt">67
-</span><span class="lnt">68
-</span><span class="lnt">69
-</span><span class="lnt">70
-</span><span class="lnt">71
-</span><span class="lnt">72
-</span><span class="lnt">73
-</span><span class="lnt">74
-</span><span class="lnt">75
-</span><span class="lnt">76
-</span><span class="lnt">77
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">import os
-
-from langchain_tavily import TavilySearch
-from langgraph.checkpoint.memory import MemorySaver
-from langgraph.graph import add_messages, StateGraph
-from langgraph.prebuilt import ToolNode, tools_condition
-from typing_extensions import TypedDict
-from typing import Annotated
-from langchain_deepseek import ChatDeepSeek
-
-# API 环境变量
-os.environ[&#34;LANGCHAIN_API_KEY&#34;] = 
-os.environ[&#34;DEEPSEEK_API_KEY&#34;] = 
-os.environ[&#34;TAVILY_API_KEY&#34;] = 
-
-# 初始化大模型
-llm = ChatDeepSeek(
-    model=&#34;deepseek-chat&#34;,
-    temperature=0.1,
-    streaming=True,
-)
-
-# Langgraph状态
-class State(TypedDict):
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">class State(TypedDict):
     messages: Annotated[list, add_messages]
 
-# 构建graph
-graph_builder = StateGraph(State)
+checkpointer = InMemorySaver()
 
-# 内存保存器
-checkpointer = MemorySaver()
-
-# tools 初始化Tavily搜索工具
-tool = TavilySearch(max_results=2)
-tools = [tool]
-
-# bind tools to llm
-llm_with_tools = llm.bind_tools(tools)
-def chatbot(state: State):
-    return {&#34;messages&#34;:[llm_with_tools.invoke(state[&#34;messages&#34;])]}
-
-graph_builder.add_node(&#34;chatbot&#34;, chatbot)
-
-# add tool node
-tool_node = ToolNode(tools=[tool])
-graph_builder.add_node(&#34;tools&#34;, tool_node)
-
-graph_builder.add_conditional_edges(
-    &#34;chatbot&#34;,
-    tools_condition,
-)
-graph_builder.add_edge(&#34;tools&#34;, &#34;chatbot&#34;)
-graph_builder.set_entry_point(&#34;chatbot&#34;)
 graph = graph_builder.compile(checkpointer=checkpointer)
 
-print(graph.get_graph().draw_mermaid())
 def stream_graph_updates(user_input: str, thread_id: str):
     config = {&#34;configurable&#34;: {&#34;thread_id&#34;: thread_id, &#34;recursion_limit&#34;: 2}}
     initial_state = {&#34;messages&#34;:[{&#34;role&#34;:&#34;user&#34;, &#34;content&#34;: user_input}]}
@@ -272,31 +176,52 @@ def stream_graph_updates(user_input: str, thread_id: str):
         for value in event.values():
             print(&#34;Assistant:&#34;, value[&#34;messages&#34;][-1].content)
 
-# 测试id
-thread_id = &#34;user_123&#34;
-
-# 执行逻辑
-while True:
-    try:
-        user_input = input(&#34;User: &#34;)
-        if user_input.lower() in [&#34;quit&#34;, &#34;exit&#34;, &#34;q&#34;]:
-            print(&#34;Goodbye!&#34;)
-            break
-        stream_graph_updates(user_input, thread_id)
-    except KeyboardInterrupt:
-        print(&#34;\nGoodbye!&#34;)
-        break
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="qa">Q&amp;A</h3>
-<ol>
-<li>本文中的memory是存储在内存中的。如何持久化存储呢？</li>
-<li>本文实际上只有一个agent，multiagent如何实现呢？</li>
-<li>最近mcp很火，如何加入mcp？</li>
-<li>langgraph提供人机协作，添加人类干预点，如何实现？</li>
-<li>Langgraph提供状态管理能力，怎么样实现对话历史的回溯和修改？</li>
-<li>如何部署langgrah应用？</li>
-</ol>
+</div><h3 id="长对话历史如何管理">长对话历史如何管理</h3>
+<ul>
+<li>为什么要管理长对话？
+<ul>
+<li>最直接的节省tokens成本，过长的对话历史也可能超出上下文的窗口限制，或者导致性能下降。</li>
+</ul>
+</li>
+</ul>
+<h4 id="编辑消息列表">编辑消息列表</h4>
+<ul>
+<li>原理：通过定义reducer函数，来编程性的删除旧消息，例如只保留最近的N条消息，超出消息的删除.</li>
+</ul>
+<h4 id="summary总结">summary总结</h4>
+<ul>
+<li>原理：通过llm对历史对话进行摘要，并将摘要作为新的上下文传入，以减少消息数量同时保留关键字信息。</li>
+</ul>
+<h4 id="消息截断">消息截断</h4>
+<ul>
+<li>原理：trim_messages。根据指定的策略，令牌限制，模型要求以及是否包含系统消息等来裁剪消息列表。</li>
+</ul>
+<h3 id="长期记忆-long-term-memory">长期记忆 (long-term memory)</h3>
+<ul>
+<li>长期记忆：可以跨对话线程共享，可以在任何时间，任何线程中被回忆，而不像短期记忆局限于单个对话。
+<ul>
+<li>可以存储为JSON文档， 存进数据库中持久化。</li>
+</ul>
+</li>
+<li>记忆类型：
+<ul>
+<li>语义记忆（Semantic Memory）： 存储事实和概念。
+<ul>
+<li>Profile（档案）：将关于用户，组织或代理自身的特定信息存储为一个持续更新的JSON文档。需要模型能生成新的文档或JSON补丁来更新现有的文档。</li>
+<li>Collection（集合）：将记忆存储为一组独立的文档，每个文档范围更窄。易于生成，但搜索和更新（删除或修改现有文档）可能更复杂，而且难以捕捉记忆间的完整上下文。</li>
+</ul>
+</li>
+<li>情景记忆（Episodic Memory）：存储过去的事件或行为经验。常通过少样本示例（few-shot example prompting）实现，代理通过学习过去的序列来正确执行任务。LangSmith Dataset 也可以用于存储少样本示例并支持动态检索</li>
+<li>程序记忆（Procedural Memory）：存储执行任务的规则或命令。通常通过修改代理自身的提示（prompt） <strong>来实现，例如通过</strong> “反射”（Reflection）或元提示，让代理根据对话和用户反馈来改进其指令。</li>
+</ul>
+</li>
+<li>记忆更新时机：
+<ul>
+<li>热路径（Hot Path）： 在代理的应用程序逻辑运行时实时创建记忆。优点是实时更新和透明度，但可能增加复杂性、延迟，并影响记忆的数量和质量。例如 ChatGPT 使用 <code>save_memories</code> 工具。</li>
+<li>后台(Background): 作为单独的异步任务创建记忆。优点是避免主应用延迟、分离逻辑，并允许更聚焦的任务完成。挑战在于确定更新频率和触发时机（例如，按时间、Cron 任务或手动触发）。</li>
+</ul>
 </li>
 </ul>
 </div><div class="post-footer" id="post-footer">
@@ -308,7 +233,7 @@ while True:
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95demo/" data-title="Langgraph笔记1 实现一个简单demo" data-hashtags="大模型,langgraph"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95demo/" data-hashtag="大模型"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95demo/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95demo/" data-title="Langgraph笔记1 实现一个简单demo"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95demo/" data-title="Langgraph笔记1 实现一个简单demo"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B02-%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86/" data-title="Langgraph笔记2 长短期记忆" data-hashtags="大模型,langgraph"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B02-%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86/" data-hashtag="大模型"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B02-%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B02-%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86/" data-title="Langgraph笔记2 长短期记忆"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B02-%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86/" data-title="Langgraph笔记2 长短期记忆"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -320,8 +245,7 @@ while True:
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAmcp%E6%9C%8D%E5%8A%A1/" class="prev" rel="prev" title="如何实现一个MCP服务"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>如何实现一个MCP服务</a>
-            <a href="/posts/langgraph%E7%AC%94%E8%AE%B02-%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86/" class="next" rel="next" title="Langgraph笔记2 长短期记忆">Langgraph笔记2 长短期记忆<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/posts/langgraph%E7%AC%94%E8%AE%B01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95demo/" class="prev" rel="prev" title="Langgraph笔记1 实现一个简单demo"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Langgraph笔记1 实现一个简单demo</a></div>
 </div>
 </article></div>
             </main><footer class="footer">
