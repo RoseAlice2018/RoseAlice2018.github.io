@@ -3,9 +3,17 @@
         <title>小叮当</title>
         <link>https://www.xiaodingdang.fit/</link>
         <description>蝴蝶🦋的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 16 Aug 2025 14:27:41 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 20 Aug 2025 14:45:48 &#43;0800</lastBuildDate>
             <atom:link href="https://www.xiaodingdang.fit/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Langgraph笔记1 实现一个简单demo</title>
+    <link>https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95demo/</link>
+    <pubDate>Wed, 20 Aug 2025 14:45:48 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B01-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95demo/</guid>
+    <description><![CDATA[本文主要构建了一个简单的支持内存存储的对话机器人，同时引入了tools，支持使用tools搜索。 具体过程见代码注释 1 2 3 4 5 6 7 8 9 10 11 12 13]]></description>
+</item>
+<item>
     <title>如何实现一个MCP服务</title>
     <link>https://www.xiaodingdang.fit/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAmcp%E6%9C%8D%E5%8A%A1/</link>
     <pubDate>Sat, 16 Aug 2025 14:27:41 &#43;0800</pubDate>
@@ -76,14 +84,6 @@
     <author>蝴蝶🦋</author>
     <guid>https://www.xiaodingdang.fit/posts/git%E6%93%8D%E4%BD%9C/</guid>
     <description><![CDATA[git config &ndash;list &ndash;local 查看本地仓库的Git配置 git status [文件] 查看git跟踪的文件状态 git diff [文件] 对比Git跟踪的文件修改前后的具体变化。 git add .|文件 将文件从]]></description>
-</item>
-<item>
-    <title>Vim配置</title>
-    <link>https://www.xiaodingdang.fit/posts/vim%E9%85%8D%E7%BD%AE/</link>
-    <pubDate>Sun, 14 Jan 2024 19:06:04 &#43;0800</pubDate>
-    <author>蝴蝶🦋</author>
-    <guid>https://www.xiaodingdang.fit/posts/vim%E9%85%8D%E7%BD%AE/</guid>
-    <description><![CDATA[vim配置 安装Universal-ctags 1 2 3 4 5 6 $ git clone https://github.com/universal-ctags/ctags.git $ cd ctags $ ./autogen.sh $ ./configure # use --prefix=/where/you/want to override installation directory, defaults to /usr/local $ make $ make install # may require extra privileges depending on where to install 安装vim-]]></description>
 </item>
 </channel>
 </rss>
