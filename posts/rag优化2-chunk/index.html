@@ -4,34 +4,34 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>RAG文本召回模型 - 小叮当</title><meta name="Description" content="蝴蝶🦋的博客"><meta property="og:title" content="RAG文本召回模型" />
-<meta property="og:description" content="本文主要介绍RAG中文本召回的相关基础知识，和经典模型。 基础知识 召回环节中，需要使用文本向量检索模型 embedding模型来进行两个环节处理" />
+        <title>RAG优化2 Chunk - 小叮当</title><meta name="Description" content="蝴蝶🦋的博客"><meta property="og:title" content="RAG优化2 Chunk" />
+<meta property="og:description" content="文本切块是数据向量化存入向量数据库等核心优化部分。切的块不能太长，太长的块损失的语义信息较多，导致召回准确率较低，过长的召回文本也将限制放入" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.xiaodingdang.fit/posts/rag%E6%96%87%E6%9C%AC%E5%8F%AC%E5%9B%9E%E6%A8%A1%E5%9E%8B/" /><meta property="og:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2025-08-25T17:19:02+08:00" />
-<meta property="article:modified_time" content="2025-08-25T17:19:02+08:00" /><meta property="og:site_name" content="小叮当" />
+<meta property="og:url" content="https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%962-chunk/" /><meta property="og:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-08-25T20:34:37+08:00" />
+<meta property="article:modified_time" content="2025-08-25T20:34:37+08:00" /><meta property="og:site_name" content="小叮当" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/>
 
-<meta name="twitter:title" content="RAG文本召回模型"/>
-<meta name="twitter:description" content="本文主要介绍RAG中文本召回的相关基础知识，和经典模型。 基础知识 召回环节中，需要使用文本向量检索模型 embedding模型来进行两个环节处理"/>
+<meta name="twitter:title" content="RAG优化2 Chunk"/>
+<meta name="twitter:description" content="文本切块是数据向量化存入向量数据库等核心优化部分。切的块不能太长，太长的块损失的语义信息较多，导致召回准确率较低，过长的召回文本也将限制放入"/>
 <meta name="application-name" content="小叮当">
 <meta name="apple-mobile-web-app-title" content="小叮当"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.xiaodingdang.fit/posts/rag%E6%96%87%E6%9C%AC%E5%8F%AC%E5%9B%9E%E6%A8%A1%E5%9E%8B/" /><link rel="prev" href="https://www.xiaodingdang.fit/posts/rag%E5%9F%BA%E7%A1%80/" /><link rel="next" href="https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%962-chunk/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%962-chunk/" /><link rel="prev" href="https://www.xiaodingdang.fit/posts/rag%E6%96%87%E6%9C%AC%E5%8F%AC%E5%9B%9E%E6%A8%A1%E5%9E%8B/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "RAG文本召回模型",
+        "headline": "RAG优化2 Chunk",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/www.xiaodingdang.fit\/posts\/rag%E6%96%87%E6%9C%AC%E5%8F%AC%E5%9B%9E%E6%A8%A1%E5%9E%8B\/"
-        },"genre": "posts","keywords": "大模型, RAG","wordcount":  905 ,
-        "url": "https:\/\/www.xiaodingdang.fit\/posts\/rag%E6%96%87%E6%9C%AC%E5%8F%AC%E5%9B%9E%E6%A8%A1%E5%9E%8B\/","datePublished": "2025-08-25T17:19:02+08:00","dateModified": "2025-08-25T17:19:02+08:00","publisher": {
+            "@id": "https:\/\/www.xiaodingdang.fit\/posts\/rag%E4%BC%98%E5%8C%962-chunk\/"
+        },"genre": "posts","keywords": "大模型, RAG, 优化","wordcount":  574 ,
+        "url": "https:\/\/www.xiaodingdang.fit\/posts\/rag%E4%BC%98%E5%8C%962-chunk\/","datePublished": "2025-08-25T20:34:37+08:00","dateModified": "2025-08-25T20:34:37+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -102,9 +102,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">RAG文本召回模型</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">RAG优化2 Chunk</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>蝴蝶🦋</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-08-25">2025-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 905 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-08-25">2025-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 574 字&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -115,78 +115,42 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#基础知识">基础知识</a></li>
-        <li><a href="#稠密向量检索模型">稠密向量检索模型</a>
+        <li>
           <ul>
-            <li><a href="#simcse">SimCSE</a></li>
-            <li><a href="#sbert">SBERT</a></li>
-            <li><a href="#cosent">CoSENT</a></li>
-            <li><a href="#whitebert">WhiteBERT</a></li>
-            <li><a href="#sgpt">SGPT</a></li>
+            <li><a href="#优化tips">优化Tips</a></li>
+            <li><a href="#固定大小文本切块">固定大小文本切块</a></li>
+            <li><a href="#基于nltk文本切块">基于NLTK文本切块</a></li>
+            <li><a href="#特殊格式文本切块">特殊格式文本切块</a></li>
+            <li><a href="#基于深度学习模型的文本切块">基于深度学习模型的文本切块</a></li>
           </ul>
         </li>
-        <li><a href="#稀疏向量检索模型">稀疏向量检索模型</a>
-          <ul>
-            <li><a href="#朴素词袋">朴素词袋</a></li>
-            <li><a href="#tf-idf">TF-IDF</a></li>
-            <li><a href="#bm25">BM25</a></li>
-          </ul>
-        </li>
-        <li><a href="#重排序模型">重排序模型</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><ul>
-<li>本文主要介绍RAG中文本召回的相关基础知识，和经典模型。</li>
+<li>文本切块是数据向量化存入向量数据库等核心优化部分。切的块不能太长，太长的块损失的语义信息较多，导致召回准确率较低，过长的召回文本也将限制放入LLM输入的文本块数。文本切块也不能过短，过短容易丢失段落和文档层面的主题信息，以及跨段落的上下文信息。</li>
 </ul>
-<h3 id="基础知识">基础知识</h3>
-<p>召回环节中，需要使用文本向量检索模型 embedding模型来进行两个环节处理，一个是将搜集的数据知识库进行向量化，另一个是将用户的query进行向量化。而embedding模型一般分为两类，一类是机遇bert，gpt等深度学习模型等稠密向量模型，另一类是以TF-IDF，BM25为代表的稀疏向量模型。</p>
+<h4 id="优化tips">优化Tips</h4>
+<ol>
+<li>切分策略需要考虑文本内容本身。比如，对于逻辑较为紧密的文本，切分时不宜划分过小；而对于规则条款，或产品说明书这类文本，可以按句子，因为句子之间的逻辑相对独立。</li>
+<li>也需要考虑embedding模型的性能，一些embedding模型处理长文本模块会丢失很多信息。</li>
+</ol>
+<h4 id="固定大小文本切块">固定大小文本切块</h4>
 <ul>
-<li>embedding模型的主要作用就是将文本映射到向量空间。</li>
-<li>良好的文本向量空间应具有两个特点：
-<ul>
-<li>相似文本在映射到向量空间后应该具有接近的距离，这可以用对齐性来描述；</li>
-<li>向量空间应该是各向同性，即向量应该均匀的分布在整个向量空间里，而不是聚集在某个区域中。</li>
+<li>实际使用时，最好有一部分文本是重叠的，来缓解上下文信息丢失的问题。同时，在保证上下文完整性的情况下，文本块的大小略微偏离预设大小也是可以接受的。</li>
 </ul>
-</li>
-</ul>
-<p>RAG召回的主要流程，就是向量化用户query后，计算topk相似度的K个文本片段。（计算相似度 常见的 有余弦相似度和欧式距离两种）</p>
-<p>文本检索分为两个类别：对称检索和非对称检索。对称检索要求查询内容和答案内容具有相近的意思。而非对称检索指的是根据问题召回答案。显然，在RAG的场景下，非对称检索更有效。</p>
-<h3 id="稠密向量检索模型">稠密向量检索模型</h3>
-<h4 id="simcse">SimCSE</h4>
-<h4 id="sbert">SBERT</h4>
-<h4 id="cosent">CoSENT</h4>
-<h4 id="whitebert">WhiteBERT</h4>
-<h4 id="sgpt">SGPT</h4>
-<p>前四个基本机遇transformer的encoder架构，而SGPT则机遇transformer的decoder架构，主要是一些交叉熵损失函数的区别</p>
+<h4 id="基于nltk文本切块">基于NLTK文本切块</h4>
 <ul>
-<li>RAG 场景下主流做法是采用基于深度学习的稠密向量检索模型进行相关文本召回，这类模型可以更好的捕捉文本中的上下文语义信息，效果一般比TF-IDF，BM25等基于关键词的稀疏向量检索模型更好。</li>
+<li>一个python库。基本思路是使用无监督的算法来缩写词，搭配词，和句子开头的词建立一个模型，然后使用该模型来找到句子边界。</li>
 </ul>
-<h3 id="稀疏向量检索模型">稀疏向量检索模型</h3>
-<h4 id="朴素词袋">朴素词袋</h4>
+<h4 id="特殊格式文本切块">特殊格式文本切块</h4>
 <ul>
-<li>核心逻辑就是统计词频，化为维度，每个维度对应在qiuery中出现的频率，丢失语义信息较多。</li>
+<li>比如HTML，Markdown，Latex具有特殊内在结构的文本进行切块。在进行切块的时候，应该充分考虑其结构信息，以减少文本切块而导致的上下文信息损失。</li>
 </ul>
-<h4 id="tf-idf">TF-IDF</h4>
+<h4 id="基于深度学习模型的文本切块">基于深度学习模型的文本切块</h4>
 <ul>
-<li>Term Frequency-inverse document frequency 词频-逆文件频率。</li>
-</ul>
-<h4 id="bm25">BM25</h4>
-<ul>
-<li>直接根据query文本和候选文本计算相似度（而不是向量化）</li>
-</ul>
-<h3 id="重排序模型">重排序模型</h3>
-<ul>
-<li>
-<p>重排序类似于搜索广告等流程等精排，利用交叉编码器，对于输入文本和粗召回等文本输入到交叉编码器中进行相似度预测，可以提高召回的精度。</p>
-</li>
-<li>
-<p>现实RAG两阶段召回，第一个阶段，利用embedding模型从向量数据库中召回i个相关文本片段。第二个阶段，利用交叉编码器从i个相关文本片段中挑出j段相关成本。</p>
-</li>
-<li>
-<p>两阶段召回的方法，既提高效率，也提高精度。</p>
-</li>
+<li>比如利用BERT模型，最小的切分单位位句子。利用BERT模型来学到两个句子之间的关系，如果两个句子之间的语义关系比较弱，可以作为一个切分点。</li>
 </ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
@@ -197,20 +161,19 @@
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.xiaodingdang.fit/posts/rag%E6%96%87%E6%9C%AC%E5%8F%AC%E5%9B%9E%E6%A8%A1%E5%9E%8B/" data-title="RAG文本召回模型" data-hashtags="大模型,RAG"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.xiaodingdang.fit/posts/rag%E6%96%87%E6%9C%AC%E5%8F%AC%E5%9B%9E%E6%A8%A1%E5%9E%8B/" data-hashtag="大模型"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="https://www.xiaodingdang.fit/posts/rag%E6%96%87%E6%9C%AC%E5%8F%AC%E5%9B%9E%E6%A8%A1%E5%9E%8B/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.xiaodingdang.fit/posts/rag%E6%96%87%E6%9C%AC%E5%8F%AC%E5%9B%9E%E6%A8%A1%E5%9E%8B/" data-title="RAG文本召回模型"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.xiaodingdang.fit/posts/rag%E6%96%87%E6%9C%AC%E5%8F%AC%E5%9B%9E%E6%A8%A1%E5%9E%8B/" data-title="RAG文本召回模型"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%962-chunk/" data-title="RAG优化2 Chunk" data-hashtags="大模型,RAG,优化"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%962-chunk/" data-hashtag="大模型"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%962-chunk/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%962-chunk/" data-title="RAG优化2 Chunk"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%962-chunk/" data-title="RAG优化2 Chunk"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a>,&nbsp;<a href="/tags/rag/">RAG</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a>,&nbsp;<a href="/tags/rag/">RAG</a>,&nbsp;<a href="/tags/%E4%BC%98%E5%8C%96/">优化</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/rag%E5%9F%BA%E7%A1%80/" class="prev" rel="prev" title="RAG基础"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>RAG基础</a>
-            <a href="/posts/rag%E4%BC%98%E5%8C%962-chunk/" class="next" rel="next" title="RAG优化2 Chunk">RAG优化2 Chunk<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/posts/rag%E6%96%87%E6%9C%AC%E5%8F%AC%E5%9B%9E%E6%A8%A1%E5%9E%8B/" class="prev" rel="prev" title="RAG文本召回模型"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>RAG文本召回模型</a></div>
 </div>
 </article></div>
             </main><footer class="footer">

@@ -3,9 +3,17 @@
         <title>小叮当</title>
         <link>https://www.xiaodingdang.fit/</link>
         <description>蝴蝶🦋的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 25 Aug 2025 17:19:02 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 25 Aug 2025 20:34:37 &#43;0800</lastBuildDate>
             <atom:link href="https://www.xiaodingdang.fit/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>RAG优化2 Chunk</title>
+    <link>https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%962-chunk/</link>
+    <pubDate>Mon, 25 Aug 2025 20:34:37 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%962-chunk/</guid>
+    <description><![CDATA[文本切块是数据向量化存入向量数据库等核心优化部分。切的块不能太长，太长的块损失的语义信息较多，导致召回准确率较低，过长的召回文本也将限制放入]]></description>
+</item>
+<item>
     <title>RAG文本召回模型</title>
     <link>https://www.xiaodingdang.fit/posts/rag%E6%96%87%E6%9C%AC%E5%8F%AC%E5%9B%9E%E6%A8%A1%E5%9E%8B/</link>
     <pubDate>Mon, 25 Aug 2025 17:19:02 &#43;0800</pubDate>
@@ -76,14 +84,6 @@
     <author>蝴蝶🦋</author>
     <guid>https://www.xiaodingdang.fit/posts/kcp1.0-%E5%9F%BA%E7%A1%80%E7%90%86%E8%A7%A3/</guid>
     <description><![CDATA[1.0 KCP基础理解 KCP 与TCP，UDP的差异，适合的场景 特性 TCP UDP KCP 传输层类型 面向连接，可靠传输 无连接，不可靠传输 基于UDP协议的可靠传输 可靠性 強]]></description>
-</item>
-<item>
-    <title>《花束般的恋爱》与1月总结</title>
-    <link>https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/</link>
-    <pubDate>Mon, 03 Feb 2025 22:11:06 &#43;0800</pubDate>
-    <author>蝴蝶🦋</author>
-    <guid>https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/</guid>
-    <description><![CDATA[不知不觉年已经过完了，又要回归工作了。 回家的路上，看了《花束般的恋爱》，一部不错的爱情片，是准备有一篇总结的，兼顾总结一下对于爱情的看法， 以]]></description>
 </item>
 </channel>
 </rss>
