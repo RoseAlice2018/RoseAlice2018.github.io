@@ -3,9 +3,17 @@
         <title>小叮当</title>
         <link>https://www.xiaodingdang.fit/</link>
         <description>蝴蝶🦋的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 25 Aug 2025 16:49:33 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 25 Aug 2025 17:19:02 &#43;0800</lastBuildDate>
             <atom:link href="https://www.xiaodingdang.fit/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>RAG文本召回模型</title>
+    <link>https://www.xiaodingdang.fit/posts/rag%E6%96%87%E6%9C%AC%E5%8F%AC%E5%9B%9E%E6%A8%A1%E5%9E%8B/</link>
+    <pubDate>Mon, 25 Aug 2025 17:19:02 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/rag%E6%96%87%E6%9C%AC%E5%8F%AC%E5%9B%9E%E6%A8%A1%E5%9E%8B/</guid>
+    <description><![CDATA[本文主要介绍RAG中文本召回的相关基础知识，和经典模型。 基础知识 召回环节中，需要使用文本向量检索模型 embedding模型来进行两个环节处理]]></description>
+</item>
+<item>
     <title>RAG基础</title>
     <link>https://www.xiaodingdang.fit/posts/rag%E5%9F%BA%E7%A1%80/</link>
     <pubDate>Mon, 25 Aug 2025 16:49:33 &#43;0800</pubDate>
@@ -76,14 +84,6 @@
     <author>蝴蝶🦋</author>
     <guid>https://www.xiaodingdang.fit/posts/%E4%B8%80%E6%AC%A1%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E9%A2%98-%E5%A4%A7%E6%A8%A1%E6%8B%9F/</guid>
     <description><![CDATA[（不知道为什么老是遇到大模拟的题目，头疼，一次bugfree好难） 题目概述 输入一个string，里面可能包括任意字符，举例“123.456.]]></description>
-</item>
-<item>
-    <title>HugoLoveIt常用操作</title>
-    <link>https://www.xiaodingdang.fit/posts/hugoloveit%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
-    <pubDate>Sat, 03 Feb 2024 15:23:48 &#43;0800</pubDate>
-    <author>蝴蝶🦋</author>
-    <guid>https://www.xiaodingdang.fit/posts/hugoloveit%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
-    <description><![CDATA[新建一篇文章 hugo new posts/new.md 注意新md文件最好放在posts目录下 hugo 生成静态文件 hugo serve（option） 在本地预览 cd public &amp;&amp; git add .&amp;&amp; git commit -m &quot;&quot; &amp;&amp;git push origin main 上传]]></description>
 </item>
 </channel>
 </rss>
