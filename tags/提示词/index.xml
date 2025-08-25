@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>提示词 - 标签 - 小叮当</title>
+        <link>https://www.xiaodingdang.fit/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D/</link>
+        <description>提示词 - 标签 - 小叮当</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 21 Aug 2025 20:19:59 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D/" rel="self" type="application/rss+xml" /><item>
+    <title>RAG的优化方法1 提示词</title>
+    <link>https://www.xiaodingdang.fit/posts/rag%E7%9A%84%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%951-%E6%8F%90%E7%A4%BA%E8%AF%8D/</link>
+    <pubDate>Thu, 21 Aug 2025 20:19:59 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/rag%E7%9A%84%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%951-%E6%8F%90%E7%A4%BA%E8%AF%8D/</guid>
+    <description><![CDATA[本文介绍一些重要的prompt编写原则 描述答案的标注 prompt编写时，最好在prompt中清楚的描述所期望的标准答案。 设置兜底回答方式 明确]]></description>
+</item>
+</channel>
+</rss>
