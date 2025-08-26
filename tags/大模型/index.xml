@@ -3,7 +3,23 @@
         <title>大模型 - 标签 - 小叮当</title>
         <link>https://www.xiaodingdang.fit/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
         <description>大模型 - 标签 - 小叮当</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 25 Aug 2025 20:34:37 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 26 Aug 2025 00:10:14 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>RAG优化3 召回优化</title>
+    <link>https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%963-%E5%8F%AC%E5%9B%9E%E4%BC%98%E5%8C%96/</link>
+    <pubDate>Tue, 26 Aug 2025 00:10:14 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%963-%E5%8F%AC%E5%9B%9E%E4%BC%98%E5%8C%96/</guid>
+    <description><![CDATA[本文介绍一些提高向量召回效果的方法 短文本全局信息增强 目的是为切分后的短文本片段补充所属的长文本全局信息。 论文“DAPR:A Benchmark on Document-Aware Passage Retri]]></description>
+</item>
+<item>
+    <title>RAG向量数据库</title>
+    <link>https://www.xiaodingdang.fit/posts/rag%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <pubDate>Mon, 25 Aug 2025 21:00:48 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/rag%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+    <description><![CDATA[常用的高效向量检索算法：分层可导航小世界（Hierarchy Navigable Small World HNSW），倒排文件索引，乘积量化 等 Faiss]]></description>
+</item>
+<item>
     <title>RAG优化2 Chunk</title>
     <link>https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%962-chunk/</link>
     <pubDate>Mon, 25 Aug 2025 20:34:37 &#43;0800</pubDate>
