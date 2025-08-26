@@ -3,7 +3,15 @@
         <title>所有文章 - 小叮当</title>
         <link>https://www.xiaodingdang.fit/posts/</link>
         <description>所有文章 | 小叮当</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 26 Aug 2025 00:10:14 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 26 Aug 2025 16:14:22 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>RAG效果评估</title>
+    <link>https://www.xiaodingdang.fit/posts/rag%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0/</link>
+    <pubDate>Tue, 26 Aug 2025 16:14:22 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/rag%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0/</guid>
+    <description><![CDATA[本文主要是关于如何评估RAG的效果 1 评估召回环节的效果 构建形如“问题-包含答案的文本块”这样的测试数据。 常用的评估指标：命中率，MRR（Me]]></description>
+</item>
+<item>
     <title>RAG优化3 召回优化</title>
     <link>https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%963-%E5%8F%AC%E5%9B%9E%E4%BC%98%E5%8C%96/</link>
     <pubDate>Tue, 26 Aug 2025 00:10:14 &#43;0800</pubDate>
@@ -74,14 +82,6 @@
     <author>蝴蝶🦋</author>
     <guid>https://www.xiaodingdang.fit/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAmcp%E6%9C%8D%E5%8A%A1/</guid>
     <description><![CDATA[创建MCP文件 如下 1 2 3 4 5 6 7 8 9 10 11 12 from mcp.server.fastmcp import FastMCP # 创建mcp server mcp = FastMCP(&#34;使用长上影线实盘策略筛选股票&#34;) @mcp.tool() def stock_select_strategy(strategy_name:]]></description>
-</item>
-<item>
-    <title>UGC全局变量设计思路</title>
-    <link>https://www.xiaodingdang.fit/posts/ugc%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF/</link>
-    <pubDate>Sun, 03 Aug 2025 20:38:37 &#43;0800</pubDate>
-    <author>蝴蝶🦋</author>
-    <guid>https://www.xiaodingdang.fit/posts/ugc%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF/</guid>
-    <description><![CDATA[UGC 全局变量设计思路 需求 策划需要一个属于UGC地图的全局变量，来自于不同space的玩家游玩同一张地图可以获取和修改这个变量。 遇到的问题 玩家A]]></description>
 </item>
 </channel>
 </rss>
