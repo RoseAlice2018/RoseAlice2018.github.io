@@ -3,7 +3,15 @@
         <title>Tags - 标签 - 小叮当</title>
         <link>https://www.xiaodingdang.fit/tags/</link>
         <description>Tags - 标签 - 小叮当</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 26 Aug 2025 16:35:31 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/tags/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 27 Aug 2025 22:50:51 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>python</title>
+    <link>https://www.xiaodingdang.fit/tags/python/</link>
+    <pubDate>Wed, 27 Aug 2025 22:50:51 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/tags/python/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>RAG</title>
     <link>https://www.xiaodingdang.fit/tags/rag/</link>
     <pubDate>Tue, 26 Aug 2025 16:35:31 &#43;0800</pubDate>
@@ -57,14 +65,6 @@
     <pubDate>Wed, 20 Aug 2025 14:46:20 &#43;0800</pubDate>
     <author>蝴蝶🦋</author>
     <guid>https://www.xiaodingdang.fit/tags/langgraph/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>python</title>
-    <link>https://www.xiaodingdang.fit/tags/python/</link>
-    <pubDate>Sat, 10 May 2025 22:32:22 &#43;0800</pubDate>
-    <author>蝴蝶🦋</author>
-    <guid>https://www.xiaodingdang.fit/tags/python/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>

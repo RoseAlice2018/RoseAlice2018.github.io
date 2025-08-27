@@ -3,7 +3,15 @@
         <title>所有文章 - 小叮当</title>
         <link>https://www.xiaodingdang.fit/posts/</link>
         <description>所有文章 | 小叮当</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 26 Aug 2025 19:49:00 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 27 Aug 2025 22:50:51 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Python的filter方法</title>
+    <link>https://www.xiaodingdang.fit/posts/python%E7%9A%84filter%E6%96%B9%E6%B3%95/</link>
+    <pubDate>Wed, 27 Aug 2025 22:50:51 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/python%E7%9A%84filter%E6%96%B9%E6%B3%95/</guid>
+    <description><![CDATA[Python 的 filter() 函数是一种内置的高阶函数，用于从可迭代对象中筛选满足特定条件的元素，返回一个迭代器（Python 3 中）。以下是其核心要点： 🔧 1. 基本语法]]></description>
+</item>
+<item>
     <title>Workflow</title>
     <link>https://www.xiaodingdang.fit/posts/workflow/</link>
     <pubDate>Tue, 26 Aug 2025 19:49:00 &#43;0800</pubDate>
@@ -74,14 +82,6 @@
     <author>蝴蝶🦋</author>
     <guid>https://www.xiaodingdang.fit/posts/rag%E7%9A%84%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%951-%E6%8F%90%E7%A4%BA%E8%AF%8D/</guid>
     <description><![CDATA[本文介绍一些重要的prompt编写原则 描述答案的标注 prompt编写时，最好在prompt中清楚的描述所期望的标准答案。 设置兜底回答方式 明确]]></description>
-</item>
-<item>
-    <title>Langgraph笔记2 长短期记忆</title>
-    <link>https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B02-%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86/</link>
-    <pubDate>Wed, 20 Aug 2025 14:46:20 &#43;0800</pubDate>
-    <author>蝴蝶🦋</author>
-    <guid>https://www.xiaodingdang.fit/posts/langgraph%E7%AC%94%E8%AE%B02-%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86/</guid>
-    <description><![CDATA[短期记忆 （short-term memory) 短期记忆（short-term memory)：一般来讲针对单个对话（会话），保存在内存中。 一般可以通过Sta]]></description>
 </item>
 </channel>
 </rss>

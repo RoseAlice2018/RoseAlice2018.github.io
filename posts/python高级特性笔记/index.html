@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.xiaodingdang.fit\/posts\/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0\/"
-        },"genre": "posts","keywords": "Python","wordcount":  5798 ,
+        },"genre": "posts","keywords": "Python","wordcount":  6132 ,
         "url": "https:\/\/www.xiaodingdang.fit\/posts\/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0\/","datePublished": "2025-04-27T19:26:40+08:00","dateModified": "2025-04-27T19:26:40+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -104,8 +104,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Python高级特性笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>蝴蝶🦋</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-04-27">2025-04-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 5798 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 12 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-04-27">2025-04-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 6132 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 13 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -460,6 +460,57 @@ pass<br>
 <h3 id="44-如何知道一个python对象的类型">44. 如何知道一个python对象的类型？</h3>
 <p>type（obj）</p>
 <h3 id="45-any和call方法">45. any和call方法</h3>
+<p>#any(x)判断x对象是否为空对象，如果都为空、0、false，则返回false，如果不都为空、0、false，则返回true</p>
+<p>#all(x)如果all(x)参数x对象的所有元素不为0、''、False或者x为空对象，则返回True，否则返回False</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>any(&lsquo;123&rsquo;)
+True
+any([0,1])
+True
+any([0,&lsquo;0&rsquo;,''])
+True
+any([0,''])
+False
+any([0,'',&lsquo;false&rsquo;])
+True
+any([0,'',bool(&lsquo;false&rsquo;)])
+True
+any([0,'',False])
+False
+any((&lsquo;a&rsquo;,&lsquo;b&rsquo;,&lsquo;c&rsquo;))
+True
+any((&lsquo;a&rsquo;,&lsquo;b&rsquo;,''))
+True
+any((0,False,''))
+False
+any([])
+False
+any(())
+False
+all([&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &rsquo;d'])  #列表list，
+True
+all([&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &rsquo;d'])  #列表list，元素都不为空或0
+True
+all([&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;&rsquo;, &rsquo;d'])  #列表list，存在一个为空的元素
+False
+all([0, 1,2, 3])  #列表list，存在一个为0的元素
+False
+all((&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &rsquo;d'))  #元组tuple，元素都不为空或0
+True
+all((&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;&rsquo;, &rsquo;d'))  #元组tuple，存在一个为空的元素
+False
+all((0, 1,2, 3))  #元组tuple，存在一个为0的元素
+False
+all([]) # 空列表
+True
+all(()) # 空元组
+True
+##注意：空元组、空列表返回值为True，这里要特别注意</p>
+</blockquote>
+</blockquote>
+</blockquote>
 <h3 id="46-filter方法">46. filter方法</h3>
 <h3 id="47-python中是如何管理内存的">47. python中是如何管理内存的？</h3>
 <h3 id="48-退出python事是否释放所有的内存分配">48. 退出python事是否释放所有的内存分配？</h3>
