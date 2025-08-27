@@ -3,7 +3,15 @@
         <title>大模型 - 标签 - 小叮当</title>
         <link>https://www.xiaodingdang.fit/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
         <description>大模型 - 标签 - 小叮当</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 26 Aug 2025 16:14:22 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 26 Aug 2025 16:35:31 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>RAG范式演变</title>
+    <link>https://www.xiaodingdang.fit/posts/rag%E8%8C%83%E5%BC%8F%E6%BC%94%E5%8F%98/</link>
+    <pubDate>Tue, 26 Aug 2025 16:35:31 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/rag%E8%8C%83%E5%BC%8F%E6%BC%94%E5%8F%98/</guid>
+    <description><![CDATA[首先评估下基础RAG流程。 将数据库的文本切割成chunk，然后使用embedding模型向量化，建立索引存储到数据库中存储。 用户query同]]></description>
+</item>
+<item>
     <title>RAG效果评估</title>
     <link>https://www.xiaodingdang.fit/posts/rag%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0/</link>
     <pubDate>Tue, 26 Aug 2025 16:14:22 &#43;0800</pubDate>
