@@ -28,6 +28,14 @@
     <description><![CDATA[34. 函数装饰器有什么用？ 函数装饰器可以在不修改原函数的条件下，为原函数添加额外的功能，例如记录日志，运行性能，缓存等 以记录函数运行时间为例，实]]></description>
 </item>
 <item>
+    <title>Python的作用域</title>
+    <link>https://www.xiaodingdang.fit/posts/python%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
+    <pubDate>Thu, 27 Mar 2025 23:10:46 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/python%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/</guid>
+    <description><![CDATA[Python 中的作用域定义了变量的可访问范围，主要分为以下四种类型，遵循 LEGB 查找规则（Local → Enclosing → Global → Built-in）： 局部作用域（Local Sc]]></description>
+</item>
+<item>
     <title>Python的metaclass</title>
     <link>https://www.xiaodingdang.fit/posts/python%E7%9A%84metaclass/</link>
     <pubDate>Thu, 27 Mar 2025 22:18:47 &#43;0800</pubDate>
