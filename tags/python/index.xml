@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Python - 标签 - 小叮当</title>
+        <title>python - 标签 - 小叮当</title>
         <link>https://www.xiaodingdang.fit/tags/python/</link>
-        <description>Python - 标签 - 小叮当</description>
+        <description>python - 标签 - 小叮当</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 27 Apr 2025 19:26:40 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/tags/python/" rel="self" type="application/rss+xml" /><item>
     <title>Python高级特性笔记</title>
     <link>https://www.xiaodingdang.fit/posts/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0/</link>
@@ -18,6 +18,22 @@
     <author>蝴蝶🦋</author>
     <guid>https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%B9%B6%E5%8F%91/</guid>
     <description><![CDATA[python的并发 多线程 多进程 协程的区别 GIL threading.local的作用]]></description>
+</item>
+<item>
+    <title>如何实现python接口</title>
+    <link>https://www.xiaodingdang.fit/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0python%E6%8E%A5%E5%8F%A3/</link>
+    <pubDate>Mon, 27 Jan 2025 20:17:31 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0python%E6%8E%A5%E5%8F%A3/</guid>
+    <description><![CDATA[。 在Python中实现接口主要依赖两种机制：抽象基类（Abstract Base Classes, ABC）和协议（Protocols）。这两种方法分别适用于不同场景]]></description>
+</item>
+<item>
+    <title>Python学习笔记</title>
+    <link>https://www.xiaodingdang.fit/posts/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+    <pubDate>Sat, 27 Apr 2024 16:21:36 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+    <description><![CDATA[https://github.com/hantmac/Python-Interview-Customs-Collection 1. 谈谈对Python和其他语言的区别？ Python属于解释型语言，当程序运行时，是一行一行的解释，并运行，所以调式代码很方便，开发效率高，]]></description>
 </item>
 </channel>
 </rss>
