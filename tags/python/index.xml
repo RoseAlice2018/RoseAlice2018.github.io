@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Python - 标签 - 小叮当</title>
+        <title>python - 标签 - 小叮当</title>
         <link>https://www.xiaodingdang.fit/tags/python/</link>
-        <description>Python - 标签 - 小叮当</description>
+        <description>python - 标签 - 小叮当</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 27 Aug 2025 22:50:51 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/tags/python/" rel="self" type="application/rss+xml" /><item>
     <title>Python的filter方法</title>
     <link>https://www.xiaodingdang.fit/posts/python%E7%9A%84filter%E6%96%B9%E6%B3%95/</link>
@@ -26,6 +26,14 @@
     <author>蝴蝶🦋</author>
     <guid>https://www.xiaodingdang.fit/posts/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0/</guid>
     <description><![CDATA[34. 函数装饰器有什么用？ 函数装饰器可以在不修改原函数的条件下，为原函数添加额外的功能，例如记录日志，运行性能，缓存等 以记录函数运行时间为例，实]]></description>
+</item>
+<item>
+    <title>Args</title>
+    <link>https://www.xiaodingdang.fit/posts/args/</link>
+    <pubDate>Thu, 27 Mar 2025 23:22:45 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/args/</guid>
+    <description><![CDATA[在Python中，*args和**kwargs是处理函数可变参数的强大机制，它们显著提升了代码的灵活性和可扩展性。以下是其核心含义、用法及实]]></description>
 </item>
 <item>
     <title>Python的作用域</title>
@@ -74,14 +82,6 @@
     <author>蝴蝶🦋</author>
     <guid>https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</guid>
     <description><![CDATA[Python 的内存管理是一个多层次的自动化系统，结合了引用计数、垃圾回收、内存池等机制，同时提供了一系列优化技巧和工具供开发者干预。以下是其核心机制与]]></description>
-</item>
-<item>
-    <title>如何实现python接口</title>
-    <link>https://www.xiaodingdang.fit/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0python%E6%8E%A5%E5%8F%A3/</link>
-    <pubDate>Mon, 27 Jan 2025 20:17:31 &#43;0800</pubDate>
-    <author>蝴蝶🦋</author>
-    <guid>https://www.xiaodingdang.fit/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0python%E6%8E%A5%E5%8F%A3/</guid>
-    <description><![CDATA[。 在Python中实现接口主要依赖两种机制：抽象基类（Abstract Base Classes, ABC）和协议（Protocols）。这两种方法分别适用于不同场景]]></description>
 </item>
 </channel>
 </rss>

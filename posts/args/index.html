@@ -4,34 +4,34 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Python多继承与MRO：解决菱形继承 - 小叮当</title><meta name="Description" content="蝴蝶🦋的博客"><meta property="og:title" content="Python多继承与MRO：解决菱形继承" />
-<meta property="og:description" content="在面向对象编程（OOP）中，MRO（Method Resolution Order，方法解析顺序） 是多重继承场景下决定方法调用顺序的核心机制。它确保当一个类继承多" />
+        <title>Args - 小叮当</title><meta name="Description" content="蝴蝶🦋的博客"><meta property="og:title" content="Args" />
+<meta property="og:description" content="在Python中，*args和**kwargs是处理函数可变参数的强大机制，它们显著提升了代码的灵活性和可扩展性。以下是其核心含义、用法及实" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.xiaodingdang.fit/posts/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/" /><meta property="og:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2025-02-20T23:19:35+08:00" />
-<meta property="article:modified_time" content="2025-02-20T23:19:35+08:00" /><meta property="og:site_name" content="小叮当" />
+<meta property="og:url" content="https://www.xiaodingdang.fit/posts/args/" /><meta property="og:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-03-27T23:22:45+08:00" />
+<meta property="article:modified_time" content="2025-03-27T23:22:45+08:00" /><meta property="og:site_name" content="小叮当" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/>
 
-<meta name="twitter:title" content="Python多继承与MRO：解决菱形继承"/>
-<meta name="twitter:description" content="在面向对象编程（OOP）中，MRO（Method Resolution Order，方法解析顺序） 是多重继承场景下决定方法调用顺序的核心机制。它确保当一个类继承多"/>
+<meta name="twitter:title" content="Args"/>
+<meta name="twitter:description" content="在Python中，*args和**kwargs是处理函数可变参数的强大机制，它们显著提升了代码的灵活性和可扩展性。以下是其核心含义、用法及实"/>
 <meta name="application-name" content="小叮当">
 <meta name="apple-mobile-web-app-title" content="小叮当"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.xiaodingdang.fit/posts/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/" /><link rel="prev" href="https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/" /><link rel="next" href="https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%B9%B6%E5%8F%91/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.xiaodingdang.fit/posts/args/" /><link rel="prev" href="https://www.xiaodingdang.fit/posts/python%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/" /><link rel="next" href="https://www.xiaodingdang.fit/posts/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Python多继承与MRO：解决菱形继承",
+        "headline": "Args",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/www.xiaodingdang.fit\/posts\/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF\/"
-        },"genre": "posts","keywords": "Python","wordcount":  1284 ,
-        "url": "https:\/\/www.xiaodingdang.fit\/posts\/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF\/","datePublished": "2025-02-20T23:19:35+08:00","dateModified": "2025-02-20T23:19:35+08:00","publisher": {
+            "@id": "https:\/\/www.xiaodingdang.fit\/posts\/args\/"
+        },"genre": "posts","keywords": "python","wordcount":  1357 ,
+        "url": "https:\/\/www.xiaodingdang.fit\/posts\/args\/","datePublished": "2025-03-27T23:22:45+08:00","dateModified": "2025-03-27T23:22:45+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -102,9 +102,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Python多继承与MRO：解决菱形继承</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Args</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>蝴蝶🦋</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-02-20">2025-02-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1284 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-03-27">2025-03-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1357 字&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -112,94 +112,158 @@
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"><p>在面向对象编程（OOP）中，MRO（Method Resolution Order，方法解析顺序） 是多重继承场景下决定方法调用顺序的核心机制。它确保当一个类继承多个父类时，Python解释器能按照一致的规则搜索并确定方法的调用路径，避免因继承冲突导致歧义。以下是MRO的核心要点：</p>
-<p>🔍 一、MRO的本质与作用</p>
+            </div><div class="content" id="content"><p>在Python中，*args和**kwargs是处理函数可变参数的强大机制，它们显著提升了代码的灵活性和可扩展性。以下是其核心含义、用法及实际场景的详细解析：</p>
+<p>🔍 一、核心概念与区别</p>
 <ol>
 <li>
-<p>问题背景<br>
-在多重继承中，若多个父类定义了同名方法，子类调用该方法时需明确搜索顺序。例如：
-class A: def run(self): pass
-class B: def run(self): pass
-class C(A, B): pass  # 同时继承A和B</p>
-<p>调用C().run()时，需确定优先使用A.run还是B.run。</p>
+<p>*args（非关键字参数）<br>
+• 含义：收集函数接收的任意数量的位置参数（即未命名的参数），并将其打包为元组（tuple）。</p>
+<p>• 符号：单星号<em>是语法关键，名称args仅为约定（可替换如</em>numbers）。</p>
+<p>• 示例：<br>
+def sum_numbers(*args):
+return sum(args)
+print(sum_numbers(1, 2, 3))  # 输出：6</p>
 </li>
 <li>
-<p>解决方案<br>
-MRO通过C3线性化算法计算类的方法搜索顺序，保证：
-• 子类方法优先于父类；</p>
-<p>• 父类的声明顺序被保留；</p>
-<p>• 继承关系满足单调性（子类的MRO不破坏父类的MRO顺序）。</p>
+<p>**kwargs（关键字参数）<br>
+• 含义：收集函数接收的任意数量的关键字参数（即命名参数，如key=value），并将其打包为字典（dict）。</p>
+<p>• 符号：双星号<strong>是语法关键，名称kwargs为约定（可替换如</strong>options）。</p>
+<p>• 示例：<br>
+def print_info(**kwargs):
+for key, value in kwargs.items():
+print(f&quot;{key}: {value}&quot;)
+print_info(name=&ldquo;Alice&rdquo;, age=25)  # 输出：name: Alice, age: 25</p>
+</li>
+<li>
+<p>关键区别总结<br>
+特性 <em>args **kwargs
+参数类型 位置参数（无名） 关键字参数（有名）
+数据结构 元组（tuple） 字典（dict）
+使用顺序 必须在关键字参数前 必须在</em>args后
+典型用途 处理数量不定的位置参数 处理数量不定的命名选项</p>
 </li>
 </ol>
-<p>⚙️ 二、C3算法的计算规则与示例</p>
-<p>C3算法通过合并父类的MRO列表生成子类的线性顺序，遵循三原则：</p>
+<p>⚙️ 二、用法详解</p>
 <ol>
-<li>子类优先：子类在MRO中位于其父类之前。</li>
-<li>声明顺序保留：若类继承多个父类（如class D(B, C)），则父类顺序（B先于C）在MRO中保持不变。</li>
-<li>单调性：所有父类的MRO顺序在子类中保持一致。</li>
+<li>*args 的典型场景</li>
 </ol>
-<p>示例解析</p>
-<p>class A: pass
-class B(A): pass
-class C(A): pass
-class D(B, C): pass</p>
-<p>print(D.mro())</p>
-<h1 id="输出d-b-c-a-object">输出：[D, B, C, A, object]</h1>
-<p>• 计算步骤：</p>
-<ol>
-<li>子类D优先加入列表：[D]。</li>
-<li>按声明顺序合并父类MRO：B的MRO为[B, A, object] → 合并后为[D, B]。</li>
-<li>继续合并C的MRO（[C, A, object]），因A已在B后存在，跳过重复 → 结果：[D, B, C, A, object]。</li>
+<p>• 基础用法：处理未知数量的位置参数。<br>
+def log_messages(*messages):
+for msg in messages:
+print(f&quot;[LOG] {msg}&quot;)
+log_messages(&ldquo;Start&rdquo;, &ldquo;Processing&rdquo;, &ldquo;End&rdquo;)  # 输出三条日志</p>
+<p>• 与固定参数结合：<br>
+def greet(name, *hobbies):
+print(f&quot;Hello, {name}!&quot;)
+if hobbies:
+print(f&quot;Hobbies: {', &lsquo;.join(hobbies)}&quot;)
+greet(&ldquo;Bob&rdquo;, &ldquo;Swimming&rdquo;, &ldquo;Reading&rdquo;)  # 输出姓名及多个爱好</p>
+<ol start="2">
+<li>**kwargs 的典型场景</li>
 </ol>
-<p>💎 三、MRO解决的核心问题：菱形继承</p>
-<p>菱形继承（如D→B→A和D→C→A）易导致父类方法被重复调用。C3算法通过动态调整super()的跳转路径避免此问题：<br>
-class A:
-def run(self): print(&ldquo;A&rdquo;)
-class B(A):
-def run(self): super().run(); print(&ldquo;B&rdquo;)  # super()实际调用C.run
-class C(A):
-def run(self): super().run(); print(&ldquo;C&rdquo;)
-class D(B, C):
-def run(self): super().run(); print(&ldquo;D&rdquo;)</p>
-<p>D().run()</p>
-<h1 id="输出a--c--b--d">输出：A → C → B → D</h1>
-<p>• MRO顺序：D → B → C → A → object。</p>
-<p>• 关键点：B中的super()按MRO跳至C.run，而非直接到A，避免A.run被重复调用。</p>
-<p>🔧 四、MRO的查看与调试</p>
-<p>• 查看方法：</p>
-<p>• 使用ClassName.mro()或ClassName.__mro__获取MRO列表。<br>
-print(D.<strong>mro</strong>)  # 输出：(&lt;class &lsquo;D&rsquo;&gt;, &lt;class &lsquo;B&rsquo;&gt;, &lt;class &lsquo;C&rsquo;&gt;, &hellip;)</p>
-<p>• 冲突检测：</p>
-<p>若继承关系违反C3原则（如class C(A, B)但B是A的子类），Python抛出TypeError：<br>
-TypeError: Cannot create a consistent method resolution order (MRO)</p>
-<p>🛠️ 五、实践建议与最佳实践</p>
+<p>• 动态配置：处理可选命名参数。<br>
+def configure_settings(**options):
+defaults = {&ldquo;color&rdquo;: &ldquo;red&rdquo;, &ldquo;size&rdquo;: 10}
+return {**defaults, **options}  # 合并配置
+print(configure_settings(size=20, opacity=0.5))  # 输出：{&lsquo;color&rsquo;:&lsquo;red&rsquo;, &lsquo;size&rsquo;:20, &lsquo;opacity&rsquo;:0.5}</p>
+<p>• 数据库查询：构建灵活过滤条件。<br>
+def build_query(table, **filters):
+conditions = [f&quot;{k}='{v}'&quot; for k, v in filters.items()]
+return f&quot;SELECT * FROM {table} WHERE {&rsquo; AND &lsquo;.join(conditions)}&quot;
+print(build_query(&ldquo;users&rdquo;, country=&ldquo;USA&rdquo;, status=&ldquo;active&rdquo;))  # 生成SQL语句</p>
+<ol start="3">
+<li>组合使用 *args 和 **kwargs</li>
+</ol>
+<p>• 参数顺序规则：</p>
+<p>函数定义必须遵循：标准位置参数 → *args → 关键字参数 → **kwargs。<br>
+def process_data(name, *scores, report=False, **metadata):
+print(f&quot;Name: {name}, Scores: {scores}, Report: {report}, Metadata: {metadata}&quot;)
+process_data(&ldquo;Alice&rdquo;, 85, 90, report=True, school=&ldquo;Harvard&rdquo;, year=2023)</p>
+<h1 id="输出name-alice-scores-85-90-report-true-metadata-schoolharvard-year2023">输出：Name: Alice, Scores: (85, 90), Report: True, Metadata: {&lsquo;school&rsquo;:&lsquo;Harvard&rsquo;, &lsquo;year&rsquo;:2023}</h1>
+<p>🛠️ 三、高级应用场景</p>
 <ol>
 <li>
-<p>优先组合而非继承：避免过度复杂的多重继承结构。</p>
+<p>函数装饰器<br>
+处理被装饰函数的任意参数：<br>
+def timer_decorator(func):
+def wrapper(*args, **kwargs):
+start = time.time()
+result = func(*args, **kwargs)
+print(f&quot;Time: {time.time() - start:.2f}s&quot;)
+return result
+return wrapper</p>
+<p>@timer_decorator
+def calculate(n):
+return sum(range(n))
+calculate(1000000)  # 输出执行时间</p>
 </li>
 <li>
-<p>正确使用super()：<br>
-• 在子类中始终用super()调用父类方法，而非硬编码父类名（如A.run(self)）。</p>
-<p>• super()按MRO动态解析，保障多继承协作。</p>
+<p>类继承与参数传递<br>
+子类向父类传递参数：<br>
+class Animal:
+def <strong>init</strong>(self, name, legs):
+self.name = name
+self.legs = legs</p>
+<p>class Bird(Animal):
+def <strong>init</strong>(self, can_fly, *args, **kwargs):
+super().<strong>init</strong>(*args, **kwargs)  # 透传参数
+self.can_fly = can_fly</p>
+<p>parrot = Bird(can_fly=True, name=&ldquo;Polly&rdquo;, legs=2)  # 正确初始化父类属性</p>
 </li>
 <li>
-<p>Mixin设计模式：<br>
-• 将工具类（如LoggingMixin）置于继承列表最前：class MyClass(LoggingMixin, DataProcessor)。</p>
-<p>• Mixin类不应独立实例化，仅提供扩展方法。</p>
+<p>参数解包（Unpacking）<br>
+调用函数时解包序列或字典：<br>
+def multiply(a, b, c):
+return a * b * c</p>
+<p>nums = [2, 3, 4]
+print(multiply(*nums))  # 解包列表 → multiply(2, 3, 4) → 输出：24</p>
+<p>info = {&ldquo;a&rdquo;: 2, &ldquo;b&rdquo;: 3, &ldquo;c&rdquo;: 4}
+print(multiply(**info))  # 解包字典 → multiply(a=2, b=3, c=4) → 输出：24</p>
+</li>
+</ol>
+<p>⚠️ 四、注意事项与最佳实践</p>
+<ol>
+<li>
+<p>参数顺序不可违反<br>
+• 错误示例：def func(**kwargs, *args): → 引发语法错误。</p>
+</li>
+<li>
+<p>避免参数名冲突<br>
+• 若位置参数与关键字参数同名（如x），传递x=1和1会触发TypeError。</p>
+</li>
+<li>
+<p>谨慎处理默认参数<br>
+• 避免可变默认值（如def f(a, lst=[])），应使用None初始化。</p>
+</li>
+<li>
+<p>提升可读性<br>
+• 优先明确参数名（如<em>paths而非</em>args），并在文档中说明参数类型。</p>
+</li>
+<li>
+<p>验证参数合法性<br>
+• 对*args/**kwargs进行类型检查或过滤：<br>
+def safe_calc(*args, **kwargs):
+if not all(isinstance(n, (int, float)) for n in args):
+raise TypeError(&ldquo;必须为数字&rdquo;)
+# &hellip;</p>
 </li>
 </ol>
 <p>💎 总结</p>
-<p>MRO是Python多重继承的基石，C3算法通过子类优先、声明顺序保留、单调性三原则，为方法调用提供无歧义的解析顺序。理解MRO机制与super()的协作逻辑，能有效规避菱形继承问题，并提升代码的可维护性。在设计复杂类关系时，务必通过mro()验证解析顺序，遵循组合优先原则。</p>
+<p>*args和**kwargs是Python动态参数处理的基石：<br>
+• *args：简化位置参数的灵活传递，生成元组。</p>
+<p>• **kwargs：支持命名参数的动态扩展，生成字典。</p>
+<p>• 核心价值：增强函数通用性（如装饰器、继承、API设计），但需平衡灵活性与可读性。</p>
+<p>掌握其机制后，可大幅提升代码的适应性和复用能力，尤其在框架开发、数据管道构建等场景中不可或缺。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2025-02-20</span>
+                <span>更新于 2025-03-27</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.xiaodingdang.fit/posts/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/" data-title="Python多继承与MRO：解决菱形继承" data-hashtags="Python"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.xiaodingdang.fit/posts/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/" data-hashtag="Python"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="https://www.xiaodingdang.fit/posts/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.xiaodingdang.fit/posts/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/" data-title="Python多继承与MRO：解决菱形继承"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.xiaodingdang.fit/posts/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/" data-title="Python多继承与MRO：解决菱形继承"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.xiaodingdang.fit/posts/args/" data-title="Args" data-hashtags="python"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.xiaodingdang.fit/posts/args/" data-hashtag="python"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="https://www.xiaodingdang.fit/posts/args/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.xiaodingdang.fit/posts/args/" data-title="Args"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.xiaodingdang.fit/posts/args/" data-title="Args"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -211,8 +275,8 @@ TypeError: Cannot create a consistent method resolution order (MRO)</p>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/" class="prev" rel="prev" title="《花束般的恋爱》与1月总结"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>《花束般的恋爱》与1月总结</a>
-            <a href="/posts/python%E7%9A%84%E5%B9%B6%E5%8F%91/" class="next" rel="next" title="Python的并发">Python的并发<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/posts/python%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="prev" rel="prev" title="Python的作用域"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Python的作用域</a>
+            <a href="/posts/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0/" class="next" rel="next" title="Python高级特性笔记">Python高级特性笔记<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
