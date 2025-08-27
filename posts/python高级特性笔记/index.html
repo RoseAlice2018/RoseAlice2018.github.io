@@ -30,7 +30,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/www.xiaodingdang.fit\/posts\/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0\/"
-        },"genre": "posts","keywords": "Python","wordcount":  6281 ,
+        },"genre": "posts","keywords": "Python","wordcount":  6707 ,
         "url": "https:\/\/www.xiaodingdang.fit\/posts\/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0\/","datePublished": "2025-04-27T19:26:40+08:00","dateModified": "2025-04-27T19:26:40+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -104,8 +104,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Python高级特性笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>蝴蝶🦋</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-04-27">2025-04-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 6281 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 13 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-04-27">2025-04-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 6707 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 14 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -145,7 +145,7 @@
         <li><a href="#54-python异常处理和自定义异常类">54. python异常处理，和自定义异常类</a></li>
         <li><a href="#55-python中最大递归深度多少-如何突破">55. python中最大递归深度多少 如何突破</a></li>
         <li><a href="#56-什么是面向对象的mro">56. 什么是面向对象的MRO</a></li>
-        <li><a href="#57-instance作用和应用场景">57. instance作用和应用场景</a></li>
+        <li><a href="#57-isinstance作用和应用场景">57. isinstance作用和应用场景</a></li>
         <li><a href="#58-什么是断言">58. 什么是断言？</a></li>
         <li><a href="#59-python的lambda表达式">59. python的lambda表达式</a></li>
         <li><a href="#60-python的新式类和旧式">60. python的新式类和旧式</a></li>
@@ -536,13 +536,31 @@ for index,item in enumerate(a):
 print(index,item)</p>
 <h3 id="53-python的全局变量">53. python的全局变量</h3>
 <h3 id="54-python异常处理和自定义异常类">54. python异常处理，和自定义异常类</h3>
+<p>class NameTooShortError(ValueError):
+pass
+def validate(name):
+if len(name) &lt; 10:
+raise NameTooShortError(name)</p>
+<p>使用自定义异常类，使得发生异常时的错误更容易排查</p>
 <h3 id="55-python中最大递归深度多少-如何突破">55. python中最大递归深度多少 如何突破</h3>
+<p>python解释器限制最大的递归深度是999，可以通过
+import sys
+sys.setrecursionlimit(10000)  # set the maximum depth as 10000
+重新设置最大递归深度(PS:这属于临时修改)</p>
 <h3 id="56-什么是面向对象的mro">56. 什么是面向对象的MRO</h3>
-<h3 id="57-instance作用和应用场景">57. instance作用和应用场景</h3>
+<h3 id="57-isinstance作用和应用场景">57. isinstance作用和应用场景</h3>
+<p>来判断一个对象是否是一个已知的类型
+举个栗子：
+p= &lsquo;sfa&rsquo;
+isinstance(p,str)
+True</p>
 <h3 id="58-什么是断言">58. 什么是断言？</h3>
+<p>Python 的断言语句是一种调试工具，用来测试某个断言条件。如果断言条件 为真，则程序将继续正常执行;但如果条件为假，则会引发 AssertionError 异常并显示相关 的错误消息。</p>
 <h3 id="59-python的lambda表达式">59. python的lambda表达式</h3>
 <h3 id="60-python的新式类和旧式">60. python的新式类和旧式</h3>
+<p>python3只支持新式类了</p>
 <h3 id="61-dir">61. dir（）</h3>
+<p>dir() 函数不带参数时，返回当前范围内的变量、方法和定义的类型列表；带参数时，返回参数的属性、方法列表。如果参数包含方法__dir__()，该方法将被调用。如果参数不包含__dir__()，该方法将最大限度地收集参数信息。</p>
 <h3 id="62-一个包里有三个模块demo1pydemo2py-和-demo3py但使用-from-tools-import--导入模块时如何保证只有-demo1demo3-被导入">62. 一个包里有三个模块，demo1.py、demo2.py 和 demo3.py，但使用 from tools import * 导入模块时，如何保证只有 demo1、demo3 被导入？</h3>
 <p>但若想使用from pacakge_1 import *这种形式的写法，需在  init.py中加上：   all = [‘file_a’, ‘file_b’] #package_1下有file_a.py和file_b.py，在导入时init.py文件将被执行。
 但不建议在 init.py中写模块，以保证该文件简单。不过可在init.py导入我们需要的模块，以便避免一个个导入、方便使用。</p>
@@ -555,6 +573,19 @@ print(index,item)</p>
 <li>IndexError 当序列抽取超出范围时将被引发。 （切片索引会被静默截短到允许的范围；如果指定索引不是整数则 TypeError 会被引发</li>
 </ol>
 <h3 id="64-copy和deepcopy">64. copy和deepcopy</h3>
+<p>copy 即所谓的浅拷贝，赋值的时候非递归地复制子对象的引用；
+deepcopy 即所谓的深拷贝，赋值的时候递归复制子对象。
+举个栗子，
+xs = [1,2,[2,3,4],3]
+ys = xs # 浅拷贝
+zs = deepcopy(xs) # 深拷贝
+xs[2][0] = 5
+print(ys)
+[1,2,[2,3,4],3]
+print(xs)
+[1,2,[5,3,4],3]</p>
+<p>print(zs)
+[1,2,[5,3,4],3] # 由于深拷贝已经递归复制了子对象，所以内部的List也发生改变</p>
 <h3 id="65-请阐述代码中经常遇到的-args-kwargs-的含义及用法">65. 请阐述代码中经常遇到的 *args, **kwargs 的含义及用法</h3>
 <p>这两个是python中的可变参数。<em>args表示任何多个位置参数，它是一个tuple；**kwargs表示关键字参数，它是一个dict。并且同时使用</em>args和<strong>kwargs时，必须*args参数列要在</strong>kwargs前</p>
 <h3 id="66-python-中会有函数或成员变量包含单下划线前缀和结尾或双下划线前缀结尾它们的区别是什么">66. Python 中会有函数或成员变量包含单下划线前缀和结尾，或双下划线前缀结尾，它们的区别是什么？</h3>
@@ -619,7 +650,7 @@ print(hex(15))#0xf</p>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/python/">python</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/python/">Python</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>

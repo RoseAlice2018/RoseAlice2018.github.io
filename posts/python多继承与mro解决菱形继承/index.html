@@ -4,34 +4,34 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>《花束般的恋爱》与1月总结 - 小叮当</title><meta name="Description" content="蝴蝶🦋的博客"><meta property="og:title" content="《花束般的恋爱》与1月总结" />
-<meta property="og:description" content="不知不觉年已经过完了，又要回归工作了。 回家的路上，看了《花束般的恋爱》，一部不错的爱情片，是准备有一篇总结的，兼顾总结一下对于爱情的看法， 以" />
+        <title>Python多继承与MRO：解决菱形继承 - 小叮当</title><meta name="Description" content="蝴蝶🦋的博客"><meta property="og:title" content="Python多继承与MRO：解决菱形继承" />
+<meta property="og:description" content="在面向对象编程（OOP）中，MRO（Method Resolution Order，方法解析顺序） 是多重继承场景下决定方法调用顺序的核心机制。它确保当一个类继承多" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/" /><meta property="og:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2025-02-03T22:11:06+08:00" />
-<meta property="article:modified_time" content="2025-02-03T22:11:06+08:00" /><meta property="og:site_name" content="小叮当" />
+<meta property="og:url" content="https://www.xiaodingdang.fit/posts/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/" /><meta property="og:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-02-20T23:19:35+08:00" />
+<meta property="article:modified_time" content="2025-02-20T23:19:35+08:00" /><meta property="og:site_name" content="小叮当" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/>
 
-<meta name="twitter:title" content="《花束般的恋爱》与1月总结"/>
-<meta name="twitter:description" content="不知不觉年已经过完了，又要回归工作了。 回家的路上，看了《花束般的恋爱》，一部不错的爱情片，是准备有一篇总结的，兼顾总结一下对于爱情的看法， 以"/>
+<meta name="twitter:title" content="Python多继承与MRO：解决菱形继承"/>
+<meta name="twitter:description" content="在面向对象编程（OOP）中，MRO（Method Resolution Order，方法解析顺序） 是多重继承场景下决定方法调用顺序的核心机制。它确保当一个类继承多"/>
 <meta name="application-name" content="小叮当">
 <meta name="apple-mobile-web-app-title" content="小叮当"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/" /><link rel="prev" href="https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" /><link rel="next" href="https://www.xiaodingdang.fit/posts/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.xiaodingdang.fit/posts/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/" /><link rel="prev" href="https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/" /><link rel="next" href="https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%B9%B6%E5%8F%91/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "《花束般的恋爱》与1月总结",
+        "headline": "Python多继承与MRO：解决菱形继承",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/www.xiaodingdang.fit\/posts\/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93\/"
-        },"genre": "posts","wordcount":  167 ,
-        "url": "https:\/\/www.xiaodingdang.fit\/posts\/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93\/","datePublished": "2025-02-03T22:11:06+08:00","dateModified": "2025-02-03T22:11:06+08:00","publisher": {
+            "@id": "https:\/\/www.xiaodingdang.fit\/posts\/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF\/"
+        },"genre": "posts","keywords": "Python","wordcount":  1284 ,
+        "url": "https:\/\/www.xiaodingdang.fit\/posts\/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF\/","datePublished": "2025-02-20T23:19:35+08:00","dateModified": "2025-02-20T23:19:35+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -102,45 +102,117 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">《花束般的恋爱》与1月总结</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Python多继承与MRO：解决菱形继承</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>蝴蝶🦋</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-02-03">2025-02-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 167 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-02-20">2025-02-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1284 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"><p>不知不觉年已经过完了，又要回归工作了。</p>
-<p>回家的路上，看了《花束般的恋爱》，一部不错的爱情片，是准备有一篇总结的，兼顾总结一下对于爱情的看法，
-以及如何构建良好的亲密关系，构建什么样的亲密关系。</p>
-<p>1月主要时间用在过年和准备过年上了，过年的时间主要在家里睡觉打牌，安排好的事情干的依然不多。</p>
-<p>坚持做一件事不容易。</p>
-<p>whatever 后面的分篇再说 如果真的还写的话。</p>
+            </div><div class="content" id="content"><p>在面向对象编程（OOP）中，MRO（Method Resolution Order，方法解析顺序） 是多重继承场景下决定方法调用顺序的核心机制。它确保当一个类继承多个父类时，Python解释器能按照一致的规则搜索并确定方法的调用路径，避免因继承冲突导致歧义。以下是MRO的核心要点：</p>
+<p>🔍 一、MRO的本质与作用</p>
+<ol>
+<li>
+<p>问题背景<br>
+在多重继承中，若多个父类定义了同名方法，子类调用该方法时需明确搜索顺序。例如：
+class A: def run(self): pass
+class B: def run(self): pass
+class C(A, B): pass  # 同时继承A和B</p>
+<p>调用C().run()时，需确定优先使用A.run还是B.run。</p>
+</li>
+<li>
+<p>解决方案<br>
+MRO通过C3线性化算法计算类的方法搜索顺序，保证：
+• 子类方法优先于父类；</p>
+<p>• 父类的声明顺序被保留；</p>
+<p>• 继承关系满足单调性（子类的MRO不破坏父类的MRO顺序）。</p>
+</li>
+</ol>
+<p>⚙️ 二、C3算法的计算规则与示例</p>
+<p>C3算法通过合并父类的MRO列表生成子类的线性顺序，遵循三原则：</p>
+<ol>
+<li>子类优先：子类在MRO中位于其父类之前。</li>
+<li>声明顺序保留：若类继承多个父类（如class D(B, C)），则父类顺序（B先于C）在MRO中保持不变。</li>
+<li>单调性：所有父类的MRO顺序在子类中保持一致。</li>
+</ol>
+<p>示例解析</p>
+<p>class A: pass
+class B(A): pass
+class C(A): pass
+class D(B, C): pass</p>
+<p>print(D.mro())</p>
+<h1 id="输出d-b-c-a-object">输出：[D, B, C, A, object]</h1>
+<p>• 计算步骤：</p>
+<ol>
+<li>子类D优先加入列表：[D]。</li>
+<li>按声明顺序合并父类MRO：B的MRO为[B, A, object] → 合并后为[D, B]。</li>
+<li>继续合并C的MRO（[C, A, object]），因A已在B后存在，跳过重复 → 结果：[D, B, C, A, object]。</li>
+</ol>
+<p>💎 三、MRO解决的核心问题：菱形继承</p>
+<p>菱形继承（如D→B→A和D→C→A）易导致父类方法被重复调用。C3算法通过动态调整super()的跳转路径避免此问题：<br>
+class A:
+def run(self): print(&ldquo;A&rdquo;)
+class B(A):
+def run(self): super().run(); print(&ldquo;B&rdquo;)  # super()实际调用C.run
+class C(A):
+def run(self): super().run(); print(&ldquo;C&rdquo;)
+class D(B, C):
+def run(self): super().run(); print(&ldquo;D&rdquo;)</p>
+<p>D().run()</p>
+<h1 id="输出a--c--b--d">输出：A → C → B → D</h1>
+<p>• MRO顺序：D → B → C → A → object。</p>
+<p>• 关键点：B中的super()按MRO跳至C.run，而非直接到A，避免A.run被重复调用。</p>
+<p>🔧 四、MRO的查看与调试</p>
+<p>• 查看方法：</p>
+<p>• 使用ClassName.mro()或ClassName.__mro__获取MRO列表。<br>
+print(D.<strong>mro</strong>)  # 输出：(&lt;class &lsquo;D&rsquo;&gt;, &lt;class &lsquo;B&rsquo;&gt;, &lt;class &lsquo;C&rsquo;&gt;, &hellip;)</p>
+<p>• 冲突检测：</p>
+<p>若继承关系违反C3原则（如class C(A, B)但B是A的子类），Python抛出TypeError：<br>
+TypeError: Cannot create a consistent method resolution order (MRO)</p>
+<p>🛠️ 五、实践建议与最佳实践</p>
+<ol>
+<li>
+<p>优先组合而非继承：避免过度复杂的多重继承结构。</p>
+</li>
+<li>
+<p>正确使用super()：<br>
+• 在子类中始终用super()调用父类方法，而非硬编码父类名（如A.run(self)）。</p>
+<p>• super()按MRO动态解析，保障多继承协作。</p>
+</li>
+<li>
+<p>Mixin设计模式：<br>
+• 将工具类（如LoggingMixin）置于继承列表最前：class MyClass(LoggingMixin, DataProcessor)。</p>
+<p>• Mixin类不应独立实例化，仅提供扩展方法。</p>
+</li>
+</ol>
+<p>💎 总结</p>
+<p>MRO是Python多重继承的基石，C3算法通过子类优先、声明顺序保留、单调性三原则，为方法调用提供无歧义的解析顺序。理解MRO机制与super()的协作逻辑，能有效规避菱形继承问题，并提升代码的可维护性。在设计复杂类关系时，务必通过mro()验证解析顺序，遵循组合优先原则。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2025-02-03</span>
+                <span>更新于 2025-02-20</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/" data-title="《花束般的恋爱》与1月总结"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/" data-title="《花束般的恋爱》与1月总结"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.xiaodingdang.fit/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/" data-title="《花束般的恋爱》与1月总结"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.xiaodingdang.fit/posts/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/" data-title="Python多继承与MRO：解决菱形继承" data-hashtags="Python"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.xiaodingdang.fit/posts/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/" data-hashtag="Python"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="https://www.xiaodingdang.fit/posts/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.xiaodingdang.fit/posts/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/" data-title="Python多继承与MRO：解决菱形继承"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.xiaodingdang.fit/posts/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/" data-title="Python多继承与MRO：解决菱形继承"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/python/">Python</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/python%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" class="prev" rel="prev" title="Python的内存管理"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Python的内存管理</a>
-            <a href="/posts/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/" class="next" rel="next" title="Python多继承与MRO：解决菱形继承">Python多继承与MRO：解决菱形继承<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/posts/%E8%8A%B1%E6%9D%9F%E8%88%AC%E7%9A%84%E6%81%8B%E7%88%B1%E4%B8%8E1%E6%9C%88%E6%80%BB%E7%BB%93/" class="prev" rel="prev" title="《花束般的恋爱》与1月总结"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>《花束般的恋爱》与1月总结</a>
+            <a href="/posts/python%E7%9A%84%E5%B9%B6%E5%8F%91/" class="next" rel="next" title="Python的并发">Python的并发<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
