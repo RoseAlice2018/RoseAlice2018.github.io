@@ -3,9 +3,17 @@
         <title>小叮当</title>
         <link>https://www.xiaodingdang.fit/</link>
         <description>蝴蝶🦋的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 03 Sep 2025 22:23:43 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 20 Dec 2025 23:54:43 &#43;0800</lastBuildDate>
             <atom:link href="https://www.xiaodingdang.fit/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>精读Transformer论文1</title>
+    <link>https://www.xiaodingdang.fit/posts/%E7%B2%BE%E8%AF%BBtransformer%E8%AE%BA%E6%96%871.0/</link>
+    <pubDate>Sat, 20 Dec 2025 23:54:43 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/%E7%B2%BE%E8%AF%BBtransformer%E8%AE%BA%E6%96%871.0/</guid>
+    <description><![CDATA[《Attention is All You Need》核心创新点：Transformer架构和Self- Attention自注意力机制 阅读思路： 以往的模型的结]]></description>
+</item>
+<item>
     <title>向量数据库的索引</title>
     <link>https://www.xiaodingdang.fit/posts/%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%B4%A2%E5%BC%95/</link>
     <pubDate>Wed, 03 Sep 2025 22:23:43 &#43;0800</pubDate>
@@ -76,14 +84,6 @@
     <author>蝴蝶🦋</author>
     <guid>https://www.xiaodingdang.fit/posts/rag%E6%96%87%E6%9C%AC%E5%8F%AC%E5%9B%9E%E6%A8%A1%E5%9E%8B/</guid>
     <description><![CDATA[本文主要介绍RAG中文本召回的相关基础知识，和经典模型。 基础知识 召回环节中，需要使用文本向量检索模型 embedding模型来进行两个环节处理]]></description>
-</item>
-<item>
-    <title>RAG基础</title>
-    <link>https://www.xiaodingdang.fit/posts/rag%E5%9F%BA%E7%A1%80/</link>
-    <pubDate>Mon, 25 Aug 2025 16:49:33 &#43;0800</pubDate>
-    <author>蝴蝶🦋</author>
-    <guid>https://www.xiaodingdang.fit/posts/rag%E5%9F%BA%E7%A1%80/</guid>
-    <description><![CDATA[LLM的缺陷&ndash;为什么需要RAG？ 大模型的知识源于pretrain阶段输入的语料，对于时效性较近的问题，会出现答案错误或过时。（可]]></description>
 </item>
 </channel>
 </rss>
