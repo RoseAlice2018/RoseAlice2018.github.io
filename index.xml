@@ -3,9 +3,17 @@
         <title>小叮当</title>
         <link>https://www.xiaodingdang.fit/</link>
         <description>蝴蝶🦋的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 20 Dec 2025 23:54:43 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 01 Feb 2026 01:38:17 &#43;0800</lastBuildDate>
             <atom:link href="https://www.xiaodingdang.fit/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>从functioncall到mcp再到skills</title>
+    <link>https://www.xiaodingdang.fit/posts/%E4%BB%8Efunctioncall%E5%88%B0mcp%E5%86%8D%E5%88%B0skills/</link>
+    <pubDate>Sun, 01 Feb 2026 01:38:17 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/%E4%BB%8Efunctioncall%E5%88%B0mcp%E5%86%8D%E5%88%B0skills/</guid>
+    <description><![CDATA[从function_call 到 MCP 再到Skills 我觉得这属于一脉相承的演变，核心的目标/思路就是如何让LLM从讲述方案走向执行方案，和如何更]]></description>
+</item>
+<item>
     <title>精读Transformer论文1</title>
     <link>https://www.xiaodingdang.fit/posts/%E7%B2%BE%E8%AF%BBtransformer%E8%AE%BA%E6%96%871.0/</link>
     <pubDate>Sat, 20 Dec 2025 23:54:43 &#43;0800</pubDate>
@@ -76,14 +84,6 @@
     <author>蝴蝶🦋</author>
     <guid>https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%962-chunk/</guid>
     <description><![CDATA[文本切块是数据向量化存入向量数据库等核心优化部分。切的块不能太长，太长的块损失的语义信息较多，导致召回准确率较低，过长的召回文本也将限制放入]]></description>
-</item>
-<item>
-    <title>RAG文本召回模型</title>
-    <link>https://www.xiaodingdang.fit/posts/rag%E6%96%87%E6%9C%AC%E5%8F%AC%E5%9B%9E%E6%A8%A1%E5%9E%8B/</link>
-    <pubDate>Mon, 25 Aug 2025 17:19:02 &#43;0800</pubDate>
-    <author>蝴蝶🦋</author>
-    <guid>https://www.xiaodingdang.fit/posts/rag%E6%96%87%E6%9C%AC%E5%8F%AC%E5%9B%9E%E6%A8%A1%E5%9E%8B/</guid>
-    <description><![CDATA[本文主要介绍RAG中文本召回的相关基础知识，和经典模型。 基础知识 召回环节中，需要使用文本向量检索模型 embedding模型来进行两个环节处理]]></description>
 </item>
 </channel>
 </rss>
