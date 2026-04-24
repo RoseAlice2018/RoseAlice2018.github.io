@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(hugo)",
+      "Bash(cmd.exe //c \"where hugo\" 2>/dev/null)",
+      "Bash(powershell.exe -Command \"Get-Command hugo -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source\" 2>/dev/null)",
+      "Read(//c/Users/Administrator/go/**)",
+      "Read(//c/ProgramData/chocolatey/bin/**)",
+      "Read(//c//**)",
+      "Bash(ls /d/hugo*)",
+      "Read(//d/blog/**)",
+      "Bash(powershell.exe -Command \"winget install Hugo.Hugo.Extended --accept-package-agreements --accept-source-agreements\")",
+      "Bash(export PATH=\"$PATH:/c/Users/Administrator/AppData/Local/Microsoft/WinGet/Links\")"
+    ]
+  }
+}
