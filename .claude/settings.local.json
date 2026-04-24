@@ -10,7 +10,13 @@
       "Bash(ls /d/hugo*)",
       "Read(//d/blog/**)",
       "Bash(powershell.exe -Command \"winget install Hugo.Hugo.Extended --accept-package-agreements --accept-source-agreements\")",
-      "Bash(export PATH=\"$PATH:/c/Users/Administrator/AppData/Local/Microsoft/WinGet/Links\")"
+      "Bash(export PATH=\"$PATH:/c/Users/Administrator/AppData/Local/Microsoft/WinGet/Links\")",
+      "Bash(powershell.exe -Command \"gh run list -R RoseAlice2018/RoseAlice2018.github.io --limit 5\" 2>/dev/null)",
+      "Bash(cmd.exe //c \"gh run list -R RoseAlice2018/RoseAlice2018.github.io --limit 5\" 2>/dev/null)",
+      "Bash(curl:*)",
+      "Bash(nslookup www.xiaodingdang.fit)",
+      "Bash(nslookup rosealice2018.github.io)",
+      "Bash(cd:*)"
     ]
   }
 }
