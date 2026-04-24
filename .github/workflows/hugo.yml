@@ -14,10 +14,6 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-defaults:
-  run:
-    working-directory: littlstar
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -44,6 +40,7 @@ jobs:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
           HUGO_ENVIRONMENT: production
           TZ: Asia/Shanghai
+        working-directory: littlstar
         run: hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Upload artifact
