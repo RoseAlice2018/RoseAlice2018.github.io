@@ -1,0 +1,87 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>python - 标签 - 小叮当</title>
+        <link>https://www.xiaodingdang.fit/tags/python/</link>
+        <description>python - 标签 - 小叮当</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 27 Aug 2025 22:50:51 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/tags/python/" rel="self" type="application/rss+xml" /><item>
+    <title>Python的filter方法</title>
+    <link>https://www.xiaodingdang.fit/posts/python%E7%9A%84filter%E6%96%B9%E6%B3%95/</link>
+    <pubDate>Wed, 27 Aug 2025 22:50:51 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/python%E7%9A%84filter%E6%96%B9%E6%B3%95/</guid>
+    <description><![CDATA[Python 的 filter() 函数是一种内置的高阶函数，用于从可迭代对象中筛选满足特定条件的元素，返回一个迭代器（Python 3 中）。以下是其核心要点： 🔧 1. 基本语法]]></description>
+</item>
+<item>
+    <title>Python的常用magicmethod</title>
+    <link>https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%B8%B8%E7%94%A8magicmethod/</link>
+    <pubDate>Sat, 10 May 2025 22:32:22 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%B8%B8%E7%94%A8magicmethod/</guid>
+    <description><![CDATA[以下是Python中最常用且功能强大的魔术方法（Magic Methods）及其核心用途的分类详解，这些方法以双下划线（__）包裹，由Pyth]]></description>
+</item>
+<item>
+    <title>Python高级特性笔记</title>
+    <link>https://www.xiaodingdang.fit/posts/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0/</link>
+    <pubDate>Sun, 27 Apr 2025 19:26:40 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0/</guid>
+    <description><![CDATA[34. 函数装饰器有什么用？ 函数装饰器可以在不修改原函数的条件下，为原函数添加额外的功能，例如记录日志，运行性能，缓存等 以记录函数运行时间为例，实]]></description>
+</item>
+<item>
+    <title>Args</title>
+    <link>https://www.xiaodingdang.fit/posts/args/</link>
+    <pubDate>Thu, 27 Mar 2025 23:22:45 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/args/</guid>
+    <description><![CDATA[在Python中，*args和**kwargs是处理函数可变参数的强大机制，它们显著提升了代码的灵活性和可扩展性。以下是其核心含义、用法及实]]></description>
+</item>
+<item>
+    <title>Python的作用域</title>
+    <link>https://www.xiaodingdang.fit/posts/python%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
+    <pubDate>Thu, 27 Mar 2025 23:10:46 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/python%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/</guid>
+    <description><![CDATA[Python 中的作用域定义了变量的可访问范围，主要分为以下四种类型，遵循 LEGB 查找规则（Local → Enclosing → Global → Built-in）： 局部作用域（Local Sc]]></description>
+</item>
+<item>
+    <title>Python的metaclass</title>
+    <link>https://www.xiaodingdang.fit/posts/python%E7%9A%84metaclass/</link>
+    <pubDate>Thu, 27 Mar 2025 22:18:47 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/python%E7%9A%84metaclass/</guid>
+    <description><![CDATA[。 Metaclass（元类）是 Python 中控制类创建过程的机制，本质上是“类的类”。其核心作用是在类定义时动态修改或增强类的行为，而非在实例化阶段。]]></description>
+</item>
+<item>
+    <title>Python的反射</title>
+    <link>https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%8F%8D%E5%B0%84/</link>
+    <pubDate>Thu, 27 Feb 2025 20:23:16 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%8F%8D%E5%B0%84/</guid>
+    <description><![CDATA[Python的反射机制是其动态特性的核心体现，允许程序在运行时动态检查、修改和调用对象的属性和方法，而非依赖编译时的硬编码。这种能力基于Py]]></description>
+</item>
+<item>
+    <title>Python的并发</title>
+    <link>https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%B9%B6%E5%8F%91/</link>
+    <pubDate>Thu, 27 Feb 2025 19:56:54 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%B9%B6%E5%8F%91/</guid>
+    <description><![CDATA[python的并发 多线程 多进程 协程的区别 GIL threading.local的作用]]></description>
+</item>
+<item>
+    <title>Python多继承与MRO：解决菱形继承</title>
+    <link>https://www.xiaodingdang.fit/posts/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/</link>
+    <pubDate>Thu, 20 Feb 2025 23:19:35 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/python%E5%A4%9A%E7%BB%A7%E6%89%BF%E4%B8%8Emro%E8%A7%A3%E5%86%B3%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/</guid>
+    <description><![CDATA[在面向对象编程（OOP）中，MRO（Method Resolution Order，方法解析顺序） 是多重继承场景下决定方法调用顺序的核心机制。它确保当一个类继承多]]></description>
+</item>
+<item>
+    <title>Python的内存管理</title>
+    <link>https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</link>
+    <pubDate>Mon, 27 Jan 2025 23:00:46 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</guid>
+    <description><![CDATA[Python 的内存管理是一个多层次的自动化系统，结合了引用计数、垃圾回收、内存池等机制，同时提供了一系列优化技巧和工具供开发者干预。以下是其核心机制与]]></description>
+</item>
+</channel>
+</rss>

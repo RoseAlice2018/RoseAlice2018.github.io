@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Python学习笔记 - 小叮当</title><meta name="Description" content="蝴蝶🦋的博客"><meta property="og:title" content="Python学习笔记" />
+<meta property="og:description" content="https://github.com/hantmac/Python-Interview-Customs-Collection 1. 谈谈对Python和其他语言的区别？ Python属于解释型语言，当程序运行时，是一行一行的解释，并运行，所以调式代码很方便，开发效率高，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.xiaodingdang.fit/posts/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" /><meta property="og:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-04-27T16:21:36+08:00" />
+<meta property="article:modified_time" content="2024-04-27T16:21:36+08:00" /><meta property="og:site_name" content="小叮当" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/>
+
+<meta name="twitter:title" content="Python学习笔记"/>
+<meta name="twitter:description" content="https://github.com/hantmac/Python-Interview-Customs-Collection 1. 谈谈对Python和其他语言的区别？ Python属于解释型语言，当程序运行时，是一行一行的解释，并运行，所以调式代码很方便，开发效率高，"/>
+<meta name="application-name" content="小叮当">
+<meta name="apple-mobile-web-app-title" content="小叮当"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.xiaodingdang.fit/posts/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" /><link rel="prev" href="https://www.xiaodingdang.fit/posts/hugoloveit%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" /><link rel="next" href="https://www.xiaodingdang.fit/posts/%E4%B8%80%E6%AC%A1%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E9%A2%98-%E5%A4%A7%E6%A8%A1%E6%8B%9F/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Python学习笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.xiaodingdang.fit\/posts\/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/"
+        },"genre": "posts","keywords": "python","wordcount":  3818 ,
+        "url": "https:\/\/www.xiaodingdang.fit\/posts\/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/","datePublished": "2024-04-27T16:21:36+08:00","dateModified": "2024-04-27T16:21:36+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "蝴蝶🦋"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="normal" data-header-mobile="normal"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="小叮当">小叮当</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="小叮当">小叮当</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Python学习笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>蝴蝶🦋</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-27">2024-04-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 3818 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 8 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-谈谈对python和其他语言的区别">1. 谈谈对Python和其他语言的区别？</a></li>
+        <li><a href="#2-解释型和编译型的区别">2. 解释型和编译型的区别？</a></li>
+        <li><a href="#3-python有哪些解释器相关特点有哪些">3. Python有哪些解释器，相关特点有哪些？</a></li>
+        <li><a href="#4-python3和python2之间的区别">4. python3和python2之间的区别</a></li>
+        <li><a href="#5-python3和python2中int和long的区别">5. python3和python2中int和long的区别？</a></li>
+        <li><a href="#6-xrange和range的区别">6. xrange和range的区别？</a></li>
+        <li><a href="#7-什么是pep8">7. 什么是PEP8？</a></li>
+        <li><a href="#8-了解docstring吗">8. 了解docstring吗？</a></li>
+        <li><a href="#9-了解类型注解吗">9. 了解类型注解吗？</a></li>
+        <li><a href="#10-列举一些python的命名规范">10. 列举一些python的命名规范？</a></li>
+        <li><a href="#11-python中注释有哪几种">11. python中注释有哪几种？</a></li>
+        <li><a href="#12-python代码缩进是否支持tab和空格混用">12. python代码缩进是否支持tab和空格混用？</a></li>
+        <li><a href="#13-是否可以在一句import中导入多个库">13. 是否可以在一句import中导入多个库？</a></li>
+        <li><a href="#14-python文件命名需要注意什么">14. python文件命名需要注意什么？</a></li>
+        <li><a href="#15-例举几个规范python代码风格的工具">15. 例举几个规范python代码风格的工具？</a></li>
+        <li><a href="#16-python基本数据类型">16. python基本数据类型？</a></li>
+        <li><a href="#17-不可变和可变数据类型">17. 不可变和可变数据类型？</a></li>
+        <li><a href="#18-将hello-world-转换为首字母大写hello-world">18. 将‘hello world’ 转换为首字母大写‘Hello World’</a></li>
+        <li><a href="#19-如何检测字符串里只含有数字">19. 如何检测字符串里只含有数字？</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#20-反转字符串">20. 反转字符串？</a></li>
+        <li><a href="#21-python中字符串格式化方式">21. Python中字符串格式化方式？</a></li>
+        <li><a href="#22-去掉字符串的前后空格">22. 去掉字符串的前后空格？</a></li>
+        <li><a href="#23-python中单引号-双引号-三引号">23. python中单引号 双引号 三引号？</a></li>
+        <li><a href="#24-列表去重">24. 列表去重？</a></li>
+        <li><a href="#25-如何打乱列表的元素">25. 如何打乱列表的元素？</a></li>
+        <li><a href="#26-字典的del和pop区别">26. 字典的del和pop区别？</a></li>
+        <li><a href="#27-字典如何排序">27. 字典如何排序？</a></li>
+        <li><a href="#28-字典合并的方式">28. 字典合并的方式？</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#29-使用生成式生成一段功能代码">29. 使用生成式生成一段功能代码？</a></li>
+        <li><a href="#30-如何将tuplea-b-12-生成dicta1-b-2">30. 如何将tuple(&ldquo;A&rdquo;, &ldquo;b&rdquo;), (1,2) 生成dict（“A”：1， “b”， 2）</a></li>
+        <li><a href="#31-tuple和list相互转换">31. tuple和list相互转换？</a></li>
+        <li><a href="#32-我们知道对于列表可以使用切片操作进行部分元素的选择那么如何对生成器类型的对象实现相同的功能呢">32. 我们知道对于列表可以使用切片操作进行部分元素的选择，那么如何对生成器类型的对象实现相同的功能呢？</a></li>
+        <li><a href="#33-在读文件操作的时候会使用-readreadline-或者-readlines简述它们各自的作用">33. 在读文件操作的时候会使用 read、readline 或者 readlines，简述它们各自的作用。</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><a href="https://github.com/hantmac/Python-Interview-Customs-Collection" target="_blank" rel="noopener noreffer ">https://github.com/hantmac/Python-Interview-Customs-Collection</a></p>
+<h3 id="1-谈谈对python和其他语言的区别">1. 谈谈对Python和其他语言的区别？</h3>
+<p>Python属于解释型语言，当程序运行时，是一行一行的解释，并运行，所以调式代码很方便，开发效率高，
+还有龟叔给Python定位是任其自由发展、优雅、明确、简单，所以在每个领域都有建树，所有它有着非常强大的第三方库，
+特点：
+语法简洁优美，功能强大，标准库与第三方库都非常强大，而且应用领域也非常广
+可移植性，可扩展性，可嵌入性
+缺点：
+　　运行速度慢，</p>
+<ul>
+<li>解释型
+<ul>
+<li>python/php</li>
+</ul>
+</li>
+<li>编译型
+<ul>
+<li>c/java/c#</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-解释型和编译型的区别">2. 解释型和编译型的区别？</h3>
+<p>解释型：就是边解释边执行（Python，php）
+编译型：编译后再执行（c、java、c#）</p>
+<h3 id="3-python有哪些解释器相关特点有哪些">3. Python有哪些解释器，相关特点有哪些？</h3>
+<p>CPython</p>
+<p>是官方版本的解释器：CPython。是使用C语言开发的，所以叫CPython。在命令行下运行python就是启动CPython解释器。
+CPython是使用最广的Python解释器。教程的所有代码也都在CPython下执行。</p>
+<p>IPython
+IPython是基于CPython之上的一个交互式解释器，也就是说，IPython只是在交互方式上有所增强，但是执行Python代码的功能和CPython是完全一样的。CPython用&raquo;&gt;作为提示符，而IPython用In [序号]:作为提示符。</p>
+<p>PyPy
+由Python写的解释器，它的执行速度是最快。PyPy采用JIT技术，对Python代码进行动态编译（注意不是解释），
+绝大部分Python代码都可以在PyPy下运行，但是PyPy和CPython有一些是不同的，这就导致相同的Python代码在两种解释器下执行可能会有不同的结果。</p>
+<p>Jython
+Jython是运行在Java平台上的Python解释器，可以直接把Python代码编译成Java字节码执行。</p>
+<p>IronPython
+IronPython和Jython类似，只不过IronPython是运行在.Net平台上的Python解释器，可以直接把Python代码编译成.Net的字节码。</p>
+<p>小结：
+　　Python的解释器很多，但使用最广泛的还是CPython。如果要和Java或.Net平台交互，最好的办法不是用Jython或IronPython，而是通过网络调用来交互，确保各程序之间的独立性。</p>
+<h3 id="4-python3和python2之间的区别">4. python3和python2之间的区别</h3>
+<p>1：打印时，py2需要可以不需要加括号，py3 需要
+python 2 ：print (&lsquo;lili&rsquo;)   ,   print &lsquo;lili&rsquo;
+python 3 : print (&lsquo;lili&rsquo;)<br>
+python3 必须加括号</p>
+<p>exec语句被python3废弃，统一使用exec函数</p>
+<p>2：内涵
+Python2：1，臃肿，源码的重复量很多。
+2，语法不清晰，掺杂着C，php，Java，的一些陋习。
+3, 2020年1月1日开始停止维护 <br>
+Python3：几乎是重构后的源码，规范，清晰，优美。</p>
+<p>3、输出中文的区别
+python2：要输出中文 需加 # -<em>- encoding:utf-8 -</em>-
+Python3 ： 直接搞</p>
+<p>4：input不同
+python2 ：raw_input
+python3 ：input 统一使用input函数</p>
+<p>5：指定字节
+python2在编译安装时，可以通过参数&mdash;&ndash;enable-unicode=ucs2 或&mdash;&ndash;enable-unicode=ucs4分别用于指定使用2个字节、4个字节表示一个unicode；
+python3无法进行选择，默认使用 ucs4
+查看当前python中表示unicode字符串时占用的空间：</p>
+<p>impor sys
+print（sys.maxunicode）
+#如果值是65535，则表示使用usc2标准，即：2个字节表示
+#如果值是1114111，则表示使用usc4标准，即：4个字节表示</p>
+<p>6：
+py2：xrange
+　　　　range
+py3：range  统一使用range，Python3中range的机制也进行修改并提高了大数据集生成效率</p>
+<p>7：在包的知识点里
+包：一群模块文件的集合 + <strong>init</strong>
+区别：py2 ： 必须有__init__
+　　　py3：不是必须的了</p>
+<p>8：不相等操作符&quot;&lt;&gt;&ldquo;被Python3废弃，统一使用&rdquo;!=&quot;</p>
+<p>9：long整数类型被Python3废弃，统一使用int</p>
+<p>10：迭代器iterator的next()函数被Python3废弃，统一使用next(iterator)</p>
+<p>11：异常StandardError 被Python3废弃，统一使用Exception</p>
+<p>12：字典变量的has_key函数被Python废弃，统一使用in关键词</p>
+<p>13：file函数被Python3废弃，统一使用open来处理文件，可以通过io.IOBase检查文件类型</p>
+<h3 id="5-python3和python2中int和long的区别">5. python3和python2中int和long的区别？</h3>
+<p>在python3里，只有一种整数类型int,大多数情况下，和python２中的长整型类似。</p>
+<h3 id="6-xrange和range的区别">6. xrange和range的区别？</h3>
+<p>xrange用法与range完全相同，所不同的是生成的不是一个数组，而是一个生成器。
+要生成很大的数字序列的时候，用xrange会比range性能优很多，因为不需要一上来就开辟一块很大的内存空间，这两个基本上都是在循环的时候用。</p>
+<p>在 Python 3 中，range() 是像 xrange() 那样实现，xrange()被抛弃。</p>
+<h3 id="7-什么是pep8">7. 什么是PEP8？</h3>
+<p>PEP是 Python Enhancement Proposal 的缩写，翻译过来就是 Python增强建议书
+简单说就是一种编码规范，是为了让代码“更好看”，更容易被阅读
+具体可参考：
+<a href="https://www.python.org/dev/peps/pep-0008/" target="_blank" rel="noopener noreffer ">https://www.python.org/dev/peps/pep-0008/</a></p>
+<h3 id="8-了解docstring吗">8. 了解docstring吗？</h3>
+<p>Python有一个很奇妙的特性，称为 文档字符串 ，它通常被简称为 docstrings 。DocStrings是一个重要的工具，由于它帮助你的程序文档更加简单易懂，你应该尽量使用它。你甚至可以在程序运行的时候，从函数恢复文档字符串。
+使用魔法方法'<strong>doc</strong>&lsquo;可以打印docstring的内容</p>
+<h3 id="9-了解类型注解吗">9. 了解类型注解吗？</h3>
+<p>def add(x:int, y:int) -&gt; int:
+return x + y
+用 : 类型 的形式指定函数的参数类型，用 -&gt; 类型 的形式指定函数的返回值类型</p>
+<ul>
+<li>注意：类型注解没有强制性。</li>
+</ul>
+<h3 id="10-列举一些python的命名规范">10. 列举一些python的命名规范？</h3>
+<p>类名都使用首字母大写开头(Pascal命名风格)的规范；
+全局变量全用大写字母，单词之间用 _分割；
+普通变量用小写字母，单词之间用 _分割；
+普通函数和普通变量一样；
+私有函数以 __ 开头（2个下划线），其他和普通函数一样；</p>
+<h3 id="11-python中注释有哪几种">11. python中注释有哪几种？</h3>
+<p>单行注释
+多行注释
+docstring注释</p>
+<h3 id="12-python代码缩进是否支持tab和空格混用">12. python代码缩进是否支持tab和空格混用？</h3>
+<p>支持，Python 并没有强制要求你用Tab缩进或者用空格缩进，但在 PEP8中，建议使用4个空格来缩进</p>
+<h3 id="13-是否可以在一句import中导入多个库">13. 是否可以在一句import中导入多个库？</h3>
+<p>可以的
+import json,random,requests</p>
+<h3 id="14-python文件命名需要注意什么">14. python文件命名需要注意什么？</h3>
+<p>全小写，单词之间使用下划线分隔</p>
+<h3 id="15-例举几个规范python代码风格的工具">15. 例举几个规范python代码风格的工具？</h3>
+<p>pylint,black,pycharm也带有pep8的代码规范工具</p>
+<h3 id="16-python基本数据类型">16. python基本数据类型？</h3>
+<p>Python3 中有六个标准的数据类型：</p>
+<p>Number（数字）
+String（字符串）
+List（列表）
+Tuple（元组）
+Set（集合）
+Dictionary（字典）
+Python3 的六个标准数据类型中：</p>
+<p>不可变数据（3 个）：Number（数字）、String（字符串）、Tuple（元组）；
+可变数据（3 个）：List（列表）、Dictionary（字典）、Set（集合）。</p>
+<h3 id="17-不可变和可变数据类型">17. 不可变和可变数据类型？</h3>
+<p>Python3 的六个标准数据类型中：</p>
+<p>不可变数据（3 个）：Number（数字）、String（字符串）、Tuple（元组）；
+可变数据（3 个）：List（列表）、Dictionary（字典）、Set（集合）。</p>
+<h3 id="18-将hello-world-转换为首字母大写hello-world">18. 将‘hello world’ 转换为首字母大写‘Hello World’</h3>
+<p>z = &lsquo;hello world&rsquo;
+z.title()</p>
+<h3 id="19-如何检测字符串里只含有数字">19. 如何检测字符串里只含有数字？</h3>
+<h1 id="分为两种情况">分为两种情况</h1>
+<h1 id="1不包含正负号--">1.不包含正负号 +-</h1>
+<p>a = &lsquo;32323&rsquo;
+a.isdigit()</p>
+<h1 id="2含有正负号">2.含有正负号</h1>
+<p>import re
+re.match(r&rsquo;[+-]?\d+$',a)</p>
+<h3 id="20-反转字符串">20. 反转字符串？</h3>
+<p>s = &lsquo;ilovechina&rsquo;
+s = s[::-1]</p>
+<h3 id="21-python中字符串格式化方式">21. Python中字符串格式化方式？</h3>
+<ol>
+<li>%s占位符
+<ol>
+<li>‘hello %s' % name</li>
+</ol>
+</li>
+<li>format
+<ol>
+<li>&lsquo;hello {}'.format(name)</li>
+</ol>
+</li>
+<li>f-string
+<ol>
+<li>f&rsquo;hello {name}&rsquo;</li>
+</ol>
+</li>
+</ol>
+<h3 id="22-去掉字符串的前后空格">22. 去掉字符串的前后空格？</h3>
+<p>s = &quot; sss &quot;
+s.strip()</p>
+<h3 id="23-python中单引号-双引号-三引号">23. python中单引号 双引号 三引号？</h3>
+<p>s = &lsquo;hello&rsquo;
+s= &ldquo;hello&rdquo;
+双引号可以包含单引号字符，单引号无法包含双引号字符
+三引号可以用来加注释，所加注释可以使用__doc__查看</p>
+<h3 id="24-列表去重">24. 列表去重？</h3>
+<p>a_list = [1,2,3,1,2]
+ss = set(a_list)</p>
+<h3 id="25-如何打乱列表的元素">25. 如何打乱列表的元素？</h3>
+<p>import random
+a = [1,5,7,9]
+random.shuffle(a)</p>
+<h3 id="26-字典的del和pop区别">26. 字典的del和pop区别？</h3>
+<p>del 操作删除键值对，不返回值；key不存在必抛出keyerror
+pop 操作删除键值对的同时，返回键所对应的值。 pop（key， default） 返回default，无default也无key 必报错</p>
+<h3 id="27-字典如何排序">27. 字典如何排序？</h3>
+<p>sorted(d1,key=lambda x:x[&lsquo;age&rsquo;])</p>
+<h3 id="28-字典合并的方式">28. 字典合并的方式？</h3>
+<h1 id="python3合并字典有三种方式">python3合并字典有三种方式</h1>
+<ol>
+<li></li>
+</ol>
+<p>a = {&lsquo;a&rsquo;:1,&lsquo;b&rsquo;:2}
+b = {&lsquo;c&rsquo;:3,&rsquo;d':4}
+c = {}
+c.update(a)
+c.update(b)
+2.
+c = dict(a,**b)
+3.
+c = {**a,**b} # 官方推荐这种方式
+(1 update会修改原字典 2是python2的写法 已经弃用 3支持多个字典合并)</p>
+<h3 id="29-使用生成式生成一段功能代码">29. 使用生成式生成一段功能代码？</h3>
+<p>{x:x*x for x in range(6)}</p>
+<h3 id="30-如何将tuplea-b-12-生成dicta1-b-2">30. 如何将tuple(&ldquo;A&rdquo;, &ldquo;b&rdquo;), (1,2) 生成dict（“A”：1， “b”， 2）</h3>
+<p>a = (&lsquo;A&rsquo;, &lsquo;B&rsquo;)
+b = (1,2)
+z = zip(a,b)
+c = dict(z)</p>
+<h3 id="31-tuple和list相互转换">31. tuple和list相互转换？</h3>
+<p>tuple(list)
+list(tuple)</p>
+<h3 id="32-我们知道对于列表可以使用切片操作进行部分元素的选择那么如何对生成器类型的对象实现相同的功能呢">32. 我们知道对于列表可以使用切片操作进行部分元素的选择，那么如何对生成器类型的对象实现相同的功能呢？</h3>
+<p>itertools.islice是标准库中专为可迭代对象（包括生成器）设计的切片工具，语法与列表切片类似：</p>
+<p>from itertools import islice</p>
+<p>示例生成器
+gen = (x for x in range(100))</p>
+<p>取索引 10 到 20（不包含 20），步长为 2
+sliced_gen = islice(gen, 10, 20, 2)</p>
+<p>转换为列表输出
+print(list(sliced_gen))  # 输出：[10, 12, 14, 16, 18]</p>
+<h3 id="33-在读文件操作的时候会使用-readreadline-或者-readlines简述它们各自的作用">33. 在读文件操作的时候会使用 read、readline 或者 readlines，简述它们各自的作用。</h3>
+<p>read将整个文本都读取为一个字符串，占用内存大，
+readline读取为一个生成器，支持遍历和迭代，占用空间小。
+readlines将文本读取为列表，占用空间大</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2024-04-27</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.xiaodingdang.fit/posts/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="Python学习笔记" data-hashtags="python"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.xiaodingdang.fit/posts/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-hashtag="python"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="https://www.xiaodingdang.fit/posts/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.xiaodingdang.fit/posts/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="Python学习笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.xiaodingdang.fit/posts/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title="Python学习笔记"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/python/">python</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/hugoloveit%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" class="prev" rel="prev" title="HugoLoveIt常用操作"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>HugoLoveIt常用操作</a>
+            <a href="/posts/%E4%B8%80%E6%AC%A1%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E9%A2%98-%E5%A4%A7%E6%A8%A1%E6%8B%9F/" class="next" rel="next" title="一次面试算法题 大模拟">一次面试算法题 大模拟<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">蝴蝶🦋</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp"><a href="https://beian.miit.gov.cn/"> 苏ICP备2022014605号</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.485ce22971162ae594e2f22468d97519fb9c08a7112e3a012e8684cfe098b474.js" integrity="sha256-SFziKXEWKuWU4vIkaNl1GfucCKcRLjoBLoaEz+CYtHQ="></script></body>
+</html>

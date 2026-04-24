@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Python高级特性笔记 - 小叮当</title><meta name="Description" content="蝴蝶🦋的博客"><meta property="og:title" content="Python高级特性笔记" />
+<meta property="og:description" content="34. 函数装饰器有什么用？ 函数装饰器可以在不修改原函数的条件下，为原函数添加额外的功能，例如记录日志，运行性能，缓存等 以记录函数运行时间为例，实" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.xiaodingdang.fit/posts/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0/" /><meta property="og:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-04-27T19:26:40+08:00" />
+<meta property="article:modified_time" content="2025-04-27T19:26:40+08:00" /><meta property="og:site_name" content="小叮当" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/>
+
+<meta name="twitter:title" content="Python高级特性笔记"/>
+<meta name="twitter:description" content="34. 函数装饰器有什么用？ 函数装饰器可以在不修改原函数的条件下，为原函数添加额外的功能，例如记录日志，运行性能，缓存等 以记录函数运行时间为例，实"/>
+<meta name="application-name" content="小叮当">
+<meta name="apple-mobile-web-app-title" content="小叮当"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.xiaodingdang.fit/posts/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0/" /><link rel="prev" href="https://www.xiaodingdang.fit/posts/args/" /><link rel="next" href="https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%B8%B8%E7%94%A8magicmethod/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Python高级特性笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.xiaodingdang.fit\/posts\/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0\/"
+        },"genre": "posts","keywords": "Python","wordcount":  6707 ,
+        "url": "https:\/\/www.xiaodingdang.fit\/posts\/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0\/","datePublished": "2025-04-27T19:26:40+08:00","dateModified": "2025-04-27T19:26:40+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "蝴蝶🦋"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="normal" data-header-mobile="normal"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="小叮当">小叮当</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="小叮当">小叮当</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Python高级特性笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>蝴蝶🦋</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-04-27">2025-04-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 6707 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 14 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#34-函数装饰器有什么用">34. 函数装饰器有什么用？</a></li>
+        <li><a href="#35-简述python垃圾回收机制">35. 简述Python垃圾回收机制？</a></li>
+        <li><a href="#36-魔法函数-__call__怎么使用">36. 魔法函数 __call__怎么使用？</a></li>
+        <li><a href="#37-如何判断一个对象时函数还是方法">37. 如何判断一个对象时函数还是方法？</a></li>
+        <li><a href="#38-简述classmethod和staticmethod的用法和区别">38 简述classmethod和staticmethod的用法和区别</a></li>
+        <li><a href="#39-如何实现python的接口">39. 如何实现Python的接口？</a></li>
+        <li><a href="#40-python中的反射">40. Python中的反射？</a></li>
+        <li><a href="#41-简述metaclass的作用和其应用场景">41. 简述metaclass的作用和其应用场景？</a></li>
+        <li><a href="#42-对比hasattr-getattrsetattr-用法">42. 对比hasattr， getattr，setattr 用法</a></li>
+        <li><a href="#43-列举python的magic-method和用途">43. 列举Python的magic method和用途</a></li>
+        <li><a href="#44-如何知道一个python对象的类型">44. 如何知道一个python对象的类型？</a></li>
+        <li><a href="#45-any和call方法">45. any和call方法</a></li>
+        <li><a href="#46-filter方法">46. filter方法</a></li>
+        <li><a href="#47-python中是如何管理内存的">47. python中是如何管理内存的？</a></li>
+        <li><a href="#48-退出python事是否释放所有的内存分配">48. 退出python事是否释放所有的内存分配？</a></li>
+        <li><a href="#49-is和区别">49. is和==区别</a></li>
+        <li><a href="#50-python的作用域">50. python的作用域？</a></li>
+        <li><a href="#51-python的三元运算符">51. python的三元运算符</a></li>
+        <li><a href="#52-enumerate">52. enumerate</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#53-python的全局变量">53. python的全局变量</a></li>
+        <li><a href="#54-python异常处理和自定义异常类">54. python异常处理，和自定义异常类</a></li>
+        <li><a href="#55-python中最大递归深度多少-如何突破">55. python中最大递归深度多少 如何突破</a></li>
+        <li><a href="#56-什么是面向对象的mro">56. 什么是面向对象的MRO</a></li>
+        <li><a href="#57-isinstance作用和应用场景">57. isinstance作用和应用场景</a></li>
+        <li><a href="#58-什么是断言">58. 什么是断言？</a></li>
+        <li><a href="#59-python的lambda表达式">59. python的lambda表达式</a></li>
+        <li><a href="#60-python的新式类和旧式">60. python的新式类和旧式</a></li>
+        <li><a href="#61-dir">61. dir（）</a></li>
+        <li><a href="#62-一个包里有三个模块demo1pydemo2py-和-demo3py但使用-from-tools-import--导入模块时如何保证只有-demo1demo3-被导入">62. 一个包里有三个模块，demo1.py、demo2.py 和 demo3.py，但使用 from tools import * 导入模块时，如何保证只有 demo1、demo3 被导入？</a></li>
+        <li><a href="#63-列举一些python的异常类型和含义">63. 列举一些python的异常类型和含义</a></li>
+        <li><a href="#64-copy和deepcopy">64. copy和deepcopy</a></li>
+        <li><a href="#65-请阐述代码中经常遇到的-args-kwargs-的含义及用法">65. 请阐述代码中经常遇到的 *args, **kwargs 的含义及用法</a></li>
+        <li><a href="#66-python-中会有函数或成员变量包含单下划线前缀和结尾或双下划线前缀结尾它们的区别是什么">66. Python 中会有函数或成员变量包含单下划线前缀和结尾，或双下划线前缀结尾，它们的区别是什么？</a></li>
+        <li><a href="#67-简述-wa-和-wb-文件写入模式的区别">67. 简述 w、a+ 和 wb 文件写入模式的区别。</a></li>
+        <li><a href="#68-sort和sorted区别">68. sort和sorted区别</a></li>
+        <li><a href="#69-什么是负索引">69. 什么是负索引？</a></li>
+        <li><a href="#70-pprint模块是干什么的">70. pprint模块是干什么的？</a></li>
+        <li><a href="#71-python中的赋值运算符">71. python中的赋值运算符</a></li>
+        <li><a href="#72-python中的逻辑运算符">72. python中的逻辑运算符？</a></li>
+        <li><a href="#73-python中的位运算符">73. python中的位运算符？</a></li>
+        <li><a href="#74-python中如何使用多进制数字">74. python中如何使用多进制数字？</a></li>
+        <li><a href="#75-python怎么实现单例模式">75. python怎么实现单例模式？</a></li>
+        <li><a href="#76-python的并发">76. python的并发</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="34-函数装饰器有什么用">34. 函数装饰器有什么用？</h3>
+<p>函数装饰器可以在不修改原函数的条件下，为原函数添加额外的功能，例如记录日志，运行性能，缓存等
+以记录函数运行时间为例，实现一个装饰器
+import time
+def time_it(func):
+def wrapper(func):
+start_time = time.time()
+res = func()
+end_time = time.time()
+return start_time - end_time
+return wrapper</p>
+<h3 id="35-简述python垃圾回收机制">35. 简述Python垃圾回收机制？</h3>
+<p>引用计数机制：
+python里每一个东西都是对象，它们的核心就是一个结构体：PyObject
+typedef struct_object {
+int ob_refcnt;
+struct_typeobject *ob_type;
+} PyObject;</p>
+<p>PyObject是每个对象必有的内容，其中ob_refcnt就是做为引用计数。当一个对象有新的引用时，它的ob_refcnt就会增加，当引用它的对象被删除，它的ob_refcnt就会减少
+#define Py_INCREF(op)   ((op)-&gt;ob_refcnt++) //增加计数
+#define Py_DECREF(op) \ //减少计数
+if (&ndash;(op)-&gt;ob_refcnt != 0)<br>
+;<br>
+else<br>
+__Py_Dealloc((PyObject *)(op))</p>
+<p>当引用计数为0时，该对象生命就结束了。
+引用计数机制的优点：</p>
+<p>简单
+实时性：一旦没有引用，内存就直接释放了。不用像其他机制等到特定时机。实时性还带来一个好处：处理回收内存的时间分摊到了平时</p>
+<p>Python 的垃圾回收机制（Garbage Collection, GC）是一种自动内存管理策略，主要基于引用计数，并辅以标记-清除和分代回收算法，以解决循环引用问题并优化性能。其核心机制如下：</p>
+<p>⚙️ 1. 引用计数（Reference Counting）</p>
+<p>• 原理：每个对象内置一个引用计数器，记录指向该对象的引用数量。</p>
+<p>• 对象被创建时计数为 1；</p>
+<p>• 新增引用时计数 +1（如赋值、传参）；</p>
+<p>• 引用失效时计数 -1（如变量销毁、重新赋值）；</p>
+<p>• 计数归零时对象内存立即释放。</p>
+<p>• 示例：<br>
+import sys<br>
+a = [1, 2]  # 计数=1<br>
+b = a        # 计数=2<br>
+del b        # 计数=1<br>
+del a        # 计数=0 → 对象回收</p>
+<p>• 缺点：无法处理循环引用（如两个对象互相引用）。</p>
+<p>🔄 2. 标记-清除（Mark and Sweep）</p>
+<p>• 解决循环引用问题：</p>
+<p>• 标记阶段：从根对象（全局变量、函数栈等）出发，遍历所有可达对象并标记为“存活”。</p>
+<p>• 清除阶段：回收所有未被标记的对象（即不可达的循环引用对象）。</p>
+<p>• 示例：<br>
+class Node:<br>
+def <strong>init</strong>(self):<br>
+self.ref = None<br>
+a = Node()<br>
+b = Node()<br>
+a.ref = b  # a 引用 b<br>
+b.ref = a  # b 引用 a → 循环引用<br>
+del a, b   # 引用计数均为1，但标记-清除会回收</p>
+<p>🕒 3. 分代回收（Generational GC）</p>
+<p>• 优化策略：基于“对象存活越久，越不可能失效”的假设，将对象分为三代：</p>
+<p>• 第 0 代（年轻代）：新创建对象，垃圾回收最频繁（默认阈值 700 次分配触发）。</p>
+<p>• 第 1 代（中年代）：经历 0 代回收后存活的对象，回收频率较低。</p>
+<p>• 第 2 代（老年代）：长期存活对象，回收频率最低。</p>
+<p>• 晋升规则：对象在一次回收后存活，则晋升到下一代。</p>
+<p>🛠️ 4. 手动控制与调优</p>
+<p>• gc 模块：</p>
+<p>• gc.collect()：手动触发全代垃圾回收。</p>
+<p>• gc.set_threshold(700, 10, 10)：设置各代回收阈值（0 代分配数超阈值即触发）。</p>
+<p>• gc.disable() / gc.enable()：临时禁用/启用自动回收（需谨慎使用）。</p>
+<p>• 弱引用（weakref）：避免循环引用，不增加对象引用计数。</p>
+<p>💡 总结</p>
+<p>Python 的垃圾回收以引用计数为主（实时高效），标记-清除解决循环引用，分代回收提升效率（减少全局扫描）。开发者可通过 gc 模块调优，或使用弱引用避免内存泄漏。</p>
+<h3 id="36-魔法函数-__call__怎么使用">36. 魔法函数 __call__怎么使用？</h3>
+<p>'''
+class Bar:
+def <strong>call</strong>(self, *args, **kwargs):
+print(&lsquo;i am instance method&rsquo;)</p>
+<p>b = Bar()  # 实例化
+b()  # 实例对象b 可以作为函数调用 等同于b.<strong>call</strong> 使用</p>
+<p>OUT: i am instance method</p>
+<p>带参数的类装饰器
+class Bar:</p>
+<pre><code>def __init__(self, p1):
+    self.p1 = p1
+
+def __call__(self, func):
+    def wrapper():
+        print(&quot;Starting&quot;, func.__name__)
+        print(&quot;p1=&quot;, self.p1)
+        func()
+        print(&quot;Ending&quot;, func.__name__)
+    return wrapper
+</code></pre>
+<p>@Bar(&ldquo;foo bar&rdquo;)
+def hello():
+print(&ldquo;Hello&rdquo;)
+'''</p>
+<h3 id="37-如何判断一个对象时函数还是方法">37. 如何判断一个对象时函数还是方法？</h3>
+<p>'''
+在Python中，准确区分函数（Function）和方法（Method）需结合对象的定义位置、绑定状态和类型检查。以下是核心判断方法及示例：</p>
+<p>🔍 1. 通过type()或__class__属性直接检查类型</p>
+<p>• 函数：类型为types.FunctionType或显示&lt;class &lsquo;function&rsquo;&gt;。<br>
+import types
+def my_func(): pass
+print(type(my_func) == types.FunctionType)  # True</p>
+<p>• 方法：类型为types.MethodType或显示&lt;class &lsquo;method&rsquo;&gt;（仅适用于已绑定到实例或类的普通方法/类方法）。<br>
+class MyClass:
+def my_method(self): pass
+obj = MyClass()
+print(type(obj.my_method) == types.MethodType)  # True</p>
+<p>🛠️ 2. 使用inspect模块精准判断</p>
+<p>• inspect.isfunction(obj)：</p>
+<pre><code> ◦ 返回True表示是函数（包括模块级函数、静态方法、类中未绑定的函数）。  
+   import inspect
+   print(inspect.isfunction(my_func))  # True
+   print(inspect.isfunction(MyClass.my_method))  # True（未绑定时）
+</code></pre>
+<p>• inspect.ismethod(obj)：</p>
+<pre><code> ◦ 返回True表示是已绑定的方法（实例方法或类方法）。  
+   print(inspect.ismethod(obj.my_method))  # True（绑定到实例）
+   print(inspect.ismethod(MyClass.my_method))  # False（未绑定）
+</code></pre>
+<p>🔗 3. 检查绑定状态（关键区别）</p>
+<p>• 方法：绑定到对象（实例或类），具有__self__属性指向绑定的对象。<br>
+print(hasattr(obj.my_method, &ldquo;<strong>self</strong>&quot;) and obj.my_method.<strong>self</strong> is obj)  # True</p>
+<p>• 函数：无__self__属性，或__self__为None。<br>
+print(hasattr(my_func, &ldquo;<strong>self</strong>&quot;))  # False</p>
+<p>⚖️ 4. 理解本质区别</p>
+<p>• 函数：独立于类，直接定义在模块中或类内但未绑定（如静态方法、类属性访问的普通方法）。<br>
+class MyClass:
+@staticmethod
+def static_func(): pass
+print(inspect.isfunction(MyClass.static_func))  # True（静态方法本质是函数）</p>
+<p>• 方法：绑定到对象，通过实例或类调用时自动传入self/cls参数（如实例方法、类方法）。<br>
+class MyClass:
+@classmethod
+def class_method(cls): pass
+print(inspect.ismethod(MyClass.class_method))  # True（类方法绑定到类）</p>
+<p>⚠️ 5. 特殊情况处理</p>
+<p>• 内置函数/方法（如len或[].append）：</p>
+<pre><code> ◦ inspect.isbuiltin(obj)为True。  
+
+ ◦ 若含__self__（如[].append），则是内置绑定方法；否则是内置函数（如len）。  
+</code></pre>
+<p>• 实现了__call__的对象：</p>
+<pre><code> ◦ 可调用但不是函数/方法，需通过type(obj)进一步判断（如functools.partial或自定义类）。  
+</code></pre>
+<p>💡 实用工具函数</p>
+<p>直接使用此函数快速判断：
+import inspect</p>
+<p>def check_callable(obj):
+if not callable(obj):
+return &ldquo;Not callable&rdquo;
+if inspect.ismethod(obj):
+return f&quot;Method (bound to {obj.<strong>self</strong>})&rdquo;
+if inspect.isfunction(obj):
+return &ldquo;Function&rdquo;
+if inspect.isbuiltin(obj):
+return &ldquo;Built-in function&rdquo; if getattr(obj, &ldquo;<strong>self</strong>&rdquo;, None) is None else &ldquo;Built-in method&rdquo;
+return f&quot;Callable object ({type(obj).<strong>name</strong>})&rdquo;</p>
+<p>测试
+class Foo:
+def method(self): pass
+@classmethod
+def clsmethod(cls): pass
+@staticmethod
+def static(): pass</p>
+<p>print(check_callable(Foo().method))  # Method (bound to <Foo instance>)
+print(check_callable(Foo.clsmethod)) # Method (bound to <class Foo>)
+print(check_callable(Foo.static))    # Function
+print(check_callable(len))           # Built-in function
+print(check_callable([].append))     # Built-in method</p>
+<p>总结</p>
+<p>区分核心在于：</p>
+<ol>
+<li>定义位置：类内定义可能是方法（需绑定），模块级定义是函数。</li>
+<li>绑定状态：方法含__self__指向调用对象，函数无绑定。</li>
+<li>类型检查：优先用inspect.ismethod()和inspect.isfunction()，结合__self__验证。
+'''</li>
+</ol>
+<h3 id="38-简述classmethod和staticmethod的用法和区别">38 简述classmethod和staticmethod的用法和区别</h3>
+<p>@classmethod 和 @staticmethod 是 Python 中用于定义类中特殊方法的装饰器，核心区别在于参数绑定和访问权限。以下是详细对比：</p>
+<p>⚙️ 核心区别</p>
+<p>特性 @classmethod @staticmethod</p>
+<p>第一个参数 cls（类对象，自动传入） 无特殊参数</p>
+<p>绑定对象 绑定类（可访问类属性） 无绑定（独立函数）</p>
+<p>访问类属性 ✅ 通过 cls 访问 ❌ 不可直接访问</p>
+<p>访问实例属性 ❌ 不可直接访问 ❌ 不可直接访问</p>
+<p>继承多态支持 ✅ cls 自动指向调用类（支持子类覆盖） ❌ 无类绑定，不支持多态</p>
+<p>典型用途 工厂方法、类属性操作、注册机制 工具函数、验证逻辑、无状态计算</p>
+<p>🛠️ 用法与示例</p>
+<ol>
+<li>@classmethod 的典型场景</li>
+</ol>
+<p>• 工厂方法（替代构造函数）</p>
+<p>根据不同参数创建实例，避免硬编码类名：<br>
+class Person:
+def <strong>init</strong>(self, name, age):
+self.name = name
+self.age = age</p>
+<pre><code>  @classmethod
+  def from_birth_year(cls, name, birth_year):  # cls 自动绑定 Person 或其子类
+      age = 2025 - birth_year
+      return cls(name, age)  # 等价于 Person(name, age)
+</code></pre>
+<p>p = Person.from_birth_year(&ldquo;Alice&rdquo;, 1990)  # 直接通过类调用</p>
+<p>• 操作类属性</p>
+<p>修改或读取类级别的共享数据：<br>
+class Counter:
+count = 0
+@classmethod
+def increment(cls):
+cls.count += 1  # 直接修改类属性
+return cls.count
+Counter.increment()  # 输出: 1</p>
+<p>• 继承多态支持</p>
+<p>子类调用时，cls 自动绑定子类：<br>
+class Animal:
+@classmethod
+def create(cls):
+return cls()  # 返回调用类的实例
+class Dog(Animal): pass
+dog = Dog.create()  # 返回 Dog 实例（而非 Animal）</p>
+<ol start="2">
+<li>@staticmethod 的典型场景</li>
+</ol>
+<p>• 工具函数</p>
+<p>逻辑与类相关，但无需访问类/实例状态：<br>
+class MathUtils:
+@staticmethod
+def add(a, b):
+return a + b  # 纯计算，无依赖
+MathUtils.add(3, 5)  # 输出: 8</p>
+<p>• 数据验证</p>
+<p>检查输入合法性，独立于对象状态：<br>
+class User:
+@staticmethod
+def is_valid_username(name):
+return isinstance(name, str) and len(name) &gt;= 3
+User.is_valid_username(&ldquo;Al&rdquo;)  # 输出: False</p>
+<p>• 避免全局函数</p>
+<p>将相关功能组织在类命名空间中：<br>
+class DateFormatter:
+@staticmethod
+def format(date):
+return date.strftime(&quot;%Y-%m-%d&quot;)  # 与类逻辑关联，但无状态依赖</p>
+<p>⚠️ 使用建议</p>
+<ol>
+<li>
+<p>何时用 @classmethod？<br>
+• 需要访问或修改类属性（如计数器、配置管理）。</p>
+<p>• 需实现多态构造函数（如 from_json(), from_file()）。</p>
+<p>• 管理类注册机制（如插件系统）。</p>
+</li>
+<li>
+<p>何时用 @staticmethod？<br>
+• 方法完全独立于类和实例（如数学计算、格式转换）。</p>
+<p>• 避免污染全局命名空间，但逻辑归属当前类。</p>
+</li>
+<li>
+<p>避免滥用<br>
+• 若方法无需任何类/实例数据，且与类无关，应定义为模块级函数而非静态方法。</p>
+</li>
+</ol>
+<p>💎 总结</p>
+<p>• @classmethod：绑定类，用 cls 操作类属性，支持工厂方法和继承多态。</p>
+<p>• @staticmethod：无绑定，仅作命名空间工具，适合独立逻辑函数。</p>
+<p>核心选择原则：是否需要访问类级数据？是 → @classmethod；否 → @staticmethod 或模块函数。</p>
+<h3 id="39-如何实现python的接口">39. 如何实现Python的接口？</h3>
+<p>#抽象类加抽象方法就等于面向对象编程中的接口
+from abc import ABCMeta,abstractmethod</p>
+<p>class interface(object):
+<strong>metaclass</strong> = ABCMeta #指定这是一个抽象类
+@abstractmethod  #抽象方法
+def Lee(self):
+pass</p>
+<pre><code>def Marlon(self):
+    pass
+</code></pre>
+<p>class RelalizeInterfaceLee(interface):#必须实现interface中的所有函数，否则会编译错误
+def <strong>init</strong>(self): <br>
+print &lsquo;这是接口interface的实现&rsquo;
+def Lee(self):
+print &lsquo;实现Lee功能&rsquo;     <br>
+def Marlon(self):
+pass<br>
+<a href="https://rosealice2018.github.io/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0python%E6%8E%A5%E5%8F%A3/" target="_blank" rel="noopener noreffer ">https://rosealice2018.github.io/posts/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0python%E6%8E%A5%E5%8F%A3/</a></p>
+<h3 id="40-python中的反射">40. Python中的反射？</h3>
+<h3 id="41-简述metaclass的作用和其应用场景">41. 简述metaclass的作用和其应用场景？</h3>
+<h3 id="42-对比hasattr-getattrsetattr-用法">42. 对比hasattr， getattr，setattr 用法</h3>
+<h3 id="43-列举python的magic-method和用途">43. 列举Python的magic method和用途</h3>
+<ol>
+<li><strong>call</strong>:允许一个类的实例像函数一样被调用。实质上说，这意味着 x() 与 x.<em>call</em>() 是相同的
+2.<strong>init</strong>:显示初始化属性
+3.<strong>str</strong>,<strong>repr</strong>,定义类的时候，重写这两个方法可以让类更清晰
+再就是__setattr__,__getattr__,__delattr__等等</li>
+</ol>
+<h3 id="44-如何知道一个python对象的类型">44. 如何知道一个python对象的类型？</h3>
+<p>type（obj）</p>
+<h3 id="45-any和call方法">45. any和call方法</h3>
+<p>#any(x)判断x对象是否为空对象，如果都为空、0、false，则返回false，如果不都为空、0、false，则返回true</p>
+<p>#all(x)如果all(x)参数x对象的所有元素不为0、''、False或者x为空对象，则返回True，否则返回False</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>any(&lsquo;123&rsquo;)
+True
+any([0,1])
+True
+any([0,&lsquo;0&rsquo;,''])
+True
+any([0,''])
+False
+any([0,'',&lsquo;false&rsquo;])
+True
+any([0,'',bool(&lsquo;false&rsquo;)])
+True
+any([0,'',False])
+False
+any((&lsquo;a&rsquo;,&lsquo;b&rsquo;,&lsquo;c&rsquo;))
+True
+any((&lsquo;a&rsquo;,&lsquo;b&rsquo;,''))
+True
+any((0,False,''))
+False
+any([])
+False
+any(())
+False
+all([&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &rsquo;d'])  #列表list，
+True
+all([&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &rsquo;d'])  #列表list，元素都不为空或0
+True
+all([&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;&rsquo;, &rsquo;d'])  #列表list，存在一个为空的元素
+False
+all([0, 1,2, 3])  #列表list，存在一个为0的元素
+False
+all((&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &rsquo;d'))  #元组tuple，元素都不为空或0
+True
+all((&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;&rsquo;, &rsquo;d'))  #元组tuple，存在一个为空的元素
+False
+all((0, 1,2, 3))  #元组tuple，存在一个为0的元素
+False
+all([]) # 空列表
+True
+all(()) # 空元组
+True
+##注意：空元组、空列表返回值为True，这里要特别注意</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="46-filter方法">46. filter方法</h3>
+<p><a href="https://rosealice2018.github.io/posts/python%E7%9A%84filter%E6%96%B9%E6%B3%95/" target="_blank" rel="noopener noreffer ">https://rosealice2018.github.io/posts/python%E7%9A%84filter%E6%96%B9%E6%B3%95/</a></p>
+<h3 id="47-python中是如何管理内存的">47. python中是如何管理内存的？</h3>
+<h3 id="48-退出python事是否释放所有的内存分配">48. 退出python事是否释放所有的内存分配？</h3>
+<h3 id="49-is和区别">49. is和==区别</h3>
+<p>is比较的是两个对象的id值是否相等，也就是比较两个对象是否为同一个实例对象，是否指向同一个内存地址。</p>
+<p>==比较的是两个对象的内容是否相等，默认会调用对象的__eq__()方法。</p>
+<h3 id="50-python的作用域">50. python的作用域？</h3>
+<h3 id="51-python的三元运算符">51. python的三元运算符</h3>
+<p>条件语句比较简单时可以使用三元运算符，最常见的就是
+res = &lsquo;test True&rsquo; if expression is True else &lsquo;test False&rsquo;</p>
+<h3 id="52-enumerate">52. enumerate</h3>
+<h1 id="遍历列表时候携带索引index">遍历列表时候，携带索引index</h1>
+<p>a = [&lsquo;a&rsquo;,&lsquo;b&rsquo;,&lsquo;c&rsquo;]
+for index,item in enumerate(a):
+print(index,item)</p>
+<h3 id="53-python的全局变量">53. python的全局变量</h3>
+<h3 id="54-python异常处理和自定义异常类">54. python异常处理，和自定义异常类</h3>
+<p>class NameTooShortError(ValueError):
+pass
+def validate(name):
+if len(name) &lt; 10:
+raise NameTooShortError(name)</p>
+<p>使用自定义异常类，使得发生异常时的错误更容易排查</p>
+<h3 id="55-python中最大递归深度多少-如何突破">55. python中最大递归深度多少 如何突破</h3>
+<p>python解释器限制最大的递归深度是999，可以通过
+import sys
+sys.setrecursionlimit(10000)  # set the maximum depth as 10000
+重新设置最大递归深度(PS:这属于临时修改)</p>
+<h3 id="56-什么是面向对象的mro">56. 什么是面向对象的MRO</h3>
+<h3 id="57-isinstance作用和应用场景">57. isinstance作用和应用场景</h3>
+<p>来判断一个对象是否是一个已知的类型
+举个栗子：
+p= &lsquo;sfa&rsquo;
+isinstance(p,str)
+True</p>
+<h3 id="58-什么是断言">58. 什么是断言？</h3>
+<p>Python 的断言语句是一种调试工具，用来测试某个断言条件。如果断言条件 为真，则程序将继续正常执行;但如果条件为假，则会引发 AssertionError 异常并显示相关 的错误消息。</p>
+<h3 id="59-python的lambda表达式">59. python的lambda表达式</h3>
+<h3 id="60-python的新式类和旧式">60. python的新式类和旧式</h3>
+<p>python3只支持新式类了</p>
+<h3 id="61-dir">61. dir（）</h3>
+<p>dir() 函数不带参数时，返回当前范围内的变量、方法和定义的类型列表；带参数时，返回参数的属性、方法列表。如果参数包含方法__dir__()，该方法将被调用。如果参数不包含__dir__()，该方法将最大限度地收集参数信息。</p>
+<h3 id="62-一个包里有三个模块demo1pydemo2py-和-demo3py但使用-from-tools-import--导入模块时如何保证只有-demo1demo3-被导入">62. 一个包里有三个模块，demo1.py、demo2.py 和 demo3.py，但使用 from tools import * 导入模块时，如何保证只有 demo1、demo3 被导入？</h3>
+<p>但若想使用from pacakge_1 import *这种形式的写法，需在  init.py中加上：   all = [‘file_a’, ‘file_b’] #package_1下有file_a.py和file_b.py，在导入时init.py文件将被执行。
+但不建议在 init.py中写模块，以保证该文件简单。不过可在init.py导入我们需要的模块，以便避免一个个导入、方便使用。</p>
+<h3 id="63-列举一些python的异常类型和含义">63. 列举一些python的异常类型和含义</h3>
+<ol>
+<li>ArithmeticError 此基类用于派生针对各种算术类错误而引发的内置异常: OverflowError, ZeroDivisionError, FloatingPointError</li>
+<li>BufferError 当与 缓冲区 相关的操作无法执行时将被引发。</li>
+<li>LookupError 此基类用于派生当映射或序列所使用的键或索引无效时引发的异常: IndexError, KeyError。 这可以通过 codecs.lookup() 来直接引发</li>
+<li>ImportError 当 import 语句尝试加载模块遇到麻烦时将被引发。 并且当 from &hellip; import 中的 &ldquo;from list&rdquo; 存在无法找到的名称时也会被引发</li>
+<li>IndexError 当序列抽取超出范围时将被引发。 （切片索引会被静默截短到允许的范围；如果指定索引不是整数则 TypeError 会被引发</li>
+</ol>
+<h3 id="64-copy和deepcopy">64. copy和deepcopy</h3>
+<p>copy 即所谓的浅拷贝，赋值的时候非递归地复制子对象的引用；
+deepcopy 即所谓的深拷贝，赋值的时候递归复制子对象。
+举个栗子，
+xs = [1,2,[2,3,4],3]
+ys = xs # 浅拷贝
+zs = deepcopy(xs) # 深拷贝
+xs[2][0] = 5
+print(ys)
+[1,2,[2,3,4],3]
+print(xs)
+[1,2,[5,3,4],3]</p>
+<p>print(zs)
+[1,2,[5,3,4],3] # 由于深拷贝已经递归复制了子对象，所以内部的List也发生改变</p>
+<h3 id="65-请阐述代码中经常遇到的-args-kwargs-的含义及用法">65. 请阐述代码中经常遇到的 *args, **kwargs 的含义及用法</h3>
+<p>这两个是python中的可变参数。<em>args表示任何多个位置参数，它是一个tuple；**kwargs表示关键字参数，它是一个dict。并且同时使用</em>args和<strong>kwargs时，必须*args参数列要在</strong>kwargs前</p>
+<h3 id="66-python-中会有函数或成员变量包含单下划线前缀和结尾或双下划线前缀结尾它们的区别是什么">66. Python 中会有函数或成员变量包含单下划线前缀和结尾，或双下划线前缀结尾，它们的区别是什么？</h3>
+<p>前置单下划线_var:命名约定，用来表示该名称仅在内部使用。一般对 Python 解释器没 有特殊含义(通配符导入除外)，只能作为对程序员的提示。
+后置单下划线 var_:命名约定，用于避免与 Python 关键字发生命名冲突。
+前置双下划线__var:在类环境中使用时会触发名称改写，对 Python 解释器有特殊含义。
+前后双下划线__var__:表示由 Python 语言定义的特殊方法。在自定义的属性中要避免
+使用这种命名方式。</p>
+<h3 id="67-简述-wa-和-wb-文件写入模式的区别">67. 简述 w、a+ 和 wb 文件写入模式的区别。</h3>
+<p>w:写入时会覆盖上一次的写入
+a+:追加写入
+wb:以二进制文件形式写入</p>
+<h3 id="68-sort和sorted区别">68. sort和sorted区别</h3>
+<p>sort()与sorted()的不同在于，sort是在原位重新排列列表，而sorted()是产生一个新的列表</p>
+<h3 id="69-什么是负索引">69. 什么是负索引？</h3>
+<p>负索引和正索引不同，它是从右边开始检索。例如：使用负索引取出列表的最后一个数
+lis[-1] # 取出列表的最后一个元素
+lis[-2] # 取出列表的倒数第二个元素</p>
+<h3 id="70-pprint模块是干什么的">70. pprint模块是干什么的？</h3>
+<p>print()和pprint()都是python的打印模块，功能基本一样，唯一的区别就是pprint()模块打印出来的数据结构更加完整，每行为一个数据结构，更加方便阅读打印输出结果。特别是对于特别长的数据打印，print()输出结果都在一行，不方便查看，而pprint()采用分行打印输出，所以对于数据结构比较复杂、数据长度较长的数据，适合采用pprint()打印方式</p>
+<h3 id="71-python中的赋值运算符">71. python中的赋值运算符</h3>
+<p>在python中，使用 = 可以给变量赋值。
+在算术运算时，为了简化代码的编写，Python还提供了一系列与算术运算符对应的赋值运算符
+例如，c += a 等效于 c=c+a</p>
+<h3 id="72-python中的逻辑运算符">72. python中的逻辑运算符？</h3>
+<p>and, or, not</p>
+<h3 id="73-python中的位运算符">73. python中的位运算符？</h3>
+<p>&amp;	按位与运算符：参与运算的两个值,如果两个相应位都为1,则该位的结果为1,否则为0	(a &amp; b) 输出结果 12 ，二进制解释： 0000 1100
+|	按位或运算符：只要对应的二个二进位有一个为1时，结果位就为1	(a | b) 输出结果 61 ，二进制解释： 0011 1101
+^	按位异或运算符：当两对应的二进位相异时，结果为1	(a ^ b) 输出结果 49 ，二进制解释： 0011 0001
+~	按位取反运算符：对数据的每个二进制位取反,即把1变为0,把0变为1	(~a ) 输出结果 -61 ，二进制解释： 1100 0011， 在一个有符号二进制数的补码形式。
+&laquo;	左移动运算符：运算数的各二进位全部左移若干位，由”&laquo;”右边的数指定移动的位数，高位丢弃，低位补0	a &laquo; 2 输出结果 240 ，二进制解释： 1111 0000</p>
+<blockquote>
+<blockquote>
+<p>右移动运算符：把”&raquo;”左边的运算数的各二进位全部右移若干位，”&raquo;”右边的数指定移动的位数	a &raquo; 2 输出结果 15 ，二进制解释： 0000 1111</p>
+</blockquote>
+</blockquote>
+<h3 id="74-python中如何使用多进制数字">74. python中如何使用多进制数字？</h3>
+<p>1、二进制数字由0和1组成，我们使用0b或0B前缀表示二进制数</p>
+<p>print(int(0b1010))#10
+2、使用bin()函数将一个数字转换为它的二进制形式</p>
+<p>print(bin(0xf))#0b1111
+3、八进制数由数字0-7组成，用前缀0o或0O表示8进制数</p>
+<p>print(oct(8))#0o10
+4、十六进数由数字0-15组成，用前缀0x或者0X表示16进制数</p>
+<p>print(hex(16))#0x10
+print(hex(15))#0xf</p>
+<h3 id="75-python怎么实现单例模式">75. python怎么实现单例模式？</h3>
+<h3 id="76-python的并发">76. python的并发</h3>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2025-04-27</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.xiaodingdang.fit/posts/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0/" data-title="Python高级特性笔记" data-hashtags="Python"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.xiaodingdang.fit/posts/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0/" data-hashtag="Python"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="https://www.xiaodingdang.fit/posts/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.xiaodingdang.fit/posts/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0/" data-title="Python高级特性笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.xiaodingdang.fit/posts/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E7%AC%94%E8%AE%B0/" data-title="Python高级特性笔记"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/python/">python</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/args/" class="prev" rel="prev" title="Args"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Args</a>
+            <a href="/posts/python%E7%9A%84%E5%B8%B8%E7%94%A8magicmethod/" class="next" rel="next" title="Python的常用magicmethod">Python的常用magicmethod<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">蝴蝶🦋</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp"><a href="https://beian.miit.gov.cn/"> 苏ICP备2022014605号</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.485ce22971162ae594e2f22468d97519fb9c08a7112e3a012e8684cfe098b474.js" integrity="sha256-SFziKXEWKuWU4vIkaNl1GfucCKcRLjoBLoaEz+CYtHQ="></script></body>
+</html>

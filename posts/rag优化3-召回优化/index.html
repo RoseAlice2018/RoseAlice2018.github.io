@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>RAG优化3 召回优化 - 小叮当</title><meta name="Description" content="蝴蝶🦋的博客"><meta property="og:title" content="RAG优化3 召回优化" />
+<meta property="og:description" content="本文介绍一些提高向量召回效果的方法 短文本全局信息增强 目的是为切分后的短文本片段补充所属的长文本全局信息。 论文“DAPR:A Benchmark on Document-Aware Passage Retri" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%963-%E5%8F%AC%E5%9B%9E%E4%BC%98%E5%8C%96/" /><meta property="og:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-08-26T00:10:14+08:00" />
+<meta property="article:modified_time" content="2025-08-26T00:10:14+08:00" /><meta property="og:site_name" content="小叮当" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/>
+
+<meta name="twitter:title" content="RAG优化3 召回优化"/>
+<meta name="twitter:description" content="本文介绍一些提高向量召回效果的方法 短文本全局信息增强 目的是为切分后的短文本片段补充所属的长文本全局信息。 论文“DAPR:A Benchmark on Document-Aware Passage Retri"/>
+<meta name="application-name" content="小叮当">
+<meta name="apple-mobile-web-app-title" content="小叮当"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%963-%E5%8F%AC%E5%9B%9E%E4%BC%98%E5%8C%96/" /><link rel="prev" href="https://www.xiaodingdang.fit/posts/rag%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93/" /><link rel="next" href="https://www.xiaodingdang.fit/posts/rag%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "RAG优化3 召回优化",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.xiaodingdang.fit\/posts\/rag%E4%BC%98%E5%8C%963-%E5%8F%AC%E5%9B%9E%E4%BC%98%E5%8C%96\/"
+        },"genre": "posts","keywords": "大模型, RAG, 优化","wordcount":  1611 ,
+        "url": "https:\/\/www.xiaodingdang.fit\/posts\/rag%E4%BC%98%E5%8C%963-%E5%8F%AC%E5%9B%9E%E4%BC%98%E5%8C%96\/","datePublished": "2025-08-26T00:10:14+08:00","dateModified": "2025-08-26T00:10:14+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "蝴蝶🦋"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="normal" data-header-mobile="normal"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="小叮当">小叮当</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="小叮当">小叮当</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">RAG优化3 召回优化</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>蝴蝶🦋</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-08-26">2025-08-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1611 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#短文本全局信息增强">短文本全局信息增强</a></li>
+            <li><a href="#召回内容上下文扩充">召回内容上下文扩充</a></li>
+            <li><a href="#文本多向量表示">文本多向量表示</a></li>
+            <li><a href="#查询内容优化">查询内容优化</a>
+              <ul>
+                <li><a href="#hyde-hypothetical-document-embedding">HYDE （Hypothetical Document Embedding）</a></li>
+              </ul>
+            </li>
+            <li><a href="#召回文本重排序">召回文本重排序</a></li>
+            <li><a href="#多检索器融合">多检索器融合</a></li>
+            <li><a href="#结合元数据召回">结合元数据召回</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><ul>
+<li>本文介绍一些提高向量召回效果的方法</li>
+</ul>
+<h4 id="短文本全局信息增强">短文本全局信息增强</h4>
+<ul>
+<li>目的是为切分后的短文本片段补充所属的长文本全局信息。</li>
+</ul>
+<p>论文“DAPR:A Benchmark on Document-Aware Passage Retrieval“中全局信息有以下3种：</p>
+<ol>
+<li>长文本前3句话。对于长文本来说，文本开头往往包含该段文本的主旨。</li>
+<li>长文本标题。标题通常是对内容的概括。</li>
+<li>长文本关键词。使用topicrank算法提取关键词。</li>
+</ol>
+<ul>
+<li>可以利用llm为长文本提供主旨句，并拼接到短文本前。</li>
+</ul>
+<h4 id="召回内容上下文扩充">召回内容上下文扩充</h4>
+<ul>
+<li>一般来讲，向量数据库召回的是短文本，直接召回长文本可能困难一点，但可以设计一些人工策略来扩充召回内容，打破“召回内容和输入LLM中的内容相等“</li>
+<li>Langchain使用ParentDocumentRetriever，传入两个文本分割器parent_splitter和child_splitter。前者用于确定输入到llm中的父文本块的大小，而后者用于确定从向量数据库中召回的子文本块的大小。同时，还会存储子文本块与父文本块之间的映射关系。</li>
+<li>它通过维护切分后的短文本在全文中的位置关系，实现了在召回某个短文本后，将其前后各n个短文本也作为上下文输入LLM中的功能。</li>
+</ul>
+<h4 id="文本多向量表示">文本多向量表示</h4>
+<ul>
+<li>构建向量数据库时，使用多种向量来表示同一段文本通常是有益的。假设有一段文本A，我们不仅可以使用完整的A来生成向量，还可以使用其子集，总结句等生成“补充向量”。在RAG过程中，当我们召回任意“补充向量”对应的文本后，并不直接将其输入大模型中，而是将文本A的内容作为输入。这种做法解耦了召回的内容和输入LLM的内容之间相等的关系。可利用如下3种文本生成“补充向量”。</li>
+</ul>
+<ol>
+<li>文本切块：将原始成本进一步切块后生成向量存入数据库中，可以在召回时增强对更细粒度语义的关注，本质上是之前介绍的“父文本检索”策略。</li>
+<li>文档的摘要：可通过LLM的能力生成摘要。</li>
+<li>假设性问题：可利用大模型能力，并根据文本提出问题。“用问题召回问题”比“用问题召回答案”更加容易。</li>
+</ol>
+<h4 id="查询内容优化">查询内容优化</h4>
+<ul>
+<li>
+<p>用户提出的问题口语化，语义模糊，无关内容过多等特点。与LLM相比，常用的向量化模型参数较少，理解能力有限。在对字向量进行压缩时，会有信息损失。因此，将模糊的问题向量化后召回的内容很可能与用户的真实意图不符合，从而影响RAG场景下LLM的最终回答效果。</p>
+</li>
+<li>
+<p>所以可以先用LLM对用户的原始提问进行改写和扩充，然后再进行相关内容召回。</p>
+</li>
+<li>
+<p>langchain提供了multiqueryretriever，可以将用户的原始问题从不同角度改写成其他多种不同的提问方式，然后针对这些提问方式的多个问题同时进行文本召回，然后将这些召回结果取并集，再输入LLM中进行处理。</p>
+</li>
+</ul>
+<h5 id="hyde-hypothetical-document-embedding">HYDE （Hypothetical Document Embedding）</h5>
+<ul>
+<li>原理上：把根据问题找答案的非相似性检索转换为相似性检索。</li>
+</ul>
+<ol>
+<li>用大模型根据用户问题生成K个假答案。</li>
+<li>利用向量化模型，将生成的k的“假答案”和用户的问题转化为向量。</li>
+<li>将问题向量和k个假答案向量取平均，当作最终的融合查询向量。</li>
+<li>利用融合查询向量从向量数据库中召回相关的文本片段。</li>
+</ol>
+<h4 id="召回文本重排序">召回文本重排序</h4>
+<ul>
+<li>在向量召回的基础上，使用需要更多计算资源但效果也更好的重排序模型，丛召回的候选文本中精选出与用户查询最相关的少部分文本。多级排序，这种思路既能保证召回效率，又能提高召回精度。</li>
+<li>最常见的重排序模型 基于Transformer编码器架构的交叉编码器。原理：将用户查询和一段候选文本同时输入模型，并预测它们之间的相关性分值。使用这种方法可以考虑用户查询和候选文本的上下文关系，因此具有更高精度。</li>
+<li>除此之外，LLM也可以用来做召回文本的重排序。</li>
+</ul>
+<h4 id="多检索器融合">多检索器融合</h4>
+<ul>
+<li>多模型集成。比如将稀疏检索器和稠密检索器相结合。稀疏检索器擅长根据关键词查找相关文本，而向量检索器则擅长根据语义信息查找相关成本，两者互补。</li>
+</ul>
+<h4 id="结合元数据召回">结合元数据召回</h4>
+<ul>
+<li>提前在存储文本向量时同时记录每个向量相关的标签，就可以在召回时先根据标签信息过滤出所需的向量子集。描述向量的标签也可以称之为metadata 元数据。</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2025-08-26</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%963-%E5%8F%AC%E5%9B%9E%E4%BC%98%E5%8C%96/" data-title="RAG优化3 召回优化" data-hashtags="大模型,RAG,优化"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%963-%E5%8F%AC%E5%9B%9E%E4%BC%98%E5%8C%96/" data-hashtag="大模型"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%963-%E5%8F%AC%E5%9B%9E%E4%BC%98%E5%8C%96/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%963-%E5%8F%AC%E5%9B%9E%E4%BC%98%E5%8C%96/" data-title="RAG优化3 召回优化"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.xiaodingdang.fit/posts/rag%E4%BC%98%E5%8C%963-%E5%8F%AC%E5%9B%9E%E4%BC%98%E5%8C%96/" data-title="RAG优化3 召回优化"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a>,&nbsp;<a href="/tags/rag/">RAG</a>,&nbsp;<a href="/tags/%E4%BC%98%E5%8C%96/">优化</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/rag%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93/" class="prev" rel="prev" title="RAG向量数据库"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>RAG向量数据库</a>
+            <a href="/posts/rag%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0/" class="next" rel="next" title="RAG效果评估">RAG效果评估<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">蝴蝶🦋</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp"><a href="https://beian.miit.gov.cn/"> 苏ICP备2022014605号</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.485ce22971162ae594e2f22468d97519fb9c08a7112e3a012e8684cfe098b474.js" integrity="sha256-SFziKXEWKuWU4vIkaNl1GfucCKcRLjoBLoaEz+CYtHQ="></script></body>
+</html>

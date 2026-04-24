@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Vim - 标签 - 小叮当</title>
+        <link>https://www.xiaodingdang.fit/tags/vim/</link>
+        <description>Vim - 标签 - 小叮当</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 14 Jan 2024 19:06:04 &#43;0800</lastBuildDate><atom:link href="https://www.xiaodingdang.fit/tags/vim/" rel="self" type="application/rss+xml" /><item>
+    <title>Vim配置</title>
+    <link>https://www.xiaodingdang.fit/posts/vim%E9%85%8D%E7%BD%AE/</link>
+    <pubDate>Sun, 14 Jan 2024 19:06:04 &#43;0800</pubDate>
+    <author>蝴蝶🦋</author>
+    <guid>https://www.xiaodingdang.fit/posts/vim%E9%85%8D%E7%BD%AE/</guid>
+    <description><![CDATA[vim配置 安装Universal-ctags 1 2 3 4 5 6 $ git clone https://github.com/universal-ctags/ctags.git $ cd ctags $ ./autogen.sh $ ./configure # use --prefix=/where/you/want to override installation directory, defaults to /usr/local $ make $ make install # may require extra privileges depending on where to install 安装vim-]]></description>
+</item>
+</channel>
+</rss>

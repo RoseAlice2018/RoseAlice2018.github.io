@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Git操作 - 小叮当</title><meta name="Description" content="蝴蝶🦋的博客"><meta property="og:title" content="Git操作" />
+<meta property="og:description" content="git config &ndash;list &ndash;local 查看本地仓库的Git配置 git status [文件] 查看git跟踪的文件状态 git diff [文件] 对比Git跟踪的文件修改前后的具体变化。 git add .|文件 将文件从" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.xiaodingdang.fit/posts/git%E6%93%8D%E4%BD%9C/" /><meta property="og:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-01-27T19:08:57+08:00" />
+<meta property="article:modified_time" content="2024-01-27T19:08:57+08:00" /><meta property="og:site_name" content="小叮当" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/>
+
+<meta name="twitter:title" content="Git操作"/>
+<meta name="twitter:description" content="git config &ndash;list &ndash;local 查看本地仓库的Git配置 git status [文件] 查看git跟踪的文件状态 git diff [文件] 对比Git跟踪的文件修改前后的具体变化。 git add .|文件 将文件从"/>
+<meta name="application-name" content="小叮当">
+<meta name="apple-mobile-web-app-title" content="小叮当"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.xiaodingdang.fit/posts/git%E6%93%8D%E4%BD%9C/" /><link rel="prev" href="https://www.xiaodingdang.fit/posts/vim%E9%85%8D%E7%BD%AE/" /><link rel="next" href="https://www.xiaodingdang.fit/posts/git-cherrypick/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Git操作",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.xiaodingdang.fit\/posts\/git%E6%93%8D%E4%BD%9C\/"
+        },"genre": "posts","keywords": "Git","wordcount":  964 ,
+        "url": "https:\/\/www.xiaodingdang.fit\/posts\/git%E6%93%8D%E4%BD%9C\/","datePublished": "2024-01-27T19:08:57+08:00","dateModified": "2024-01-27T19:08:57+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "蝴蝶🦋"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="normal" data-header-mobile="normal"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="小叮当">小叮当</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="小叮当">小叮当</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Git操作</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>蝴蝶🦋</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-01-27">2024-01-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 964 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#git-config---list---local">git config &ndash;list &ndash;local</a></li>
+        <li><a href="#git-status-文件">git status [文件]</a></li>
+        <li><a href="#git-diff-文件">git diff [文件]</a></li>
+        <li><a href="#git-add-文件">git add .|文件</a></li>
+        <li><a href="#git-commit--m-提交说明">git commit -m &ldquo;提交说明&rdquo;</a></li>
+        <li><a href="#git-log---oneline---graph">git log &ndash;oneline &ndash;graph</a></li>
+        <li><a href="#git-reset---hard-headheadcommit_id">git reset &ndash;hard HEAD^|HEAD~|commit_id</a></li>
+        <li><a href="#git-reset---soft-headheadcommit_id">git reset &ndash;soft HEAD^|HEAD~|commit_id</a></li>
+        <li><a href="#git-reset---mixed-headheadcommit_id">git reset &ndash;mixed HEAD^|HEAD~|commit_id</a></li>
+        <li><a href="#git-checkout----文件">git checkout &ndash; .|文件</a></li>
+        <li><a href="#git-reset-head-文件">git reset HEAD .|文件</a></li>
+        <li><a href="#git-rm-文件">git rm 文件</a></li>
+        <li><a href="#git-clone-url">git clone url</a></li>
+        <li><a href="#git-remote-add-origin-url">git remote add origin url</a></li>
+        <li><a href="#git-remote-rm-origin">git remote rm origin</a></li>
+        <li><a href="#git-remote--v">git remote -v</a></li>
+        <li><a href="#git-remote-show-origin">git remote show origin</a></li>
+        <li><a href="#git-push--u-origin-分支">git push [-u] origin 分支</a></li>
+        <li><a href="#git-branch">git branch</a></li>
+        <li><a href="#git-branch--r">git branch -r</a></li>
+        <li><a href="#git-branch--a">git branch -a</a></li>
+        <li><a href="#git-branch-分支-当前分支">git branch 分支 当前分支</a></li>
+        <li><a href="#git-branch-分支-origin分支">git branch 分支 origin/分支</a></li>
+        <li><a href="#git-checkout-分支">git checkout 分支</a></li>
+        <li><a href="#git-checkout--b-分支-当前分支origin分支">git checkout -b 分支 当前分支|origin/分支</a></li>
+        <li><a href="#git-branch--d-分支">git branch -d 分支</a></li>
+        <li><a href="#git-branch--d-分支-1">git branch -D 分支</a></li>
+        <li><a href="#git-push-origin---delete-分支">git push origin &ndash;delete 分支</a></li>
+        <li><a href="#git-remote-prune-origin">git remote prune origin</a></li>
+        <li><a href="#git-merge-分支">git merge 分支</a></li>
+        <li><a href="#git-merge---no-ff--m--分支">git merge &ndash;no-ff -m “” 分支</a></li>
+        <li><a href="#git-stash">git stash</a></li>
+        <li><a href="#git-stash-list">git stash list</a></li>
+        <li><a href="#git-stash-apply">git stash apply</a></li>
+        <li><a href="#git-stash-drop">git stash drop</a></li>
+        <li><a href="#git-stash-pop">git stash pop</a></li>
+        <li><a href="#git-branch---set-upstream-to-分支-origin分支">git branch &ndash;set-upstream-to 分支 origin/分支</a></li>
+        <li><a href="#git-tag-标签-commit_id">git tag 标签 [commit_id]</a></li>
+        <li><a href="#git-tag">git tag</a></li>
+        <li><a href="#git-show-标签">git show 标签</a></li>
+        <li><a href="#git-tag--a-标签--m--commit_id">git tag -a 标签 -m &quot;&quot; [commit_id]</a></li>
+        <li><a href="#git-tag--d-标签">git tag -d 标签</a></li>
+        <li><a href="#git-push-origin-标签">git push origin 标签</a></li>
+        <li><a href="#git-push-origin---tags">git push origin &ndash;tags</a></li>
+        <li><a href="#git-push-origin-refstags标签">git push origin :refs/tags/标签</a></li>
+        <li><a href="#git-branch--m-旧分支-新分支">git branch -m 旧分支 新分支</a></li>
+        <li><a href="#git-rebase--i-">git rebase -i (,]</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="git-config---list---local">git config &ndash;list &ndash;local</h3>
+<ul>
+<li>查看本地仓库的Git配置</li>
+</ul>
+<h3 id="git-status-文件">git status [文件]</h3>
+<ul>
+<li>查看git跟踪的文件状态</li>
+</ul>
+<h3 id="git-diff-文件">git diff [文件]</h3>
+<ul>
+<li>对比Git跟踪的文件修改前后的具体变化。</li>
+</ul>
+<h3 id="git-add-文件">git add .|文件</h3>
+<ul>
+<li>将文件从工作区提交到暂存区</li>
+</ul>
+<h3 id="git-commit--m-提交说明">git commit -m &ldquo;提交说明&rdquo;</h3>
+<ul>
+<li>将文件从暂存区提交到本地库</li>
+</ul>
+<h3 id="git-log---oneline---graph">git log &ndash;oneline &ndash;graph</h3>
+<ul>
+<li>查看提交历史</li>
+</ul>
+<h3 id="git-reset---hard-headheadcommit_id">git reset &ndash;hard HEAD^|HEAD~|commit_id</h3>
+<ul>
+<li>本地库，暂存区，工作区版本回退。</li>
+</ul>
+<h3 id="git-reset---soft-headheadcommit_id">git reset &ndash;soft HEAD^|HEAD~|commit_id</h3>
+<ul>
+<li>本地库回退，暂存区，工作区不回退</li>
+</ul>
+<h3 id="git-reset---mixed-headheadcommit_id">git reset &ndash;mixed HEAD^|HEAD~|commit_id</h3>
+<ul>
+<li>本地库，暂存区回退，工作区不回退</li>
+</ul>
+<h3 id="git-checkout----文件">git checkout &ndash; .|文件</h3>
+<ul>
+<li>撤销工作区的修改</li>
+</ul>
+<h3 id="git-reset-head-文件">git reset HEAD .|文件</h3>
+<ul>
+<li>撤销暂存区的修改，放回至工作区</li>
+</ul>
+<h3 id="git-rm-文件">git rm 文件</h3>
+<ul>
+<li>删除工作区的文件，当删除了工作区的文件的时候，也需要删除本地库相对应的文件。</li>
+</ul>
+<h3 id="git-clone-url">git clone url</h3>
+<ul>
+<li>克隆远程库到本地</li>
+</ul>
+<h3 id="git-remote-add-origin-url">git remote add origin url</h3>
+<ul>
+<li>将本地库与远程库关联，默认远程库命名为origin。一个本地库可以关联多个远程库。</li>
+</ul>
+<h3 id="git-remote-rm-origin">git remote rm origin</h3>
+<ul>
+<li>删除已经关联的名为Origin的远程分支</li>
+</ul>
+<h3 id="git-remote--v">git remote -v</h3>
+<ul>
+<li>查看远程库信息</li>
+</ul>
+<h3 id="git-remote-show-origin">git remote show origin</h3>
+<ul>
+<li>查看remote地址，远程分支，还有本地分支，与之对应关系等信息。</li>
+</ul>
+<h3 id="git-push--u-origin-分支">git push [-u] origin 分支</h3>
+<ul>
+<li>将本地分支推送到远程仓库origin，第一次推送需要加-u</li>
+</ul>
+<h3 id="git-branch">git branch</h3>
+<ul>
+<li>查看本地库所有分支</li>
+</ul>
+<h3 id="git-branch--r">git branch -r</h3>
+<ul>
+<li>查看远程库所有分支</li>
+</ul>
+<h3 id="git-branch--a">git branch -a</h3>
+<ul>
+<li>查看本地库和远程库的所有分支</li>
+</ul>
+<h3 id="git-branch-分支-当前分支">git branch 分支 当前分支</h3>
+<ul>
+<li>基于当前分支创造新的分支</li>
+</ul>
+<h3 id="git-branch-分支-origin分支">git branch 分支 origin/分支</h3>
+<ul>
+<li>基于远程库分支创建新的分支</li>
+</ul>
+<h3 id="git-checkout-分支">git checkout 分支</h3>
+<ul>
+<li>切换分支</li>
+</ul>
+<h3 id="git-checkout--b-分支-当前分支origin分支">git checkout -b 分支 当前分支|origin/分支</h3>
+<blockquote>
+<p>基于当前分支或远程库的分支创建新的分支，并切换到该分支</p>
+</blockquote>
+<h3 id="git-branch--d-分支">git branch -d 分支</h3>
+<blockquote>
+<p>删除分支</p>
+</blockquote>
+<h3 id="git-branch--d-分支-1">git branch -D 分支</h3>
+<blockquote>
+<p>强制删除分支，丢弃一个没有被合并过的分支</p>
+</blockquote>
+<h3 id="git-push-origin---delete-分支">git push origin &ndash;delete 分支</h3>
+<blockquote>
+<p>删除远程分支</p>
+</blockquote>
+<h3 id="git-remote-prune-origin">git remote prune origin</h3>
+<blockquote>
+<p>删除本地远程仓库不存在的分支</p>
+</blockquote>
+<h3 id="git-merge-分支">git merge 分支</h3>
+<blockquote>
+<p>合并某分支到当前分支</p>
+</blockquote>
+<h3 id="git-merge---no-ff--m--分支">git merge &ndash;no-ff -m “” 分支</h3>
+<blockquote>
+<p>普通模式合并某分支到当前分支，会生成一次commit记录</p>
+</blockquote>
+<h3 id="git-stash">git stash</h3>
+<blockquote>
+<p>将所有未提交的修改内容（包括工作区和暂存区）储藏起来，并将本地库回退到上个版本</p>
+</blockquote>
+<h3 id="git-stash-list">git stash list</h3>
+<blockquote>
+<p>查看储藏的stash列表</p>
+</blockquote>
+<h3 id="git-stash-apply">git stash apply</h3>
+<blockquote>
+<p>恢复储藏的stash</p>
+</blockquote>
+<h3 id="git-stash-drop">git stash drop</h3>
+<blockquote>
+<p>删除储藏的stash</p>
+</blockquote>
+<h3 id="git-stash-pop">git stash pop</h3>
+<blockquote>
+<p>恢复并删除储藏的stash</p>
+</blockquote>
+<h3 id="git-branch---set-upstream-to-分支-origin分支">git branch &ndash;set-upstream-to 分支 origin/分支</h3>
+<blockquote>
+<p>创建本地分支和远程分支的链接关系</p>
+</blockquote>
+<h3 id="git-tag-标签-commit_id">git tag 标签 [commit_id]</h3>
+<blockquote>
+<p>创建新的标签，默认打在最新提交的commit上</p>
+</blockquote>
+<h3 id="git-tag">git tag</h3>
+<blockquote>
+<p>查看所有标签</p>
+</blockquote>
+<h3 id="git-show-标签">git show 标签</h3>
+<blockquote>
+<p>查看标签信息</p>
+</blockquote>
+<h3 id="git-tag--a-标签--m--commit_id">git tag -a 标签 -m &quot;&quot; [commit_id]</h3>
+<blockquote>
+<p>创建带有说明的标签</p>
+</blockquote>
+<h3 id="git-tag--d-标签">git tag -d 标签</h3>
+<blockquote>
+<p>删除标签</p>
+</blockquote>
+<h3 id="git-push-origin-标签">git push origin 标签</h3>
+<blockquote>
+<p>推送标签到远程</p>
+</blockquote>
+<h3 id="git-push-origin---tags">git push origin &ndash;tags</h3>
+<blockquote>
+<p>推送全部未推送过的标签到远程库</p>
+</blockquote>
+<h3 id="git-push-origin-refstags标签">git push origin :refs/tags/标签</h3>
+<blockquote>
+<p>删除远程标签</p>
+</blockquote>
+<h3 id="git-branch--m-旧分支-新分支">git branch -m 旧分支 新分支</h3>
+<blockquote>
+<p>重命名分支名</p>
+</blockquote>
+<h3 id="git-rebase--i-">git rebase -i (,]</h3>
+<blockquote>
+<p>编辑commit，前开后闭</p>
+</blockquote>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2024-01-27</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.xiaodingdang.fit/posts/git%E6%93%8D%E4%BD%9C/" data-title="Git操作" data-hashtags="Git"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.xiaodingdang.fit/posts/git%E6%93%8D%E4%BD%9C/" data-hashtag="Git"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="https://www.xiaodingdang.fit/posts/git%E6%93%8D%E4%BD%9C/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.xiaodingdang.fit/posts/git%E6%93%8D%E4%BD%9C/" data-title="Git操作"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.xiaodingdang.fit/posts/git%E6%93%8D%E4%BD%9C/" data-title="Git操作"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/git/">Git</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/vim%E9%85%8D%E7%BD%AE/" class="prev" rel="prev" title="Vim配置"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Vim配置</a>
+            <a href="/posts/git-cherrypick/" class="next" rel="next" title="Git Cherrypick">Git Cherrypick<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">蝴蝶🦋</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp"><a href="https://beian.miit.gov.cn/"> 苏ICP备2022014605号</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.485ce22971162ae594e2f22468d97519fb9c08a7112e3a012e8684cfe098b474.js" integrity="sha256-SFziKXEWKuWU4vIkaNl1GfucCKcRLjoBLoaEz+CYtHQ="></script></body>
+</html>

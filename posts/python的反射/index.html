@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Python的反射 - 小叮当</title><meta name="Description" content="蝴蝶🦋的博客"><meta property="og:title" content="Python的反射" />
+<meta property="og:description" content="Python的反射机制是其动态特性的核心体现，允许程序在运行时动态检查、修改和调用对象的属性和方法，而非依赖编译时的硬编码。这种能力基于Py" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%8F%8D%E5%B0%84/" /><meta property="og:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-02-27T20:23:16+08:00" />
+<meta property="article:modified_time" content="2025-02-27T20:23:16+08:00" /><meta property="og:site_name" content="小叮当" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.xiaodingdang.fit/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"/>
+
+<meta name="twitter:title" content="Python的反射"/>
+<meta name="twitter:description" content="Python的反射机制是其动态特性的核心体现，允许程序在运行时动态检查、修改和调用对象的属性和方法，而非依赖编译时的硬编码。这种能力基于Py"/>
+<meta name="application-name" content="小叮当">
+<meta name="apple-mobile-web-app-title" content="小叮当"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%8F%8D%E5%B0%84/" /><link rel="prev" href="https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%B9%B6%E5%8F%91/" /><link rel="next" href="https://www.xiaodingdang.fit/posts/python%E7%9A%84metaclass/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Python的反射",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/www.xiaodingdang.fit\/posts\/python%E7%9A%84%E5%8F%8D%E5%B0%84\/"
+        },"genre": "posts","keywords": "Python","wordcount":  2422 ,
+        "url": "https:\/\/www.xiaodingdang.fit\/posts\/python%E7%9A%84%E5%8F%8D%E5%B0%84\/","datePublished": "2025-02-27T20:23:16+08:00","dateModified": "2025-02-27T20:23:16+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "蝴蝶🦋"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="normal" data-header-mobile="normal"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="小叮当">小叮当</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="小叮当">小叮当</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Python的反射</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>蝴蝶🦋</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-02-27">2025-02-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 2422 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>Python的反射机制是其动态特性的核心体现，允许程序在运行时动态检查、修改和调用对象的属性和方法，而非依赖编译时的硬编码。这种能力基于Python“一切皆对象”的设计哲学，使得类、函数、模块等均可通过反射操作。以下是其原理和应用的系统解析：</p>
+<p>🔍 一、反射的核心概念</p>
+<ol>
+<li>
+<p>原理基础<br>
+• 动态查找机制：Python对象的属性和方法存储在__dict__中（一个字典结构），反射函数（如getattr()）通过字符串键名访问该字典，实现属性和方法的动态查找。</p>
+<p>• 元类与内省：type()函数不仅用于类型检查，还能动态创建类（元类编程），而inspect模块提供更高级的内省能力（如获取方法签名）。</p>
+<p>• 动态类型系统：Python在运行时确定对象类型，反射利用此特性延迟绑定，提升代码灵活性。</p>
+</li>
+</ol>
+<p>⚙️ 二、四大核心反射函数</p>
+<p>以下函数是反射操作的基石：</p>
+<p>函数 语法 作用 示例</p>
+<p>getattr() getattr(obj, &lsquo;attr&rsquo;, default) 获取属性/方法，不存在时返回默认值 name = getattr(obj, &lsquo;name&rsquo;, &lsquo;Unknown&rsquo;)</p>
+<p>setattr() setattr(obj, &lsquo;attr&rsquo;, value) 设置属性值（不存在则创建） setattr(obj, &lsquo;age&rsquo;, 30)</p>
+<p>hasattr() hasattr(obj, &lsquo;attr&rsquo;) 检查属性/方法是否存在 if hasattr(obj, &lsquo;method&rsquo;): &hellip;</p>
+<p>delattr() delattr(obj, &lsquo;attr&rsquo;) 删除属性
+delattr(obj, &lsquo;temp_data&rsquo;)</p>
+<p>代码示例：
+class User:
+def <strong>init</strong>(self, name):
+self.name = name</p>
+<p>user = User(&ldquo;Alice&rdquo;)</p>
+<h1 id="动态添加属性">动态添加属性</h1>
+<p>setattr(user, &ldquo;role&rdquo;, &ldquo;Admin&rdquo;)</p>
+<h1 id="检查并调用方法">检查并调用方法</h1>
+<p>if hasattr(user, &ldquo;name&rdquo;):<br>
+print(getattr(user, &ldquo;name&rdquo;))  # 输出: Alice</p>
+<p>🧩 三、反射的实际应用场景</p>
+<ol>
+<li>
+<p>动态加载模块与插件系统<br>
+• 根据配置或用户输入动态导入模块：
+import importlib
+module = importlib.import_module(&ldquo;math&rdquo;)
+sqrt_func = getattr(module, &ldquo;sqrt&rdquo;)
+print(sqrt_func(4))  # 输出: 2.0</p>
+<p>• 插件框架通过反射加载不同实现类，无需硬编码。</p>
+</li>
+<li>
+<p>配置驱动的对象初始化<br>
+• 将配置文件映射为对象属性：
+config_data = {&ldquo;debug&rdquo;: True, &ldquo;log_level&rdquo;: &ldquo;INFO&rdquo;}
+class AppConfig: pass
+for key, value in config_data.items():
+setattr(AppConfig, key, value)</p>
+</li>
+<li>
+<p>ORM（对象关系映射）框架<br>
+• 数据库字段名动态映射到对象属性（如Django ORM）。</p>
+</li>
+<li>
+<p>动态路由与API调用<br>
+• Web框架（如Flask）根据URL路径动态调用处理函数：
+handlers = {&ldquo;home&rdquo;: home_handler, &ldquo;user&rdquo;: user_handler}
+route = request.path.split(&quot;/&quot;)[1]
+handler = handlers.get(route, default_handler)
+handler()</p>
+</li>
+<li>
+<p>自动化测试<br>
+• 动态发现并执行测试用例（如unittest框架）：
+test_cases = [m for m in dir(TestClass) if m.startswith(&ldquo;test_&quot;)]
+for case in test_cases:
+getattr(TestClass(), case)()</p>
+</li>
+</ol>
+<p>⚡ 四、高级技巧与注意事项</p>
+<ol>
+<li>
+<p>动态类创建<br>
+使用type()在运行时生成类：
+def init_func(self, name):
+self.name = name
+User = type(&ldquo;User&rdquo;, (object,), {&quot;<strong>init</strong>&quot;: init_func})
+user = User(&ldquo;Bob&rdquo;)</p>
+</li>
+<li>
+<p>猴子补丁（Monkey Patching）<br>
+运行时修改类或对象的方法：
+class Service:
+def run(self): print(&ldquo;Original&rdquo;)
+def new_run(self): print(&ldquo;Patched&rdquo;)
+Service.run = new_run  # 替换原有方法</p>
+</li>
+<li>
+<p>性能与安全权衡<br>
+• 性能：反射比直接调用慢（需字典查找），在性能敏感场景慎用。</p>
+<p>• 可读性：过度使用反射会降低代码可维护性，应添加充分注释。</p>
+<p>• 安全：避免直接反射用户输入（如getattr(obj, user_input)），可能引发AttributeError或安全漏洞。</p>
+</li>
+</ol>
+<p>💎 五、总结</p>
+<p>Python反射的核心价值在于解耦代码与运行时逻辑，通过字符串而非硬编码关联对象成员。其四大函数（getattr/setattr/hasattr/delattr）是动态操作的基础，而__dict__和type()提供了底层支持。合理应用于插件、配置管理、ORM等场景可大幅提升代码灵活性，但需警惕性能损耗与可读性下降。反射如同“代码的镜子”，善用则事半功倍，滥用则晦涩难调。</p>
+<p>Python 的 hasattr()、getattr() 和 setattr() 是动态操作对象属性的核心内置函数，统称为“反射三兄弟”。它们通过字符串动态访问、检查和修改对象的属性或方法，是元编程和灵活架构设计的关键工具。以下是它们的详细对比及典型用法：</p>
+<p>📊 核心功能对比</p>
+<p>函数 语法 核心作用 返回值 典型场景</p>
+<p>hasattr() hasattr(obj, &ldquo;attr_name&rdquo;) 检查对象 obj 是否包含属性 attr_name True（存在）或 False（不存在） 安全访问前的存在性校验</p>
+<p>getattr() getattr(obj, &ldquo;attr_name&rdquo;[, default]) 获取对象属性值，支持默认值避免异常 属性值（存在）或 default（不存在） 动态属性读取、方法调用、配置加载</p>
+<p>setattr() setattr(obj, &ldquo;attr_name&rdquo;, value) 动态设置或新增对象的属性 None（仅执行操作） 批量属性注入、ORM 字段映射</p>
+<p>🔍 详细用法解析</p>
+<ol>
+<li>hasattr()：存在性检查</li>
+</ol>
+<p>• 作用：避免直接访问属性时触发 AttributeError，提升代码健壮性。</p>
+<p>• 注意事项：</p>
+<p>• 仅检查属性名是否存在，不验证属性类型或值（如 None 仍返回 True）。</p>
+<p>• 内部实现为 try: getattr() → True except AttributeError: False，因此非 AttributeError 的异常会被误吞。</p>
+<p>• 示例：
+class User:
+def <strong>init</strong>(self, name):
+self.name = name</p>
+<p>user = User(&ldquo;Alice&rdquo;)
+print(hasattr(user, &ldquo;name&rdquo;))  # True
+print(hasattr(user, &ldquo;email&rdquo;)) # False</p>
+<ol start="2">
+<li>getattr()：安全获取属性值</li>
+</ol>
+<p>• 作用：动态读取属性或方法，支持默认值兜底。</p>
+<p>• 关键特性：</p>
+<p>• 属性不存在且未提供 default 时，抛出 AttributeError。</p>
+<p>• 可动态调用方法：getattr(obj, &ldquo;method&rdquo;)()。</p>
+<p>• 示例：
+class Calculator:
+def add(self, a, b):
+return a + b</p>
+<p>calc = Calculator()</p>
+<h1 id="动态调用方法">动态调用方法</h1>
+<p>method = getattr(calc, &ldquo;add&rdquo;, None)
+if callable(method):
+print(method(2, 3))  # 5</p>
+<h1 id="读取不存在的属性">读取不存在的属性</h1>
+<p>value = getattr(calc, &ldquo;multiply&rdquo;, lambda: &ldquo;Not Implemented&rdquo;)
+print(value())  # &ldquo;Not Implemented&rdquo;</p>
+<ol start="3">
+<li>setattr()：动态设置属性</li>
+</ol>
+<p>• 作用：运行时添加或修改属性，属性名通过字符串动态指定。</p>
+<p>• 注意事项：</p>
+<p>• 若属性已存在，则覆盖原值（可能破坏原有逻辑，如覆盖方法）。</p>
+<p>• 无法设置只读属性（如含 @property 无 setter 的属性）。</p>
+<p>• 典型应用：批量注入配置（如从字典加载）：
+class Config: pass
+config_data = {&ldquo;debug&rdquo;: True, &ldquo;log_level&rdquo;: &ldquo;INFO&rdquo;}
+config = Config()
+for k, v in config_data.items():
+setattr(config, k, v)  # 动态设置属性
+print(config.debug)  # True</p>
+<p>⚡ 组合使用场景</p>
+<p>场景 1：安全属性访问链</p>
+<p>先检查存在性 → 再获取值 → 必要时设置默认值：
+class Account:
+def <strong>init</strong>(self):
+self.balance = 100</p>
+<p>acc = Account()
+if not hasattr(acc, &ldquo;currency&rdquo;):
+setattr(acc, &ldquo;currency&rdquo;, &ldquo;USD&rdquo;)  # 不存在则设置默认值
+currency = getattr(acc, &ldquo;currency&rdquo;)
+print(currency)  # &ldquo;USD&rdquo;</p>
+<p>场景 2：动态对象映射（如 ORM）</p>
+<p>将数据库行数据映射为对象属性：
+class User:
+@classmethod
+def from_row(cls, row_dict):
+obj = cls()
+for field, value in row_dict.items():
+setattr(obj, field, value)  # 动态设置字段
+return obj</p>
+<p>user_data = {&ldquo;id&rdquo;: 1, &ldquo;name&rdquo;: &ldquo;Bob&rdquo;, &ldquo;age&rdquo;: 30}
+user = User.from_row(user_data)
+print(user.name)  # &ldquo;Bob&rdquo;</p>
+<p>场景 3：插件系统</p>
+<p>动态检查并执行插件方法：
+class PluginBase: pass
+class HelloPlugin(PluginBase):
+def run(self):
+print(&ldquo;Hello World&rdquo;)</p>
+<p>plugin = HelloPlugin()
+if hasattr(plugin, &ldquo;run&rdquo;):
+method = getattr(plugin, &ldquo;run&rdquo;)
+method()  # 输出: &ldquo;Hello World&rdquo;</p>
+<p>⚠️ 重要注意事项</p>
+<ol>
+<li>性能开销：<br>
+动态访问（尤其 getattr()）比直接属性访问慢，高频调用时需权衡。</li>
+<li>可读性风险：<br>
+过度使用动态属性会降低代码可维护性，建议辅以注释和单元测试。</li>
+<li>安全边界：<br>
+避免直接用用户输入作为属性名（如 getattr(obj, user_input)），可能引发意外行为或安全漏洞。</li>
+<li>魔法方法干扰：<br>
+若类重写了 <strong>getattr</strong> 或 <strong>getattribute</strong>，hasattr/getattr 的行为可能被拦截或修改。</li>
+</ol>
+<p>💎 总结</p>
+<p>函数 核心定位 最佳实践</p>
+<p>hasattr() 属性守卫者 访问前的安全检查，避免异常</p>
+<p>getattr() 动态取值器 配合默认值使用，实现安全读取和方法反射</p>
+<p>setattr() 属性构造器 批量注入数据，避免覆盖关键方法</p>
+<p>合理组合三者，可高效实现 动态配置加载、ORM 映射、插件系统 等复杂场景，但需在 灵活性 与 可维护性 间谨慎平衡。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2025-02-27</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%8F%8D%E5%B0%84/" data-title="Python的反射" data-hashtags="Python"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%8F%8D%E5%B0%84/" data-hashtag="Python"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%8F%8D%E5%B0%84/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%8F%8D%E5%B0%84/" data-title="Python的反射"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://www.xiaodingdang.fit/posts/python%E7%9A%84%E5%8F%8D%E5%B0%84/" data-title="Python的反射"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/python/">python</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/python%E7%9A%84%E5%B9%B6%E5%8F%91/" class="prev" rel="prev" title="Python的并发"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Python的并发</a>
+            <a href="/posts/python%E7%9A%84metaclass/" class="next" rel="next" title="Python的metaclass">Python的metaclass<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">蝴蝶🦋</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp"><a href="https://beian.miit.gov.cn/"> 苏ICP备2022014605号</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.485ce22971162ae594e2f22468d97519fb9c08a7112e3a012e8684cfe098b474.js" integrity="sha256-SFziKXEWKuWU4vIkaNl1GfucCKcRLjoBLoaEz+CYtHQ="></script></body>
+</html>
