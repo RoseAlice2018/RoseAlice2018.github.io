@@ -31,6 +31,9 @@ enableEmoji = true
 # 忽略一些构建错误
 ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
+# 构建时包含日期为未来的文章
+buildFuture = true
+
 # 作者配置
 [author]
   name = "蝴蝶🦋"
